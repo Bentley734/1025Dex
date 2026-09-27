@@ -4,7 +4,9 @@
 
 Credits:
 Sanjin and Tekky for their mod National-Dex (https://discord.com/channels/1019387038820216882/1536996654144561162), it was the main starting point for making the Gen3 version
+
 Gen9 Resource Pack for Sprites (https://eeveeexpo.com/resources/1101/)
+
 LSDMTHC for their original port of national-dex
 
 https://github.com/Bentley734/1025Dex/releases/
