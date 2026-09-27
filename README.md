@@ -8,5 +8,3 @@ Sanjin and Tekky for their mod National-Dex (https://discord.com/channels/101938
 Gen9 Resource Pack for Sprites (https://eeveeexpo.com/resources/1101/)
 
 LSDMTHC for their original port of national-dex
-
-https://github.com/Bentley734/1025Dex/releases/
