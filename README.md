@@ -2,3 +2,9 @@
 
 1025Dex expands Pokémon FireRed with a complete National Pokédex covering all 1,025 Pokémon, along with accurate cries, animated battle sprites, HD party icons, and modern moves, abilities, and types. It also includes generation-selectable wild encounters and expanded Pokédex features.
 
+Credits:
+Sanjin and Tekky for their mod National-Dex (https://discord.com/channels/1019387038820216882/1536996654144561162), it was the main starting point for making the Gen3 version
+Gen9 Resource Pack for Sprites (https://eeveeexpo.com/resources/1101/)
+LSDMTHC for their original port of national-dex
+
+https://github.com/Bentley734/1025Dex/releases/
