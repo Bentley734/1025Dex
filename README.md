@@ -9,3 +9,6 @@ Sanjin and Tekky for their mod National-Dex (https://discord.com/channels/101938
 Gen9 Resource Pack for Sprites (https://eeveeexpo.com/resources/1101/)
 
 LSDMTHC for their original port of national-dex
+### Emerald Expansion / RHH (Rom Hacking Hideout)
+Based off RHH's pokeemerald-expansion 1.17.1 https://github.com/rh-hideout/pokeemerald-expansion/
+The EE ANIMATED and EE STATIC sprite options use Emerald Expansion artwork. Credit to RHH (Rom Hacking Hideout), the creators and maintainers of pokeemerald-expansion, and its contributing sprite artists. [Full upstream contributor credits](https://github.com/rh-hideout/pokeemerald-expansion/blob/master/CREDITS.md).
