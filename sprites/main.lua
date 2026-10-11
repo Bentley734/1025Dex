@@ -3007,6 +3007,14 @@ return function(mod)
     sheet.frames.__spriteStyle = sheet.style
     sheet.frames.__bwTiming = sheet.bwTiming
     sheet.frames.__ee = sheet.ee
+    -- Optional layout metadata for final-resolution scene renderers. These
+    -- bounds come from the whole strip's union, before individual frames are
+    -- baked, so an idle pose never changes its size or ground origin. Natural
+    -- mode's bottom padding is intentional hover height, not empty feet space.
+    if b.natural then
+      sheet.frames.__spriteLayout = {x0=0, y0=0, x1=box.w,
+        y1=b.shadowArt and box.h or b.oy+b.dh, ox=box.w/2, ground=box.h}
+    end
     sheet.frames[f + 1] = img
     if GEN == 3 then
       sheet.gen3FrameData = sheet.gen3FrameData or {}
@@ -5302,6 +5310,7 @@ return function(mod)
     end
     if frames then
       managedSpecies[mon.species] = true
+      ctx.spriteLayout = frames.__spriteLayout
       if debugOn() and mon.__g9bsLogged ~= stem then
         mon.__g9bsLogged = stem
         diag.lastResolve = tostring(mon.species) .. "->" .. stem
