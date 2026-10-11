@@ -1,0 +1,7 @@
+Fixes the Gen 3 type adapter mapping PSYCHIC_TYPE to the engine's PSYCHIC type. Gardevoir, Deoxys and all other affected base species/forms now retain Psychic typing in battle without changing abilities. This applies to existing Pokemon after restarting; no save editing is required.
+
+Fixes Ruby/Sapphire options-menu crashes caused by missing sOptionMenuItemsNames and related value tables in the script cache. Existing ROM text takes precedence; Emerald and FireRed/LeafGreen retain their original text behavior.
+
+Validated all 130 Psychic source entries through the engine's numeric type writer, missing options names/values and ROM-text precedence for Ruby/Sapphire, and all 11 games' schema-backed National Dex and encounter/Hoennto regressions. Live gameplay was not exercised.
+
+Install: replace the existing 1025Dex folder with the folder in the ZIP, then fully restart the game. Independent battle sprite options from 1.2.34 are retained.
