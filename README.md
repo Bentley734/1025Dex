@@ -1,4 +1,10 @@
-# 1025Dex 1.2.35 - Psychic typing and Ruby/Sapphire options fix
+# 1025Dex 1.2.36 - Built-in asset downloader
+
+Updates now use a small core ZIP. Download all sprite styles, icons, and 1025
+cries once from the built-in prompt or **OPTIONS > 1025DEX ASSETS**. The pack is
+stored in persistent cache and reused across future code updates and saves.
+Restart after installation. [Asset downloads, migration and offline setup](ASSET-DOWNLOADS.md).
+
 
 Gen 3 Psychic types now reach the battle engine correctly, including Gardevoir,
 Deoxys and added species/forms. Ruby/Sapphire options menus now supply missing

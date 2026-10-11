@@ -1,0 +1,16 @@
+1025Dex 1.2.36 - Built-in persistent asset downloader
+
+- Small core updates; all sprite styles, icons, and 1025 cries are a separate
+  independently versioned asset pack, reused across saves and code updates.
+- Built-in 1025DEX ASSETS option and first-install prompt for Gen 1, 2, and 3.
+- Progress, retry, download cancellation, confirmed removal, and re-download.
+- SHA-256 verification against a pinned file catalog; malformed/incomplete packs
+  cannot be marked installed.
+- Complete older bundled assets can migrate locally without a download.
+- Portable installs decode cached image/audio bytes without host path assumptions.
+- Black/White ROM imports remain separate. Psychic/options fixes from 1.2.35
+  and independent battle sprite options from 1.2.34 are retained.
+
+Install the small core ZIP, download assets from the in-game prompt or OPTIONS,
+then fully restart. Keep the engine's mod cache when installing future updates.
+See ASSET-DOWNLOADS.md for offline installation and migration instructions.

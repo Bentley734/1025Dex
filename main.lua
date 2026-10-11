@@ -3,6 +3,9 @@ return function(mod)
   local Version = require('src.core.GameVersion')
   local generation = Version.generation()
   assert(generation >= 1 and generation <= 3, 'Unsupported game generation')
+  if mod.cache and mod.ui and mod.content.screens then
+    assert(load(assert(mod:read('compat/assets.lua')), '@1025dex/assets.lua'))()(mod)
+  end
   local schema, seen = {}, {}
   local function component(folder)
     local child = setmetatable({path=mod.path .. '/' .. folder}, {__index=mod})
