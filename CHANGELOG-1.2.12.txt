@@ -1,0 +1,22 @@
+1.2.12 — Canon encounters and habitat audit
+
+Preserves all vanilla area/channel/species entries from the supplied USA
+FireRed, LeafGreen and Emerald ROMs, including Emerald extra headers and
+Route 119 Feebas. Route 3 Jigglypuff and Viridian Forest Pikachu are retained.
+FR/LG version-specific native data is selected by the active game.
+
+The campaign atlas no longer removes native encounters to enforce its
+two-home limit or exclusive region assignment. Native species may overlap
+regions; added species still receive small, habitat-compatible local pools.
+Added aquatic species respect freshwater/sea habitats. Bombirdier is a land
+species again. Missing native maps and exact encounter channels are covered.
+
+Native level ranges reach both battles and public DexNav/follower APIs.
+Generation settings still filter canon species, except the existing Route 1
+featured starters and weighted Diglett/Dugtrio rules. Added special species
+and Ultra Beasts retain their existing League gates and rarity rolls.
+
+Replace the previous 1025Dex with this ZIP and restart the session. Current
+WildFollowers and DexNav use the updated public API without another update.
+EncounterAtlas.csv was rebuilt by game. See ENCOUNTER-AUDIT.md for measured
+restoration counts. Tests are headless; no interactive playthrough was run.

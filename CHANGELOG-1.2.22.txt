@@ -1,0 +1,24 @@
+1025Dex 1.2.22 — Buyable evolution apples
+
+Add Tart Apple and Sweet Apple, each priced at 2,100, to all eleven games.
+Use them on Applin to evolve into Flapple and Appletun respectively.
+These items do not evolve Dipplin. Applin's existing Dipplin branch is kept.
+
+Red/Blue/Yellow and FireRed/LeafGreen: Celadon Department Store, 4F.
+Gold/Silver/Crystal: Celadon Department Store, 4F; also Goldenrod's 4F.
+Ruby/Sapphire/Emerald: Pretty Petal Flower Shop on Route 104, left-hand owner.
+The other two flower-shop NPCs retain their Wailmer Pail and berry rewards.
+
+Use native item registries, shop transactions, bag storage and evolution
+flows. Gen 3 item IDs are stable across ROM reloads; replace Applin's old
+Flapple/Appletun level-36 fallback with real apple-use branches. Purchased
+apples work in FRLG before the National Dex unlock, while Everstone still
+prevents their use. No other evolution's postgame restrictions are changed.
+
+Tested purchases and item evolution/refusal in all eleven game fixtures on
+engines 0.3.54 and 0.3.58, plus Gen 3 item reload and evolution selection.
+The all-species evolution-animation and alternate-form regressions pass.
+Graphical playthroughs are not part of these headless checks.
+
+Install the complete 1025Dex folder and restart. CodeBreaker 0.7.2 remains
+compatible and needs no new build for these items.

@@ -1,0 +1,4 @@
+1025Dex v1.1.34
+
+- Keep the FireRed field rendering behind ordinary menus, including OPTION, while leaving menu windows and entries in place.
+- Omit menu-wide opaque backdrops so the live world remains visible.

@@ -3,7 +3,7 @@ return function(mod)
   local Version = require('src.core.GameVersion')
   local generation = Version.generation()
   assert(generation >= 1 and generation <= 3, 'Unsupported game generation')
-  if mod.cache and mod.ui and mod.content.screens then
+  if mod.cache and mod.ui and (generation == 3 or mod.content.screens) then
     assert(load(assert(mod:read('compat/assets.lua')), '@1025dex/assets.lua'))()(mod)
   end
   local schema, seen = {}, {}
@@ -75,6 +75,7 @@ return function(mod)
     end
     assert(load(assert(mod:read('battle_position.lua')), '@battle_position.lua'))()()
   end
+  assert(load(assert(mod:read('compat/settings_menu.lua')), '@1025dex/settings_menu.lua'))()(mod)
   mod.exports.supportedGames={'red','blue','yellow','gold','silver','crystal','ruby','sapphire','firered','leafgreen','emerald'}
   mod.log:info('1025Dex ready: 1025 cries, selectable animated/static/BW ROM sprites and WILD GENS.')
 end

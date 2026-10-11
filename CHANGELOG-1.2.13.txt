@@ -1,0 +1,21 @@
+1.2.13 — Merge missing-route fixes with the canon/habitat update
+
+Retains all 1.2.12 canon encounter metadata, native levels, habitat corrections,
+public DexNav/follower channels and weighted cave rules.
+
+Merges the supplied alternate 1.2.12 build's encounterSources for Routes 4, 9,
+10, 11 and 22, plus habitat-matched empty-generation fallback for those routes.
+The canon-aware runtime already populated these routes; the merged fallback
+also repairs callers of the older policy without native ROM profiles.
+
+Includes the incoming route regression test and validates all five routes,
+all 17 generation settings, campaign/standalone modes, and public DexNav,
+visible-wild and battle selection. Existing native/habitat, cave, postgame,
+Ultra Beast and atlas regressions are also run.
+
+Actual canon-aware runtime encounter pools are unchanged, so the previously
+generated v1.2.12 encounter guides still apply. The previously documented
+LeafGreen-linked Hoennto Shellder limitation is unchanged by this route merge.
+
+Replace 1025Dex and restart the current session. No companion or save-format
+update is required. Validation is headless; no interactive playthrough was run.

@@ -1,0 +1,19 @@
+1025Dex 1.2.9 — October 3, 2026
+
+- Fix all 639 added species' TM/HM permissions being erased by a second
+  registration pass. Normalize move IDs and restore permission rows on reload.
+- Rebuild compatibility for the 58 native machines from versioned machine-
+  method data. Staravia supports Fly and Aerial Ace without MOVES=ALL.
+- Use canonical, level-appropriate natural moves for ordinary wilds after
+  final species/level selection. No bonus TMs or unrelated substitutions.
+- Provide vanillaWildMoves for 1025DexNav 0.1.13 so previews match actual moves.
+- Hide legacy STATS/MOVES switches in Game3 and block old ALL settings from
+  attempting the unsupported Gen1/2 invented-machine pipeline.
+- Preserve existing party moves, player level-up compatibility, evolution
+  alternatives, animated normal/shiny sprites, positioning, first-catch return,
+  cave balance, Ultra Beast rarity, storage and follower compatibility.
+- WildFollowers runtime and encounter tables are unchanged. The v1.2.8 HTML
+  encounter guides remain current. Update DexNav to 0.1.13 if installed.
+
+See GEN3-MOVE-RULES.txt for source data, exact rules, unsupported-move limits
+and automated validation. No interactive game playthrough was run.

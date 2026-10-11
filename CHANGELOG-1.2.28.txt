@@ -1,0 +1,10 @@
+1025Dex 1.2.28 - EE playback defaults
+
+New EE playback defaults: 2-second pause and 4 animation loops.
+Both options remain adjustable. Existing saved choices are preserved;
+select EE PAUSE 2 SEC and EE LOOPS 4 to apply these to a customized profile.
+Includes the requested RHH pokeemerald-expansion 1.17.1 attribution in the
+packaged README and credits, plus all previous artwork and fixes.
+
+Download 1025Dex-v1.2.28.zip, replace the installed folder and restart.
+GitHub's automatic Source code archives are not the packaged mod build.

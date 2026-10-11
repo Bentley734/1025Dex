@@ -1,0 +1,14 @@
+1025Dex 1.2.26 - Cached EE animation fix
+
+Fixes EE ANIMATED still looping in Emerald when the game caches a pending
+picture before frame one finishes baking. That proxy owns a separate pixel
+array, which now receives EE playback metadata with its baked pixels.
+Metadata is restored after option/cache resets. BW timing is also forwarded.
+
+EE ANIMATED plays once every seven seconds, resting on its first pose.
+Regression checks exercise the production frame builder with an initially
+empty Gen 3 cached proxy, playback/rest/repeat, and rebuilding after reset.
+
+Download 1025Dex-v1.2.26.zip, replace the installed 1025Dex folder and restart.
+No save migration required. All existing artwork and previous fixes retained.
+GitHub's automatic Source code archives are not the packaged mod build.

@@ -1,0 +1,21 @@
+1025Dex 1.2.24 - Emerald Expansion sprite options
+
+SPRITE STYLE now includes EE ANIMATED and EE STATIC. Both use artwork from
+the supplied Emerald Expansion Sprites folder. Animated uses all supplied
+frames; static uses the first pose. Single-frame sheets stay still.
+Includes normal/shiny palettes, gender variants and matching form art.
+Missing EE artwork retains matching existing artwork; the supplied folder
+does not contain female Mega Meowstic.
+
+Imported 5590 RGBA sheets. Source pixels, palette index zero transparency,
+palette selection and vertical-to-horizontal frame order were checked for
+every sheet. Runtime checks cover both styles, forms, palettes, gender,
+static first-pose bounds, animated alignment and existing Gen9/BW options.
+
+Battles, Pokedex and summaries use the choice. Party icons keep their separate
+setting. Existing option values and the default are retained. EE artwork
+uses native 64-pixel density and does not inherit DBK alignment offsets.
+
+Includes previous rare post-League form encounters and evolution apple fixes.
+Replace the 1025Dex folder and restart; no save migration required.
+Download 1025Dex-v1.2.24.zip, not GitHub's automatic Source code archives.

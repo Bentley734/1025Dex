@@ -1,0 +1,4 @@
+1025Dex v1.1.30
+
+- Hide FireRed's duplicate MODS entry on the START menu while keeping the
+  built-in MODS row under OPTION fully accessible.

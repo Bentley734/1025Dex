@@ -1,0 +1,5 @@
+1025Dex 1.2.5
+- Repair late Gen3Compat provider overrides after startup/reload.
+- Keep cached sprite Images animated, with separate normal/shiny front/back caches.
+- Recognize native Gen3 mon shiny data in mon-aware rendering.
+- Keep the v1.2.3 bounds-based battle height adjustment.

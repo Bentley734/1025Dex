@@ -1,0 +1,2 @@
+1025Dex 1.1.20
+- Added the Bentley734/1025Dex GitHub repository to manifest.json for automatic update discovery.

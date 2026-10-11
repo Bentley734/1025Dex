@@ -1,0 +1,12 @@
+1025Dex 1.2.20 — Emerald evolution freeze fix
+
+Fixes Applin and other Gen 4–9 Pokémon stalling before the evolution cancel
+window in Emerald. Added species now skip unavailable native ROM animation
+scripts, retaining cries, sprite artwork and the normal evolution flow.
+
+Regression checks cover completion and B cancellation for all 639 added
+species on engine 0.3.54 and 0.3.58, plus cry/pan/noCry behavior and native
+animation routing. Existing eleven-game compatibility checks passed.
+Headless tests use ROM/UI fixtures; a graphical playthrough is unverified.
+
+Install the release ZIP and restart. No save migration or BW reimport needed.

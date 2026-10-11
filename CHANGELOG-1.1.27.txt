@@ -1,0 +1,11 @@
+1025Dex v1.1.27
+
+- Slowpoke now evolves into Slowbro on any level-up at level 37 or higher.
+- A Slowpoke holding King's Rock at level 37 or higher evolves into Slowking
+  instead, with the held-item branch taking priority over Slowbro.
+- King's Rock is consumed only after Slowking evolution completes; canceling
+  the evolution preserves both Slowpoke and its held item.
+- The reusable held-item level-branch rule is isolated in gen3evolutions.lua.
+- Fixed conditional evolution guards to identify the evolving source Pokemon
+  from the mon instead of mistaking the candidate target for the source.
+- No learnsets or unrelated evolution records were changed.

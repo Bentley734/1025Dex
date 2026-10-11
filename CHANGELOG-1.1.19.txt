@@ -1,0 +1,20 @@
+1025Dex 1.1.19
+
+- Repairs 39 imported species with no level-1 moves in the Gen-1-filtered
+  source data, including the reported Fomantis (internal slot 817, level 4)
+  and Blipbug (slot 888, level 5) crashes.
+- Restores actual starting moves where FireRed supports them, matching ROM
+  move-name spelling. Fomantis regains Fury Cutter.
+- Where no starting move is supported, uses a compatibility substitute:
+  Leech Life for Blipbug/Snom, Tackle otherwise. These are compatibility
+  choices, not claims about canonical learnsets. Existing later moves remain.
+- Separates land encounters from water/fishing. Aquatic-only species such as
+  Magikarp, Goldeen, Feebas and Arrokuda no longer enter Route 6 grass pools.
+  Amphibious species remain eligible on land; assigned map homes are preserved.
+- Preserves the explicit exact-encounter override used by other mods.
+
+Install: replace the previous 1025Dex package; do not enable both versions.
+Validation: headless Lua regressions for all 639 imported species at levels
+1-100, all 58 authored maps across 17 generation choices and 3 terrain modes,
+encounter bridge wrappers, and actual engine schema conversion of both
+reported species' starting moves. Not play-tested inside the launcher.

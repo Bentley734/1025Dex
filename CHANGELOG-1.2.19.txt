@@ -1,0 +1,7 @@
+1025Dex 1.2.19
+
+SPRITE SIZE now offers BIG (default), NORMAL and SMALL. MAX DETAIL is removed.
+Existing MAX DETAIL selections use the existing BIG rendering behavior.
+Existing NORMAL and SMALL selections keep their sizes. Older pixel-height
+settings retain their divisor conversion. Animated, Gen9 static and imported
+BW artwork keep their shared animation transform and ground anchoring.

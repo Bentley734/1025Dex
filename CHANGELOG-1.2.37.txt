@@ -1,0 +1,8 @@
+1025Dex 1.2.37 - Restore Options menu entries
+
+- Initialize the asset downloader on Gen 3 without requiring the Gen 1/2 screen registry.
+- Add a direct 1025DEX shortcut to the engine-owned mod settings in OPTIONS for all generations.
+- Keep 1025DEX ASSETS available alongside the settings shortcut.
+- Existing downloaded assets and saved settings are preserved; the asset pack remains version 1.0.0.
+
+Validation: settings shortcut and startup regressions across all generations, 344 asset-manager UI checks, 17 cache/decoder bridge checks, and Psychic/options-text compatibility checks.

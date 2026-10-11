@@ -1,0 +1,11 @@
+1025Dex 1.2.30 - EE Animated defaults
+
+Default sprite style: EE ANIMATED.
+EE PAUSE: 2 seconds. EE LOOPS: 2.
+EE ALT PAUSE: 1 second. EE ALT LOOPS: 3.
+Defaults match the requested alternating animation pattern.
+All settings remain adjustable; existing saved choices are preserved.
+Previous artwork, credits and fixes included.
+
+Download 1025Dex-v1.2.30.zip, replace the installed folder and restart.
+GitHub's automatic Source code archives are not the packaged mod build.

@@ -1,0 +1,17 @@
+1025Dex 1.2.7 — Ultra Beast encounter policy
+
+All eleven Ultra Beasts now use a separate League-gated pool, never ordinary common/rare or fallback pools. No random Ultra Beast spawns before clearing the Pokemon League, and none in beginner areas (including Viridian Forest), even after clearing it.
+
+After League clear:
+- Suitable habitat-matched land areas with a level ceiling of at least 45: shared 0.1% Ultra Beast roll; level 45–60, capped by the area's ceiling.
+- Designated end-game hubs: shared 1% Ultra Beast roll; level 55–70. All eleven are available subject to WILD GENS.
+  FR/LG: Victory Road floors, Cerulean Cave floors and Sevault Canyon.
+  Emerald: Victory Road floors, Sky Pillar encounter floors and Artisan Cave floors.
+- No added Ultra Beast fishing, water or Rock Smash pools.
+- Chances apply to the combined Ultra Beast group, not separately per species. A failed roll never guarantees an Ultra Beast when ordinary replacement candidates are absent.
+
+DexNav reads the same League-gated species and level ranges; targeted searches follow DexNav's existing search behavior. WildFollowers calls the same random policy, preserving rarity and levels. Existing legendary/mythical homes, native static/scripted encounters, species numbering, shiny animation and v1.2.6 evolution rules are retained.
+
+Validation: 305404 Ultra Beast assertions across maps, terrains, all 17 generation choices and League states; 50512 existing special-home assertions; 103993 WildFollowers/actual-policy compatibility assertions. Archive contents outside the documented edits are byte-preserved from v1.2.6, including the evolution repair.
+
+Replace the previous 1025Dex ZIP and restart. No additional WildFollowers or DexNav update is required. Existing spawned overworld Pokemon will refresh with their normal respawn/map transition.

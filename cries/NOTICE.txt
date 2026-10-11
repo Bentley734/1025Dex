@@ -1,0 +1,5 @@
+Pokemon cry audio is sourced from https://github.com/PokeAPI/cries.
+
+The upstream repository states that the audio files were downloaded from the
+Pokemon Showdown simulator and Veekun, and distributes the repository under
+CC0 1.0 Universal. Audio content copyright The Pokemon Company.

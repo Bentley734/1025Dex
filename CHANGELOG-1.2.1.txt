@@ -1,0 +1,25 @@
+1025Dex 1.2.1
+
+Added wild homes for all 94 special species in Emerald, including legendary,
+mythical and other special Pokemon from every generation. FireRed/LeafGreen
+adds all 89 Gen 2-9 special species, giving every post-Gen1 Pokemon a wild home.
+Gen1 FR/LG specials retain their native encounters.
+
+New special pools unlock after clearing the Pokemon League, not merely viewing
+the National Dex. Levels are 55-70. When ordinary candidates exist, specials
+use a shared 1% roll followed by selection within that area's special pool.
+WILD GENS applies to these pools. No added specials in early routes, fishing,
+Rock Smash or ordinary fallback pools. Kyogre, Phione and Manaphy use water;
+aquatic homes are Surf areas in Sevii and underwater routes in Hoenn.
+
+Native scripted/static/roaming battles remain preserved. Ordinary distributions
+and all bundled artwork/audio are unchanged. DexNav includes unlocked specials
+at the correct levels, and visible pools refresh when League completion changes.
+Each dungeon room caches its own special pool instead of sharing a parent's
+cache. Requires gen1recomp >=0.3.36 <0.4.0. Replace both mod folders and restart.
+
+Validation: 94 Emerald + 89 FR/LG specials at actual native encounter sources;
+2,050 generation/location witnesses; 1,025 Emerald wild species and 1,020 FR/LG
+wild species; all 874 post-Gen1 FR/LG species. Loader/sandbox, native Dex,
+protected battles, save roundtrip, terrain, follower behavior, guide filters
+and exports checked headlessly. A full in-game playthrough remains untested.

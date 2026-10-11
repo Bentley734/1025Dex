@@ -1,0 +1,38 @@
+1025Dex 1.2.8 — October 3, 2026
+
+FIRST CATCHES
+- Emerald's caught-entry adapter now returns the full caught-mon packet to
+  newer engines instead of invoking their callback with nil. It retains the
+  animated picture, personality, OT IDs and shiny palette.
+- Release the temporary caught portrait after its fade and before advancing
+  to the nickname question or PC message. Normal battle text is visible again
+  in FireRed, LeafGreen and Emerald, including with HD battle UI mods.
+- Preserve NoNickname in both load orders, party/PC handling, duplicate catches
+  and older engine return behavior. Capture rewards are never granted twice.
+
+CAVE ENCOUNTERS (FIRERED / LEAFGREEN)
+- Mt. Moon 1F: levels 7–10. B1F: 5–10. B2F: 8–12.
+- Diglett's Cave uses its original twelve weighted slots: Diglett 95%, levels
+  15–22; Dugtrio 4% at level 29 and 1% at level 31. No other species appear.
+- This protected Diglett pool applies under every WILD GENS selection.
+- Displaced ordinary residents retain catchable homes in Rock Tunnel rather
+  than vanishing from the expanded Dex. High evolution gates stay out of Moon.
+- Native random battles, WildFollowers and 1025DexNav share the updated policy.
+  DexNav receives separate Diglett/Dugtrio level ranges and 95/5 slot weights.
+
+GUIDES
+- Rebuilt both offline HTML guides from the current encounter policy.
+- Include corrected cave levels/rarity, relocated species and Ultra Beast
+  League requirements, 1% hub pools and 0.1% eligible late-area pools.
+- Every one of the 1,025 species has an encounter source in each guide.
+
+Preserves previous evolution rules (including level-36 trades and held-item
+branches), animated normal/shiny sprites, battle placement, storage and
+postgame encounter fixes. WildFollowers 2.22.9 runtime code is unchanged.
+
+Validation: production first/repeat catch flows for 0.3.43 and current engine,
+FR/LG and Emerald, party/PC, normal/shiny and both NoNickname load orders;
+exact cave weights across all 17 generation choices and both League states;
+shared encounter APIs and current WildFollowers; special/Ultra Beast rules;
+sprite animation/placement; HTML coverage and offline interaction checks.
+An interactive game playthrough was not run.

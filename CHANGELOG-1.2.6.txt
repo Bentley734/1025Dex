@@ -1,0 +1,20 @@
+1025Dex v1.2.6 — Evolution repair for FireRed, LeafGreen and Emerald
+
+- Restore evolution rows after the initial content merge and late ROM-reload
+  registry writes. Extended species no longer lose their evolution tables.
+- Preserve shipped normal evolution levels, including overdue level-up offers.
+- Preserve plain trade evolutions at level 36 and native stone evolutions.
+- Preserve the held-item alternatives, their branch priority and consumption
+  only after completed evolution. Cancellation keeps the held item.
+- Fix numeric gender checks and load missing gender ratios for those checks.
+- Enable Mantyke's Remoraid requirement and Pancham's Dark-type party check.
+- Read Beauty from the native contest field.
+- Moves unavailable in Gen 3 use the existing level-36 special-method fallback
+  instead of requiring an impossible move.
+- Preserve gender requirements on adapted Gallade/Froslass branches and give
+  them priority over the ordinary branch when eligible. Both sexes of Espurr
+  evolve into the pack's base Meowstic slot.
+- Keep both Cosmoem branches reachable at level 53: Attack > Defense selects
+  Solgaleo; Attack <= Defense selects Lunala.
+
+See EVOLUTION-RULES.txt for the retained no-trade/held-item rules.

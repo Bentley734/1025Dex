@@ -484,3 +484,7 @@ boxes 15â€“36 contain PokÃ©mon; the unmodified engine supports only 14 bo
 ### Black/White ROM animations (1.2.17)
 
 The new **BW ROM** sprite style uses native multipart battle animations extracted from a user-supplied Black/White ROM. See [BW-ROM-IMPORT.md](BW-ROM-IMPORT.md) for the local importer, installation, fallback behavior and validation. Imported graphics live in a separate private companion mod, so 1025Dex updates preserve them. No ROM or extracted cartridge graphics are shipped in this release.
+
+## 1.2.37 — Options menu entries
+
+OPTIONS provides 1025DEX for settings and 1025DEX ASSETS for downloads. The native Gen 3 downloader no longer depends on the legacy screen registry.

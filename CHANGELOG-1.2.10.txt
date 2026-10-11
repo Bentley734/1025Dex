@@ -1,0 +1,22 @@
+1025Dex 1.2.10 — October 3, 2026
+
+- Give unsupported newer wild attacks comparable Gen3 replacements at their
+  original learn levels, rather than dropping them or assigning Struggle.
+- Guarantee three or four distinct usable moves for every added wild species
+  (National 387–1025), using weak type-oriented starter padding only as needed.
+- Never borrow a future scheduled attack for padding. Keep actual Gen3 PP and
+  power, including Gen3's weaker Leech Life and other pre-buff properties.
+- Curate modern support/field/ability moves explicitly instead of accidental
+  Transform, Sketch or Metronome substitutions from incomplete metadata.
+- Existing 1025DexNav 0.1.13 previews read these same new moves automatically;
+  WildFollowers 2.22.9 uses the same final battle handoff without an update.
+- Preserve Gen1–3 vanilla wild progressions, all 58 TM/HM permissions, owned
+  party moves and existing player level-up compatibility. Retain trade-level
+  36 and held-item evolution fixes, first-catch return, cave balance, encounter
+  rules, animated shinies, sprite positioning and storage fixes unchanged.
+- Encounter pools and levels are unchanged; the 1.2.8 HTML guides remain valid.
+
+Validation covers all 639 added wild species at levels 1–100 in FR/LG and
+Emerald, the real registry/teaching path, exact-species wild battles, DexNav
+previews, duplicate/PP checks, source learn levels and unchanged native/TM
+data. No interactive game playthrough was run.

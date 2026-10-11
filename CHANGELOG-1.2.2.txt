@@ -1,0 +1,18 @@
+1025Dex 1.2.2
+
+Mew now has added wild homes in FR/LG: Cerulean Cave 1F and Seven Island
+Sevault Canyon. Both unlock only after the native Pokemon League clear flag.
+Levels remain 55-70 with the existing shared 1% special roll. WILD GENS applies.
+Articuno, Zapdos, Moltres and Mewtwo retain their existing native encounters.
+
+Audited all 94 legendary/mythical/special species against explicit dungeon
+room homes as well as parent map profiles. Every species is covered: FR/LG
+has 90 added special species plus four native statics; Emerald has 94 added
+special species. Existing Gen2-9 and Emerald homes remain unchanged.
+See POSTGAME-SPAWNS.txt for the full location reference.
+
+The public live encounter API exposes Mew at the correct levels, so
+1025DexNav and WildFollowers use the same newly unlocked pool automatically.
+Production-code tests cover League flags, all 17 generation selections,
+FR/LG aliases, pre/post-League cache changes, and terrain/level restrictions.
+WildFollowers compatibility tests pass. Full in-game playtesting unavailable.

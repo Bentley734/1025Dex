@@ -1,0 +1,5 @@
+1025Dex v1.1.29
+
+- Fill the FireRed species-name slots before the engine's Gen 3 writer runs.
+  This avoids a Gen1Recomp 0.3.18 index-cache bug that aborts the mod loader
+  and makes Options > Mods report 0 installed mods.

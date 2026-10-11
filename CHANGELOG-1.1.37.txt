@@ -1,0 +1,33 @@
+1025Dex v1.1.37
+
+- Added Sevii encounter profiles for all seven islands, their outdoor routes,
+  Mt. Ember, Berry Forest, Dunsparce Tunnel, Icefall Cave, Lost Cave,
+  Pattern Bush, Altering Cave, Dotted Hole, Sevault Canyon and Tanoby Ruins.
+- Island encounters use habitat-based generation-filtered pools and regional
+  level ranges (30-46 on the early islands, up to 62 on Seven Island;
+  individual caves/routes have their own ranges). Land and water stay separate.
+- Recognizes FR_ and legacy SEVII_ map IDs, dungeon floors and map-catalog aliases.
+- Unknown maps retain native encounters instead of borrowing Route 1's pool.
+- Battle conversion keeps the encounter's source map. DexNav/WildFollowers
+  receive the same island pools and level ranges through the existing export.
+- PC expanded to 36 boxes x 30 slots = 1,080 stored Pokemon, excluding the party.
+  Existing boxes, contents, names, wallpapers and PC items are preserved.
+  Native capture spillover, box selection, deposit/withdraw/move and save/load
+  use the expanded capacity automatically.
+
+INSTALL
+Replace the previous 1025Dex mod folder with this version; do not install a
+second copy alongside it. Restart the game before loading your save.
+Back up your save first. Keep this version or a compatible expanded-storage
+version enabled when loading/saving Pokemon in boxes 15-36: the unmodified
+engine only restores/saves 14 boxes. Do not downgrade or disable the mod while
+those boxes hold Pokemon.
+
+VALIDATION
+Automated Lua checks against Gen1Recomp v0.3.20 storage/UI/serializer code:
+1,632 Sevii location/generation/terrain combinations; map aliases and dungeon
+floors; land/water restrictions; source-map battle conversion; scripted-battle
+bypass; DexNav export; old-save expansion; capture through slot 1,080 and full-PC
+rejection; deposit/withdraw/move; box 14/15 navigation and 36/1 wrap; dense and
+sparse save serialization/restoration including the last slot.
+A live in-game playtest was not available.

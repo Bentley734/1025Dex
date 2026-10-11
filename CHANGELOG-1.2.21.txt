@@ -1,0 +1,19 @@
+1025Dex 1.2.21 — Gen 3 Mega and alternate forms
+
+Register all 364 shipped alternate-form records in all five Gen 3 games.
+Stable slots use each form's existing synthetic dex ID plus 64, preserving
+all native and base-1025 save IDs. National-number lookups still return base
+species; form slots map to their base's National number for cries and dex
+tracking. Use CodeBreaker 0.7.2 to select forms in the wild picker.
+
+Forms keep their supplied stats and types, rebuild learnsets using available
+Gen 3 moves, inherit base gender/egg/ability metadata, and skip unavailable
+Emerald ROM animation scripts. Existing evolution-freeze fix is retained.
+
+Verified all form registrations, stats/moves, reload identity, picker selection,
+Battle Now and wild override dispatch in FireRed, LeafGreen, Ruby, Sapphire
+and Emerald using engine fixtures. Existing eleven-game compatibility checks
+passed. A graphical playthrough remains unverified.
+
+Install both updated mod folders and restart. These are directly spawned
+species forms; no new Mega Evolution activation mechanic is added.

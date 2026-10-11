@@ -1,0 +1,13 @@
+1025Dex 1.2.32 fixes compatibility with Gen1Recomp’s save editor and expanded PC boxes.
+
+- The Gen 3 editor now lists all 1,025 base Pokémon and 364 alternate forms, with the same species slots used in-game.
+- Expanded boxes survive opening and exporting from the editor, preserving Pokémon, sparse slots, names and wallpapers. Legacy box mirrors do not duplicate Pokémon.
+- Mega, Gmax and regional form metadata survives Gen 3 registration.
+- Gen 2 National Dex growth-curve names resolve to the native curves.
+- National Dex 0.35.5 / Modern Spawns 0.9.0 GB saves retain existing species and form IDs, nicknames, trainer IDs and moves when switching to 1025Dex. No renumbering or save conversion is required.
+
+Restart the game before opening the editor. Enable 1025Dex in place of National Dex; their existing conflict rule remains. Modern Spawns still requires its declared National Dex dependency. The supplied National Dex archive supports Gen 1/2; this release does not claim compatibility with an unprovided third-party Gen 3 National Dex implementation.
+
+Validation: sandboxed editor boots across all eleven supported games; all 1,389 identities and 364 forms checked against the supplied archive; actual reference-mod scratch saves imported across all six GB games; editor/native-PC round trips and expanded-box preservation; existing all-game and encounter regressions. Tests use read-only local ROM caches and scratch saves, with graphics stubbed. No user saves are modified.
+
+Credits retained: National Dex by Sanjin and Tekky. Emerald Expansion sprites: Based off RHH’s pokeemerald-expansion 1.17.1 https://github.com/rh-hideout/pokeemerald-expansion/

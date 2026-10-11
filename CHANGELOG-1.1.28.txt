@@ -1,0 +1,13 @@
+1025Dex v1.1.28
+
+- Added a reusable held-item level-up evolution method for FireRed/LeafGreen
+  trade evolutions whose required held items already exist in the game.
+- Slowpoke holding King's Rock evolves into Slowking at level 37 or later;
+  otherwise its normal Slowbro evolution remains available.
+- Added King's Rock Poliwhirl -> Politoed, Metal Coat Onix -> Steelix and
+  Scyther -> Scizor, Dragon Scale Seadra -> Kingdra, Up-Grade Porygon ->
+  Porygon2, and both Deep Sea item branches for Clamperl.
+- Held items are consumed only after a successful evolution. Canceling an
+  evolution leaves the item intact and permits another offer on a later level.
+- Preserved Poliwhirl's Water Stone evolution and all unrelated evolution and
+  moveset data.

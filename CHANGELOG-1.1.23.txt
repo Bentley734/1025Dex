@@ -1,0 +1,1 @@
+1.1.23: Raise the front sprite on the FireRed Pokedex entry card by six game pixels, leaving the other pages and battle sprites unchanged.

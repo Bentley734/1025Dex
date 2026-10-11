@@ -1,0 +1,4 @@
+1025Dex v1.1.35
+
+- Continue ambient NPC and neighboring actor movement and playtime while ordinary menus remain open, with trainer sight suppressed during the menu-only tick.
+- Keep menu controls focused and the live field visible.

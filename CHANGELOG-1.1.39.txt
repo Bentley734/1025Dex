@@ -1,0 +1,9 @@
+1025Dex v1.1.39 — Credits update
+
+- Credits Sanjin and Tekky for national-dex, the original mod 1025Dex is based on.
+- Credits Gen9 Resource Pack and its contributing artists for their sprites.
+- Adds visible attribution to the mod description, README.md and CREDITS.md.
+- Preserves the upstream national-dex copyright/license notice.
+- Retains existing sprite-source, party-icon and cry notices.
+
+No gameplay changes from v1.1.38.

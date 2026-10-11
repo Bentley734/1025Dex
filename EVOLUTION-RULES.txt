@@ -1,0 +1,39 @@
+1025Dex 1.2.6 — Evolution compatibility rules (FR/LG and Emerald)
+
+Normal level evolutions retain the levels in the shipped evolution graph.
+Pokémon already above their required level are offered evolution on their next
+level-up. Use a Rare Candy or gain a level in battle; loading does not force it.
+Everstone and canceling evolution still work.
+
+Plain trade evolutions: level up at level 36 or higher. This includes Kadabra,
+Machoke, Graveler, Haunter, Boldore, Gurdurr, Karrablast, Shelmet, Phantump and
+Pumpkaboo. No actual trade is required.
+
+Retained held-item alternatives (level up with the item equipped):
+  Slowpoke -> Slowking: King's Rock, level 37 or higher.
+  Slowpoke -> Slowbro: level 37 or higher without King's Rock.
+  Poliwhirl -> Politoed: King's Rock.
+  Onix -> Steelix: Metal Coat.
+  Scyther -> Scizor: Metal Coat.
+  Seadra -> Kingdra: Dragon Scale.
+  Porygon -> Porygon2: Up-Grade.
+  Clamperl -> Huntail: Deep Sea Tooth.
+  Clamperl -> Gorebyss: Deep Sea Scale.
+The other listed held-item alternatives work on the next level-up, without a
+level-36 minimum, preserving the existing mod rules. The held item is consumed
+only after evolution completes. Canceling leaves the Pokémon and item intact.
+Poliwhirl's Water Stone -> Poliwrath route remains available.
+
+Native evolution stones retain their native use-item behavior. Methods/items
+that Gen 3 cannot perform retain the pack's level-36 compatibility fallback;
+this is a mod alternative, not a claim that those species naturally evolve
+at level 36. Gender and supported friendship/party/move checks still apply.
+When multiple unavailable special methods share a parent, the existing
+Attack/Defense split selects their branches.
+
+Cosmoem evolves at level 53: Attack > Defense gives Solgaleo;
+Attack <= Defense gives Lunala, making both version-exclusive routes reachable.
+
+Combee and Salandit require females at levels 21 and 33 respectively.
+Mantyke requires Remoraid in the party. Pancham requires a Dark-type party
+member at level 32. Both sexes of Espurr reach base Meowstic at level 25.

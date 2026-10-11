@@ -1,0 +1,14 @@
+1.2.31 — Full encounter randomizer
+
+New mod option: Random encounters (all forms), default OFF.
+Equal odds across 1,025 base Pokemon and 364 registered alternate forms.
+Includes Megas, Gmax, Primals, regional forms and all other registered forms,
+with no habitat, generation or League restrictions while enabled.
+Preserves native encounter levels and failed encounter/fishing rolls.
+Visible wilds and encounter-list providers share the same randomizer pool.
+Disabling restores the existing native/curated/post-League encounter policy.
+Scripted/trainer/roaming and exact selected battles are preserved.
+
+Validation: schema-backed boot/registry/encounter tests on all eleven games;
+all 1,389 identities reachable with one equal-weight draw; pre-League water,
+visible wilds, battle handoff, encounter-list weights, OFF, and failed rolls.

@@ -1,0 +1,92 @@
+1025Dex 1.2.10 — TM/HM and comparable wild move rules
+
+TM/HM TEACHING
+The 639 base species introduced after Gen3 use public PokeAPI machine-method
+data across the main-series Gen1–9 games, restricted to moves taught by the
+58 original FR/LG/Emerald TMs and HMs. This historical union restores older
+HMs such as Fly, Cut, Surf, Strength, Flash, Rock Smash, Waterfall and Dive
+even when later games stopped distributing a move under that machine number.
+Egg, tutor and level-up methods are not mistaken for machine permissions.
+Native Gen1–3 species retain the engine's original ROM machine bitfields.
+
+Permissions are stored on the source registration record, normalized to the
+engine's exact move IDs, and restored when an added species' teaching row is
+replaced. They survive the loader's final merge and subsequent ROM reloads.
+No option permits every species to learn every machine.
+
+ORDINARY WILD MOVES
+Species 1–386 use the original FR/LG or Emerald level-up schedule respectively.
+Species 387–1025 use the latest main-series Gen4–9 version group with level-up
+data for that species. Spin-offs, Let's Go and Legends-specific progressions
+are excluded. Each species' selected version is recorded in gen3_moves.lua.
+
+Only attacks implemented by Gen3 (move IDs 1–354) enter the wild move set.
+For added species, unsupported modern attacks receive comparable Gen3 attacks
+at the same learn level. Curated choices cover mechanics with no direct older
+equivalent; remaining attacks are ranked by type, role, effect, power and
+priority. The bundled native property table uses actual Gen3 power and PP,
+rather than later buffs. Multi-hit power and risky recoil/charge/lock mechanics
+are accounted for. New mechanics themselves are not implemented by renaming a
+move: e.g. Struggle Bug becomes Silver Wind, Leafage becomes Vine Whip and
+Shadow Sneak becomes Astonish. Unique modern effects are approximations.
+
+Process eligible moves in source order, avoid duplicates, keep four slots,
+and forget the oldest when a new one fits. Never pull a later scheduled attack
+down to the wild's current level. Evolution-only level-zero entries count as
+the species' initial moves, as before.
+
+Every added wild species has at least THREE distinct usable moves. If eligible
+moves provide fewer than three, fill only the missing slots from a weak,
+type-oriented starter reserve. Newly added reserve attacks have Gen3 power
+at most 50 and cannot be moves scheduled for a later level. The reserve is
+used only while needed, never displacing an eligible move or filling to four.
+All assigned moves have their normal positive Gen3 PP. Struggle is never used
+as a learned move for added wilds. Blipbug starts with Silver Wind, Leech Life
+and String Shot. Gen1–3 wild species do not receive this padding or conversion.
+
+This is an intentional compatibility expansion over the modern vanilla
+reference, which can give some species fewer than three starter moves. It is
+separate from the existing player level-up compatibility replacements: those
+and all already-owned Pokémon's moves are preserved.
+
+Moves and PP are rebuilt after the final random/visible/DexNav species and
+level are selected. Personality, shininess, held items and health are retained.
+Trainer teams, scripted/tutorial battles, link battles and persistent roamers
+are preserved. Existing caught Pokémon and legitimate player-taught moves
+are not edited; this governs newly generated ordinary wild battles.
+
+DEXNAV / WILDFOLLOWERS
+1025DexNav 0.1.13 uses 1025Dex's vanillaWildMoves API for previews and disables
+its bonus-TM roll while the API is active. Without it, standalone DexNav keeps
+its original special-move behavior. WildFollowers needs no runtime update;
+its exact-species battle handoff passes through the same final move check.
+Existing DexNav 0.1.13 automatically reads the updated equivalents and padding;
+no new DexNav or WildFollowers build is needed for this change.
+
+STATS / MOVES OPTIONS
+STATS was a display-only legacy switch for single Special versus split Special
+presentation in Gen1 screens; it never changed combat stats. Gen3 already uses
+Sp. Atk and Sp. Def and did not use that display switch.
+MOVES was the Gen1/2 modern-learnset widening control (GEN-NATIVE versus ALL).
+The modern move registration/widening path was explicitly skipped in Game3;
+the old machine pipeline could nevertheless attempt unsupported legacy TMs.
+Both inert controls are hidden in FR/LG/Emerald, and old saved ALL values no
+longer invoke that legacy machine pipeline. Gen3 level-up compatibility stays
+as before; proper native machine permissions are always enabled.
+
+SOURCE / REPRODUCTION
+https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv
+Input CSV hashes, selected rules and audit counts are included in
+dex/data/species/generated/gen3_moves_provenance.json. Rebuild with:
+python tools/build_gen3_move_rules.py CSV_DIRECTORY OUTPUT_DIRECTORY
+Use pokemon_moves.csv, moves.csv, machines.csv, version_groups.csv, pokemon.csv,
+pokemon_types.csv, types.csv, move_meta.csv and move_meta_stat_changes.csv.
+The builder also reads tools/data/gen3_move_properties.json. Provenance records
+its upstream source/hash, every modern-to-Gen3 replacement, and starter padding.
+
+Automated tests use production gen1recomp registry/teaching/capture code and
+the real DexNav resolver/generator. Every added machine permission and every
+base species at levels 1–100 is checked for FR/LG and Emerald, including the
+three-move minimum, distinct move IDs, real positive PP, source learn levels,
+no future padding, and identical DexNav previews. Native schedules and machine
+data are compared with 1.2.9. An interactive game playthrough has not been run.

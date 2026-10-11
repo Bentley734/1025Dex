@@ -1,0 +1,12 @@
+1.2.17 - Local Black/White native animation import
+
+- Add SPRITE STYLE: BW ROM and optional local 1025dex-bw-sprites companion.
+- Independently written NitroFS/NARC/LZ/Nitro graphics and multipart animation reader.
+- Reconstruct front/back, normal/shiny and available female variants from a user ROM.
+- Preserve cartridge tick durations, idle/break sequence and stable union placement.
+- Keep companion graphics separate from public releases and 1025Dex updates.
+- Missing species/forms retain matching existing artwork; original/static choices remain.
+- Include local import instructions and malformed-input/animation/runtime regressions.
+- Validated US Black import: 649 base species, 2,980 variants, no unavailable entries.
+- 48 actual LÖVE production bakes and all 11 game/Hoennto boot checks passed.
+- No ROM or extracted cartridge graphics are included in this release.

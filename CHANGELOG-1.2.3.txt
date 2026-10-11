@@ -1,0 +1,24 @@
+1025Dex 1.2.3
+
+Automatic battle height correction for FR/LG and Emerald. The sprite baker
+measures the complete animation's visible bounds and exposes its stable top
+headroom. Battle positioning caps the existing 14px lift to that headroom.
+Tall sprites move down only by the excess lift; smaller sprites retain their
+previous coordinates. No species list or manually entered offsets are needed.
+
+Armarouge front/back fill their 64px picture height and move down 14px.
+Pikachu, Wooloo and Zigzagoon retain their existing placement in default
+FEET mode. Each front/back sheet is measured separately. Animation frames
+share one correction, preventing placement jitter. Floating species retain
+their baked hover; only the extra blanket battle lift is constrained.
+
+Battle bounce and other animation offsets remain additive. Double-battle
+slots and transformed displayed species use their own picture metadata.
+Native ghost/substitute/unmanaged pictures keep their previous behavior.
+Art, image size, animation, menu previews and overworld sprite positions
+are unchanged. All 1.2.2 encounters, including League-gated Mew, are retained.
+
+Validation: production bake placement across all 64 art heights and the
+production battle wrapper (144 checks); full provider compilation; bundled
+Armarouge/Pikachu/Wooloo/Zigzagoon sheet bounds. Encounter/DexNav/follower
+compatibility suites pass. A live in-game playtest was unavailable.

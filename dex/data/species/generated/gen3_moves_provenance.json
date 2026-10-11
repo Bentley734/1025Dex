@@ -1,0 +1,2814 @@
+{
+  "source": "https://github.com/PokeAPI/pokeapi/tree/master/data/v2/csv",
+  "retrieved": "2026-10-03",
+  "sha256": {
+    "machines.csv": "f9df7faaf0a60896fa344abd2b639f83f79c2a24e1fd4bb3560ca7da76e9a6ad",
+    "move_meta.csv": "93b92d5bddf4fc1536ca0a647c20453bf92e6389010f33ca6fc4c5e9c54363be",
+    "move_meta_stat_changes.csv": "489edd9ee45ea7e60c99c5a860c4c0957b337af21f8ae9bf03dd121fd548d5ab",
+    "moves.csv": "8aafd37bf78f19471495c05b201545180f50f0a08a2a2a844d69f9837dd39ac9",
+    "pokemon.csv": "16c81c33188b0eac403aa2f759fcbe9e42c611f722d263f5b5a6a5bff9f8ce6b",
+    "pokemon_moves.csv": "22a807cef26891eeac0d0c900bd363e66baf421f7ee795bc7bc3e718f23b939e",
+    "pokemon_types.csv": "f1fc4bfd657a034ea3bf6972423b10276424aa068577b304a78a08996425ba05",
+    "types.csv": "37f039c8d722f47d51ba1c5c5ecf9b7007235b1a9a1af2827645c777b70307c8",
+    "version_groups.csv": "28da8d89d8eb4966941f81a9e62b3990510ed4d76dd774158246551a8e7707a7"
+  },
+  "gen3_move_properties": {
+    "source": "https://github.com/bryanthaboi/gen1recomp/blob/dev/src/core/game3/battle/builtin_moves.lua",
+    "source_sha256": "7224f5499fac31944fba9bf010ba74242ccae9a1457afcf90e4bd2e4891d6bba",
+    "file_sha256": "35b2aa0564d90cb42cf171bf7f8a85f4910923645f128b2bf8d53a5924b982a3"
+  },
+  "native_species_per_game": 386,
+  "added_species": 639,
+  "native_machine_moves": 58,
+  "added_machine_permissions": 11571,
+  "no_native_level_up_moves_before_substitution": [
+    824
+  ],
+  "no_native_level_1_moves_before_substitution": [
+    487,
+    739,
+    780,
+    876
+  ],
+  "substituted_level_up_rows": 3066,
+  "wild_replacements": {
+    "roost": {
+      "source_move": 355,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "gravity": {
+      "source_move": 356,
+      "gen3_move": 230,
+      "gen3_name": "sweet-scent"
+    },
+    "hammer-arm": {
+      "source_move": 359,
+      "gen3_move": 238,
+      "gen3_name": "cross-chop"
+    },
+    "gyro-ball": {
+      "source_move": 360,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "healing-wish": {
+      "source_move": 361,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "brine": {
+      "source_move": 362,
+      "gen3_move": 61,
+      "gen3_name": "bubble-beam"
+    },
+    "natural-gift": {
+      "source_move": 363,
+      "gen3_move": 290,
+      "gen3_name": "secret-power"
+    },
+    "feint": {
+      "source_move": 364,
+      "gen3_move": 98,
+      "gen3_name": "quick-attack"
+    },
+    "pluck": {
+      "source_move": 365,
+      "gen3_move": 332,
+      "gen3_name": "aerial-ace"
+    },
+    "tailwind": {
+      "source_move": 366,
+      "gen3_move": 97,
+      "gen3_name": "agility"
+    },
+    "acupressure": {
+      "source_move": 367,
+      "gen3_move": 116,
+      "gen3_name": "focus-energy"
+    },
+    "metal-burst": {
+      "source_move": 368,
+      "gen3_move": 232,
+      "gen3_name": "metal-claw"
+    },
+    "u-turn": {
+      "source_move": 369,
+      "gen3_move": 210,
+      "gen3_name": "fury-cutter"
+    },
+    "close-combat": {
+      "source_move": 370,
+      "gen3_move": 276,
+      "gen3_name": "superpower"
+    },
+    "payback": {
+      "source_move": 371,
+      "gen3_move": 44,
+      "gen3_name": "bite"
+    },
+    "assurance": {
+      "source_move": 372,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "fling": {
+      "source_move": 374,
+      "gen3_move": 168,
+      "gen3_name": "thief"
+    },
+    "power-trick": {
+      "source_move": 379,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "gastro-acid": {
+      "source_move": 380,
+      "gen3_move": 114,
+      "gen3_name": "haze"
+    },
+    "copycat": {
+      "source_move": 383,
+      "gen3_move": 102,
+      "gen3_name": "mimic"
+    },
+    "power-swap": {
+      "source_move": 384,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "guard-swap": {
+      "source_move": 385,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "last-resort": {
+      "source_move": 387,
+      "gen3_move": 63,
+      "gen3_name": "hyper-beam"
+    },
+    "worry-seed": {
+      "source_move": 388,
+      "gen3_move": 285,
+      "gen3_name": "skill-swap"
+    },
+    "sucker-punch": {
+      "source_move": 389,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "toxic-spikes": {
+      "source_move": 390,
+      "gen3_move": 191,
+      "gen3_name": "spikes"
+    },
+    "heart-swap": {
+      "source_move": 391,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "aqua-ring": {
+      "source_move": 392,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "magnet-rise": {
+      "source_move": 393,
+      "gen3_move": 104,
+      "gen3_name": "double-team"
+    },
+    "flare-blitz": {
+      "source_move": 394,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "force-palm": {
+      "source_move": 395,
+      "gen3_move": 27,
+      "gen3_name": "rolling-kick"
+    },
+    "aura-sphere": {
+      "source_move": 396,
+      "gen3_move": 280,
+      "gen3_name": "brick-break"
+    },
+    "rock-polish": {
+      "source_move": 397,
+      "gen3_move": 97,
+      "gen3_name": "agility"
+    },
+    "poison-jab": {
+      "source_move": 398,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    },
+    "dark-pulse": {
+      "source_move": 399,
+      "gen3_move": 44,
+      "gen3_name": "bite"
+    },
+    "night-slash": {
+      "source_move": 400,
+      "gen3_move": 163,
+      "gen3_name": "slash"
+    },
+    "aqua-tail": {
+      "source_move": 401,
+      "gen3_move": 152,
+      "gen3_name": "crabhammer"
+    },
+    "seed-bomb": {
+      "source_move": 402,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "air-slash": {
+      "source_move": 403,
+      "gen3_move": 332,
+      "gen3_name": "aerial-ace"
+    },
+    "x-scissor": {
+      "source_move": 404,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "bug-buzz": {
+      "source_move": 405,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "dragon-pulse": {
+      "source_move": 406,
+      "gen3_move": 225,
+      "gen3_name": "dragon-breath"
+    },
+    "dragon-rush": {
+      "source_move": 407,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "power-gem": {
+      "source_move": 408,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "drain-punch": {
+      "source_move": 409,
+      "gen3_move": 280,
+      "gen3_name": "brick-break"
+    },
+    "vacuum-wave": {
+      "source_move": 410,
+      "gen3_move": 183,
+      "gen3_name": "mach-punch"
+    },
+    "focus-blast": {
+      "source_move": 411,
+      "gen3_move": 238,
+      "gen3_name": "cross-chop"
+    },
+    "energy-ball": {
+      "source_move": 412,
+      "gen3_move": 202,
+      "gen3_name": "giga-drain"
+    },
+    "brave-bird": {
+      "source_move": 413,
+      "gen3_move": 19,
+      "gen3_name": "fly"
+    },
+    "earth-power": {
+      "source_move": 414,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "switcheroo": {
+      "source_move": 415,
+      "gen3_move": 271,
+      "gen3_name": "trick"
+    },
+    "giga-impact": {
+      "source_move": 416,
+      "gen3_move": 63,
+      "gen3_name": "hyper-beam"
+    },
+    "nasty-plot": {
+      "source_move": 417,
+      "gen3_move": 347,
+      "gen3_name": "calm-mind"
+    },
+    "bullet-punch": {
+      "source_move": 418,
+      "gen3_move": 232,
+      "gen3_name": "metal-claw"
+    },
+    "avalanche": {
+      "source_move": 419,
+      "gen3_move": 196,
+      "gen3_name": "icy-wind"
+    },
+    "ice-shard": {
+      "source_move": 420,
+      "gen3_move": 181,
+      "gen3_name": "powder-snow"
+    },
+    "shadow-claw": {
+      "source_move": 421,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "thunder-fang": {
+      "source_move": 422,
+      "gen3_move": 209,
+      "gen3_name": "spark"
+    },
+    "ice-fang": {
+      "source_move": 423,
+      "gen3_move": 8,
+      "gen3_name": "ice-punch"
+    },
+    "fire-fang": {
+      "source_move": 424,
+      "gen3_move": 172,
+      "gen3_name": "flame-wheel"
+    },
+    "shadow-sneak": {
+      "source_move": 425,
+      "gen3_move": 310,
+      "gen3_name": "astonish"
+    },
+    "psycho-cut": {
+      "source_move": 427,
+      "gen3_move": 60,
+      "gen3_name": "psybeam"
+    },
+    "zen-headbutt": {
+      "source_move": 428,
+      "gen3_move": 94,
+      "gen3_name": "psychic"
+    },
+    "flash-cannon": {
+      "source_move": 430,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "defog": {
+      "source_move": 432,
+      "gen3_move": 114,
+      "gen3_name": "haze"
+    },
+    "trick-room": {
+      "source_move": 433,
+      "gen3_move": 184,
+      "gen3_name": "scary-face"
+    },
+    "discharge": {
+      "source_move": 435,
+      "gen3_move": 9,
+      "gen3_name": "thunder-punch"
+    },
+    "lava-plume": {
+      "source_move": 436,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "leaf-storm": {
+      "source_move": 437,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "power-whip": {
+      "source_move": 438,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "rock-wrecker": {
+      "source_move": 439,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "cross-poison": {
+      "source_move": 440,
+      "gen3_move": 342,
+      "gen3_name": "poison-tail"
+    },
+    "gunk-shot": {
+      "source_move": 441,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    },
+    "iron-head": {
+      "source_move": 442,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "stone-edge": {
+      "source_move": 444,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "stealth-rock": {
+      "source_move": 446,
+      "gen3_move": 191,
+      "gen3_name": "spikes"
+    },
+    "grass-knot": {
+      "source_move": 447,
+      "gen3_move": 202,
+      "gen3_name": "giga-drain"
+    },
+    "chatter": {
+      "source_move": 448,
+      "gen3_move": 314,
+      "gen3_name": "air-cutter"
+    },
+    "judgment": {
+      "source_move": 449,
+      "gen3_move": 304,
+      "gen3_name": "hyper-voice"
+    },
+    "bug-bite": {
+      "source_move": 450,
+      "gen3_move": 41,
+      "gen3_name": "twineedle"
+    },
+    "charge-beam": {
+      "source_move": 451,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "wood-hammer": {
+      "source_move": 452,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "aqua-jet": {
+      "source_move": 453,
+      "gen3_move": 55,
+      "gen3_name": "water-gun"
+    },
+    "attack-order": {
+      "source_move": 454,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "defend-order": {
+      "source_move": 455,
+      "gen3_move": 322,
+      "gen3_name": "cosmic-power"
+    },
+    "head-smash": {
+      "source_move": 457,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "double-hit": {
+      "source_move": 458,
+      "gen3_move": 3,
+      "gen3_name": "double-slap"
+    },
+    "roar-of-time": {
+      "source_move": 459,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "spacial-rend": {
+      "source_move": 460,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "lunar-dance": {
+      "source_move": 461,
+      "gen3_move": 236,
+      "gen3_name": "moonlight"
+    },
+    "crush-grip": {
+      "source_move": 462,
+      "gen3_move": 70,
+      "gen3_name": "strength"
+    },
+    "magma-storm": {
+      "source_move": 463,
+      "gen3_move": 257,
+      "gen3_name": "heat-wave"
+    },
+    "dark-void": {
+      "source_move": 464,
+      "gen3_move": 95,
+      "gen3_name": "hypnosis"
+    },
+    "seed-flare": {
+      "source_move": 465,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "shadow-force": {
+      "source_move": 467,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "hone-claws": {
+      "source_move": 468,
+      "gen3_move": 116,
+      "gen3_name": "focus-energy"
+    },
+    "wide-guard": {
+      "source_move": 469,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "guard-split": {
+      "source_move": 470,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "power-split": {
+      "source_move": 471,
+      "gen3_move": 244,
+      "gen3_name": "psych-up"
+    },
+    "wonder-room": {
+      "source_move": 472,
+      "gen3_move": 113,
+      "gen3_name": "light-screen"
+    },
+    "psyshock": {
+      "source_move": 473,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "venoshock": {
+      "source_move": 474,
+      "gen3_move": 124,
+      "gen3_name": "sludge"
+    },
+    "autotomize": {
+      "source_move": 475,
+      "gen3_move": 97,
+      "gen3_name": "agility"
+    },
+    "rage-powder": {
+      "source_move": 476,
+      "gen3_move": 266,
+      "gen3_name": "follow-me"
+    },
+    "magic-room": {
+      "source_move": 478,
+      "gen3_move": 282,
+      "gen3_name": "knock-off"
+    },
+    "smack-down": {
+      "source_move": 479,
+      "gen3_move": 88,
+      "gen3_name": "rock-throw"
+    },
+    "storm-throw": {
+      "source_move": 480,
+      "gen3_move": 27,
+      "gen3_name": "rolling-kick"
+    },
+    "flame-burst": {
+      "source_move": 481,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "sludge-wave": {
+      "source_move": 482,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    },
+    "quiver-dance": {
+      "source_move": 483,
+      "gen3_move": 347,
+      "gen3_name": "calm-mind"
+    },
+    "heavy-slam": {
+      "source_move": 484,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "electro-ball": {
+      "source_move": 486,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "soak": {
+      "source_move": 487,
+      "gen3_move": 240,
+      "gen3_name": "rain-dance"
+    },
+    "flame-charge": {
+      "source_move": 488,
+      "gen3_move": 172,
+      "gen3_name": "flame-wheel"
+    },
+    "coil": {
+      "source_move": 489,
+      "gen3_move": 339,
+      "gen3_name": "bulk-up"
+    },
+    "low-sweep": {
+      "source_move": 490,
+      "gen3_move": 280,
+      "gen3_name": "brick-break"
+    },
+    "acid-spray": {
+      "source_move": 491,
+      "gen3_move": 51,
+      "gen3_name": "acid"
+    },
+    "foul-play": {
+      "source_move": 492,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "simple-beam": {
+      "source_move": 493,
+      "gen3_move": 285,
+      "gen3_name": "skill-swap"
+    },
+    "entrainment": {
+      "source_move": 494,
+      "gen3_move": 285,
+      "gen3_name": "skill-swap"
+    },
+    "after-you": {
+      "source_move": 495,
+      "gen3_move": 270,
+      "gen3_name": "helping-hand"
+    },
+    "round": {
+      "source_move": 496,
+      "gen3_move": 253,
+      "gen3_name": "uproar"
+    },
+    "echoed-voice": {
+      "source_move": 497,
+      "gen3_move": 253,
+      "gen3_name": "uproar"
+    },
+    "clear-smog": {
+      "source_move": 499,
+      "gen3_move": 123,
+      "gen3_name": "smog"
+    },
+    "stored-power": {
+      "source_move": 500,
+      "gen3_move": 93,
+      "gen3_name": "confusion"
+    },
+    "quick-guard": {
+      "source_move": 501,
+      "gen3_move": 197,
+      "gen3_name": "detect"
+    },
+    "ally-switch": {
+      "source_move": 502,
+      "gen3_move": 104,
+      "gen3_name": "double-team"
+    },
+    "scald": {
+      "source_move": 503,
+      "gen3_move": 352,
+      "gen3_name": "water-pulse"
+    },
+    "shell-smash": {
+      "source_move": 504,
+      "gen3_move": 74,
+      "gen3_name": "growth"
+    },
+    "heal-pulse": {
+      "source_move": 505,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "hex": {
+      "source_move": 506,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "shift-gear": {
+      "source_move": 508,
+      "gen3_move": 349,
+      "gen3_name": "dragon-dance"
+    },
+    "circle-throw": {
+      "source_move": 509,
+      "gen3_move": 279,
+      "gen3_name": "revenge"
+    },
+    "incinerate": {
+      "source_move": 510,
+      "gen3_move": 52,
+      "gen3_name": "ember"
+    },
+    "quash": {
+      "source_move": 511,
+      "gen3_move": 184,
+      "gen3_name": "scary-face"
+    },
+    "acrobatics": {
+      "source_move": 512,
+      "gen3_move": 332,
+      "gen3_name": "aerial-ace"
+    },
+    "reflect-type": {
+      "source_move": 513,
+      "gen3_move": 176,
+      "gen3_name": "conversion-2"
+    },
+    "retaliate": {
+      "source_move": 514,
+      "gen3_move": 279,
+      "gen3_name": "revenge"
+    },
+    "final-gambit": {
+      "source_move": 515,
+      "gen3_move": 120,
+      "gen3_name": "self-destruct"
+    },
+    "inferno": {
+      "source_move": 517,
+      "gen3_move": 257,
+      "gen3_name": "heat-wave"
+    },
+    "volt-switch": {
+      "source_move": 521,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "struggle-bug": {
+      "source_move": 522,
+      "gen3_move": 318,
+      "gen3_name": "silver-wind"
+    },
+    "bulldoze": {
+      "source_move": 523,
+      "gen3_move": 341,
+      "gen3_name": "mud-shot"
+    },
+    "frost-breath": {
+      "source_move": 524,
+      "gen3_move": 196,
+      "gen3_name": "icy-wind"
+    },
+    "dragon-tail": {
+      "source_move": 525,
+      "gen3_move": 239,
+      "gen3_name": "twister"
+    },
+    "work-up": {
+      "source_move": 526,
+      "gen3_move": 74,
+      "gen3_name": "growth"
+    },
+    "electroweb": {
+      "source_move": 527,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "wild-charge": {
+      "source_move": 528,
+      "gen3_move": 85,
+      "gen3_name": "thunderbolt"
+    },
+    "drill-run": {
+      "source_move": 529,
+      "gen3_move": 125,
+      "gen3_name": "bone-club"
+    },
+    "horn-leech": {
+      "source_move": 532,
+      "gen3_move": 202,
+      "gen3_name": "giga-drain"
+    },
+    "sacred-sword": {
+      "source_move": 533,
+      "gen3_move": 280,
+      "gen3_name": "brick-break"
+    },
+    "razor-shell": {
+      "source_move": 534,
+      "gen3_move": 127,
+      "gen3_name": "waterfall"
+    },
+    "heat-crash": {
+      "source_move": 535,
+      "gen3_move": 172,
+      "gen3_name": "flame-wheel"
+    },
+    "leaf-tornado": {
+      "source_move": 536,
+      "gen3_move": 345,
+      "gen3_name": "magical-leaf"
+    },
+    "cotton-guard": {
+      "source_move": 538,
+      "gen3_move": 334,
+      "gen3_name": "iron-defense"
+    },
+    "night-daze": {
+      "source_move": 539,
+      "gen3_move": 242,
+      "gen3_name": "crunch"
+    },
+    "tail-slap": {
+      "source_move": 541,
+      "gen3_move": 131,
+      "gen3_name": "spike-cannon"
+    },
+    "hurricane": {
+      "source_move": 542,
+      "gen3_move": 19,
+      "gen3_name": "fly"
+    },
+    "head-charge": {
+      "source_move": 543,
+      "gen3_move": 38,
+      "gen3_name": "double-edge"
+    },
+    "gear-grind": {
+      "source_move": 544,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "searing-shot": {
+      "source_move": 545,
+      "gen3_move": 257,
+      "gen3_name": "heat-wave"
+    },
+    "techno-blast": {
+      "source_move": 546,
+      "gen3_move": 25,
+      "gen3_name": "mega-kick"
+    },
+    "relic-song": {
+      "source_move": 547,
+      "gen3_move": 161,
+      "gen3_name": "tri-attack"
+    },
+    "secret-sword": {
+      "source_move": 548,
+      "gen3_move": 327,
+      "gen3_name": "sky-uppercut"
+    },
+    "glaciate": {
+      "source_move": 549,
+      "gen3_move": 196,
+      "gen3_name": "icy-wind"
+    },
+    "bolt-strike": {
+      "source_move": 550,
+      "gen3_move": 87,
+      "gen3_name": "thunder"
+    },
+    "blue-flare": {
+      "source_move": 551,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "fiery-dance": {
+      "source_move": 552,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "snarl": {
+      "source_move": 555,
+      "gen3_move": 44,
+      "gen3_name": "bite"
+    },
+    "icicle-crash": {
+      "source_move": 556,
+      "gen3_move": 8,
+      "gen3_name": "ice-punch"
+    },
+    "v-create": {
+      "source_move": 557,
+      "gen3_move": 315,
+      "gen3_name": "overheat"
+    },
+    "fusion-flare": {
+      "source_move": 558,
+      "gen3_move": 53,
+      "gen3_name": "flamethrower"
+    },
+    "fusion-bolt": {
+      "source_move": 559,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "flying-press": {
+      "source_move": 560,
+      "gen3_move": 238,
+      "gen3_name": "cross-chop"
+    },
+    "belch": {
+      "source_move": 562,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    },
+    "rototiller": {
+      "source_move": 563,
+      "gen3_move": 74,
+      "gen3_name": "growth"
+    },
+    "sticky-web": {
+      "source_move": 564,
+      "gen3_move": 81,
+      "gen3_name": "string-shot"
+    },
+    "fell-stinger": {
+      "source_move": 565,
+      "gen3_move": 42,
+      "gen3_name": "pin-missile"
+    },
+    "phantom-force": {
+      "source_move": 566,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "trick-or-treat": {
+      "source_move": 567,
+      "gen3_move": 180,
+      "gen3_name": "spite"
+    },
+    "noble-roar": {
+      "source_move": 568,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "parabolic-charge": {
+      "source_move": 570,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "forests-curse": {
+      "source_move": 571,
+      "gen3_move": 73,
+      "gen3_name": "leech-seed"
+    },
+    "petal-blizzard": {
+      "source_move": 572,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "freeze-dry": {
+      "source_move": 573,
+      "gen3_move": 8,
+      "gen3_name": "ice-punch"
+    },
+    "disarming-voice": {
+      "source_move": 574,
+      "gen3_move": 253,
+      "gen3_name": "uproar"
+    },
+    "parting-shot": {
+      "source_move": 575,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "topsy-turvy": {
+      "source_move": 576,
+      "gen3_move": 114,
+      "gen3_name": "haze"
+    },
+    "draining-kiss": {
+      "source_move": 577,
+      "gen3_move": 72,
+      "gen3_name": "mega-drain"
+    },
+    "crafty-shield": {
+      "source_move": 578,
+      "gen3_move": 113,
+      "gen3_name": "light-screen"
+    },
+    "flower-shield": {
+      "source_move": 579,
+      "gen3_move": 115,
+      "gen3_name": "reflect"
+    },
+    "grassy-terrain": {
+      "source_move": 580,
+      "gen3_move": 275,
+      "gen3_name": "ingrain"
+    },
+    "misty-terrain": {
+      "source_move": 581,
+      "gen3_move": 219,
+      "gen3_name": "safeguard"
+    },
+    "electrify": {
+      "source_move": 582,
+      "gen3_move": 268,
+      "gen3_name": "charge"
+    },
+    "play-rough": {
+      "source_move": 583,
+      "gen3_move": 34,
+      "gen3_name": "body-slam"
+    },
+    "fairy-wind": {
+      "source_move": 584,
+      "gen3_move": 16,
+      "gen3_name": "gust"
+    },
+    "moonblast": {
+      "source_move": 585,
+      "gen3_move": 94,
+      "gen3_name": "psychic"
+    },
+    "boomburst": {
+      "source_move": 586,
+      "gen3_move": 304,
+      "gen3_name": "hyper-voice"
+    },
+    "fairy-lock": {
+      "source_move": 587,
+      "gen3_move": 212,
+      "gen3_name": "mean-look"
+    },
+    "kings-shield": {
+      "source_move": 588,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "play-nice": {
+      "source_move": 589,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "confide": {
+      "source_move": 590,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "diamond-storm": {
+      "source_move": 591,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "steam-eruption": {
+      "source_move": 592,
+      "gen3_move": 56,
+      "gen3_name": "hydro-pump"
+    },
+    "hyperspace-hole": {
+      "source_move": 593,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "water-shuriken": {
+      "source_move": 594,
+      "gen3_move": 55,
+      "gen3_name": "water-gun"
+    },
+    "mystical-fire": {
+      "source_move": 595,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "spiky-shield": {
+      "source_move": 596,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "aromatic-mist": {
+      "source_move": 597,
+      "gen3_move": 113,
+      "gen3_name": "light-screen"
+    },
+    "eerie-impulse": {
+      "source_move": 598,
+      "gen3_move": 204,
+      "gen3_name": "charm"
+    },
+    "venom-drench": {
+      "source_move": 599,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "geomancy": {
+      "source_move": 601,
+      "gen3_move": 347,
+      "gen3_name": "calm-mind"
+    },
+    "magnetic-flux": {
+      "source_move": 602,
+      "gen3_move": 268,
+      "gen3_name": "charge"
+    },
+    "electric-terrain": {
+      "source_move": 604,
+      "gen3_move": 268,
+      "gen3_name": "charge"
+    },
+    "dazzling-gleam": {
+      "source_move": 605,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "baby-doll-eyes": {
+      "source_move": 608,
+      "gen3_move": 45,
+      "gen3_name": "growl"
+    },
+    "nuzzle": {
+      "source_move": 609,
+      "gen3_move": 86,
+      "gen3_name": "thunder-wave"
+    },
+    "infestation": {
+      "source_move": 611,
+      "gen3_move": 210,
+      "gen3_name": "fury-cutter"
+    },
+    "power-up-punch": {
+      "source_move": 612,
+      "gen3_move": 2,
+      "gen3_name": "karate-chop"
+    },
+    "oblivion-wing": {
+      "source_move": 613,
+      "gen3_move": 65,
+      "gen3_name": "drill-peck"
+    },
+    "thousand-arrows": {
+      "source_move": 614,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "thousand-waves": {
+      "source_move": 615,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "lands-wrath": {
+      "source_move": 616,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "shore-up": {
+      "source_move": 659,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "first-impression": {
+      "source_move": 660,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "baneful-bunker": {
+      "source_move": 661,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "spirit-shackle": {
+      "source_move": 662,
+      "gen3_move": 247,
+      "gen3_name": "shadow-ball"
+    },
+    "darkest-lariat": {
+      "source_move": 663,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "sparkling-aria": {
+      "source_move": 664,
+      "gen3_move": 57,
+      "gen3_name": "surf"
+    },
+    "ice-hammer": {
+      "source_move": 665,
+      "gen3_move": 8,
+      "gen3_name": "ice-punch"
+    },
+    "floral-healing": {
+      "source_move": 666,
+      "gen3_move": 135,
+      "gen3_name": "soft-boiled"
+    },
+    "high-horsepower": {
+      "source_move": 667,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "strength-sap": {
+      "source_move": 668,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "solar-blade": {
+      "source_move": 669,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "leafage": {
+      "source_move": 670,
+      "gen3_move": 22,
+      "gen3_name": "vine-whip"
+    },
+    "laser-focus": {
+      "source_move": 673,
+      "gen3_move": 116,
+      "gen3_name": "focus-energy"
+    },
+    "gear-up": {
+      "source_move": 674,
+      "gen3_move": 336,
+      "gen3_name": "howl"
+    },
+    "throat-chop": {
+      "source_move": 675,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "pollen-puff": {
+      "source_move": 676,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "anchor-shot": {
+      "source_move": 677,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "psychic-terrain": {
+      "source_move": 678,
+      "gen3_move": 347,
+      "gen3_name": "calm-mind"
+    },
+    "lunge": {
+      "source_move": 679,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "fire-lash": {
+      "source_move": 680,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "power-trip": {
+      "source_move": 681,
+      "gen3_move": 282,
+      "gen3_name": "knock-off"
+    },
+    "burn-up": {
+      "source_move": 682,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "speed-swap": {
+      "source_move": 683,
+      "gen3_move": 97,
+      "gen3_name": "agility"
+    },
+    "smart-strike": {
+      "source_move": 684,
+      "gen3_move": 211,
+      "gen3_name": "steel-wing"
+    },
+    "purify": {
+      "source_move": 685,
+      "gen3_move": 287,
+      "gen3_name": "refresh"
+    },
+    "revelation-dance": {
+      "source_move": 686,
+      "gen3_move": 304,
+      "gen3_name": "hyper-voice"
+    },
+    "core-enforcer": {
+      "source_move": 687,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "trop-kick": {
+      "source_move": 688,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "instruct": {
+      "source_move": 689,
+      "gen3_move": 119,
+      "gen3_name": "mirror-move"
+    },
+    "beak-blast": {
+      "source_move": 690,
+      "gen3_move": 65,
+      "gen3_name": "drill-peck"
+    },
+    "clanging-scales": {
+      "source_move": 691,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "dragon-hammer": {
+      "source_move": 692,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "brutal-swing": {
+      "source_move": 693,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "aurora-veil": {
+      "source_move": 694,
+      "gen3_move": 115,
+      "gen3_name": "reflect"
+    },
+    "shell-trap": {
+      "source_move": 704,
+      "gen3_move": 315,
+      "gen3_name": "overheat"
+    },
+    "fleur-cannon": {
+      "source_move": 705,
+      "gen3_move": 94,
+      "gen3_name": "psychic"
+    },
+    "psychic-fangs": {
+      "source_move": 706,
+      "gen3_move": 94,
+      "gen3_name": "psychic"
+    },
+    "stomping-tantrum": {
+      "source_move": 707,
+      "gen3_move": 125,
+      "gen3_name": "bone-club"
+    },
+    "accelerock": {
+      "source_move": 709,
+      "gen3_move": 88,
+      "gen3_name": "rock-throw"
+    },
+    "liquidation": {
+      "source_move": 710,
+      "gen3_move": 57,
+      "gen3_name": "surf"
+    },
+    "prismatic-laser": {
+      "source_move": 711,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "spectral-thief": {
+      "source_move": 712,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "sunsteel-strike": {
+      "source_move": 713,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "moongeist-beam": {
+      "source_move": 714,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "tearful-look": {
+      "source_move": 715,
+      "gen3_move": 204,
+      "gen3_name": "charm"
+    },
+    "zing-zap": {
+      "source_move": 716,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "natures-madness": {
+      "source_move": 717,
+      "gen3_move": 162,
+      "gen3_name": "super-fang"
+    },
+    "multi-attack": {
+      "source_move": 718,
+      "gen3_move": 25,
+      "gen3_name": "mega-kick"
+    },
+    "mind-blown": {
+      "source_move": 720,
+      "gen3_move": 315,
+      "gen3_name": "overheat"
+    },
+    "plasma-fists": {
+      "source_move": 721,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "photon-geyser": {
+      "source_move": 722,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "double-iron-bash": {
+      "source_move": 742,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "dynamax-cannon": {
+      "source_move": 744,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "snipe-shot": {
+      "source_move": 745,
+      "gen3_move": 127,
+      "gen3_name": "waterfall"
+    },
+    "jaw-lock": {
+      "source_move": 746,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "stuff-cheeks": {
+      "source_move": 747,
+      "gen3_move": 334,
+      "gen3_name": "iron-defense"
+    },
+    "no-retreat": {
+      "source_move": 748,
+      "gen3_move": 339,
+      "gen3_name": "bulk-up"
+    },
+    "tar-shot": {
+      "source_move": 749,
+      "gen3_move": 81,
+      "gen3_name": "string-shot"
+    },
+    "magic-powder": {
+      "source_move": 750,
+      "gen3_move": 176,
+      "gen3_name": "conversion-2"
+    },
+    "dragon-darts": {
+      "source_move": 751,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "teatime": {
+      "source_move": 752,
+      "gen3_move": 278,
+      "gen3_name": "recycle"
+    },
+    "octolock": {
+      "source_move": 753,
+      "gen3_move": 212,
+      "gen3_name": "mean-look"
+    },
+    "bolt-beak": {
+      "source_move": 754,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "fishious-rend": {
+      "source_move": 755,
+      "gen3_move": 152,
+      "gen3_name": "crabhammer"
+    },
+    "court-change": {
+      "source_move": 756,
+      "gen3_move": 229,
+      "gen3_name": "rapid-spin"
+    },
+    "clangorous-soul": {
+      "source_move": 775,
+      "gen3_move": 349,
+      "gen3_name": "dragon-dance"
+    },
+    "body-press": {
+      "source_move": 776,
+      "gen3_move": 280,
+      "gen3_name": "brick-break"
+    },
+    "decorate": {
+      "source_move": 777,
+      "gen3_move": 270,
+      "gen3_name": "helping-hand"
+    },
+    "drum-beating": {
+      "source_move": 778,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "pyro-ball": {
+      "source_move": 780,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "aura-wheel": {
+      "source_move": 783,
+      "gen3_move": 85,
+      "gen3_name": "thunderbolt"
+    },
+    "breaking-swipe": {
+      "source_move": 784,
+      "gen3_move": 239,
+      "gen3_name": "twister"
+    },
+    "branch-poke": {
+      "source_move": 785,
+      "gen3_move": 22,
+      "gen3_name": "vine-whip"
+    },
+    "overdrive": {
+      "source_move": 786,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "apple-acid": {
+      "source_move": 787,
+      "gen3_move": 345,
+      "gen3_name": "magical-leaf"
+    },
+    "grav-apple": {
+      "source_move": 788,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "spirit-break": {
+      "source_move": 789,
+      "gen3_move": 306,
+      "gen3_name": "crush-claw"
+    },
+    "life-dew": {
+      "source_move": 791,
+      "gen3_move": 105,
+      "gen3_name": "recover"
+    },
+    "obstruct": {
+      "source_move": 792,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "false-surrender": {
+      "source_move": 793,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "meteor-assault": {
+      "source_move": 794,
+      "gen3_move": 264,
+      "gen3_name": "focus-punch"
+    },
+    "expanding-force": {
+      "source_move": 797,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "steel-roller": {
+      "source_move": 798,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "rising-voltage": {
+      "source_move": 804,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "terrain-pulse": {
+      "source_move": 805,
+      "gen3_move": 253,
+      "gen3_name": "uproar"
+    },
+    "skitter-smack": {
+      "source_move": 806,
+      "gen3_move": 324,
+      "gen3_name": "signal-beam"
+    },
+    "flip-turn": {
+      "source_move": 812,
+      "gen3_move": 55,
+      "gen3_name": "water-gun"
+    },
+    "dual-wingbeat": {
+      "source_move": 814,
+      "gen3_move": 65,
+      "gen3_name": "drill-peck"
+    },
+    "jungle-healing": {
+      "source_move": 816,
+      "gen3_move": 312,
+      "gen3_name": "aromatherapy"
+    },
+    "wicked-blow": {
+      "source_move": 817,
+      "gen3_move": 185,
+      "gen3_name": "feint-attack"
+    },
+    "thunder-cage": {
+      "source_move": 819,
+      "gen3_move": 9,
+      "gen3_name": "thunder-punch"
+    },
+    "dragon-energy": {
+      "source_move": 820,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "dire-claw": {
+      "source_move": 827,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    },
+    "psyshield-bash": {
+      "source_move": 828,
+      "gen3_move": 60,
+      "gen3_name": "psybeam"
+    },
+    "stone-axe": {
+      "source_move": 830,
+      "gen3_move": 88,
+      "gen3_name": "rock-throw"
+    },
+    "springtide-storm": {
+      "source_move": 831,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "mystical-power": {
+      "source_move": 832,
+      "gen3_move": 60,
+      "gen3_name": "psybeam"
+    },
+    "raging-fury": {
+      "source_move": 833,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "wave-crash": {
+      "source_move": 834,
+      "gen3_move": 56,
+      "gen3_name": "hydro-pump"
+    },
+    "headlong-rush": {
+      "source_move": 838,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "barb-barrage": {
+      "source_move": 839,
+      "gen3_move": 305,
+      "gen3_name": "poison-fang"
+    },
+    "bleakwind-storm": {
+      "source_move": 846,
+      "gen3_move": 65,
+      "gen3_name": "drill-peck"
+    },
+    "wildbolt-storm": {
+      "source_move": 847,
+      "gen3_move": 192,
+      "gen3_name": "zap-cannon"
+    },
+    "sandsear-storm": {
+      "source_move": 848,
+      "gen3_move": 89,
+      "gen3_name": "earthquake"
+    },
+    "lunar-blessing": {
+      "source_move": 849,
+      "gen3_move": 236,
+      "gen3_name": "moonlight"
+    },
+    "take-heart": {
+      "source_move": 850,
+      "gen3_move": 347,
+      "gen3_name": "calm-mind"
+    },
+    "silk-trap": {
+      "source_move": 852,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "axe-kick": {
+      "source_move": 853,
+      "gen3_move": 238,
+      "gen3_name": "cross-chop"
+    },
+    "last-respects": {
+      "source_move": 854,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "lumina-crash": {
+      "source_move": 855,
+      "gen3_move": 94,
+      "gen3_name": "psychic"
+    },
+    "order-up": {
+      "source_move": 856,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "jet-punch": {
+      "source_move": 857,
+      "gen3_move": 352,
+      "gen3_name": "water-pulse"
+    },
+    "spicy-extract": {
+      "source_move": 858,
+      "gen3_move": 207,
+      "gen3_name": "swagger"
+    },
+    "spin-out": {
+      "source_move": 859,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "population-bomb": {
+      "source_move": 860,
+      "gen3_move": 154,
+      "gen3_name": "fury-swipes"
+    },
+    "ice-spinner": {
+      "source_move": 861,
+      "gen3_move": 8,
+      "gen3_name": "ice-punch"
+    },
+    "glaive-rush": {
+      "source_move": 862,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "revival-blessing": {
+      "source_move": 863,
+      "gen3_move": 273,
+      "gen3_name": "wish"
+    },
+    "salt-cure": {
+      "source_move": 864,
+      "gen3_move": 88,
+      "gen3_name": "rock-throw"
+    },
+    "triple-dive": {
+      "source_move": 865,
+      "gen3_move": 127,
+      "gen3_name": "waterfall"
+    },
+    "mortal-spin": {
+      "source_move": 866,
+      "gen3_move": 40,
+      "gen3_name": "poison-sting"
+    },
+    "doodle": {
+      "source_move": 867,
+      "gen3_move": 272,
+      "gen3_name": "role-play"
+    },
+    "fillet-away": {
+      "source_move": 868,
+      "gen3_move": 349,
+      "gen3_name": "dragon-dance"
+    },
+    "kowtow-cleave": {
+      "source_move": 869,
+      "gen3_move": 242,
+      "gen3_name": "crunch"
+    },
+    "flower-trick": {
+      "source_move": 870,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "torch-song": {
+      "source_move": 871,
+      "gen3_move": 7,
+      "gen3_name": "fire-punch"
+    },
+    "aqua-step": {
+      "source_move": 872,
+      "gen3_move": 127,
+      "gen3_name": "waterfall"
+    },
+    "make-it-rain": {
+      "source_move": 874,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "psyblade": {
+      "source_move": 875,
+      "gen3_move": 326,
+      "gen3_name": "extrasensory"
+    },
+    "hydro-steam": {
+      "source_move": 876,
+      "gen3_move": 352,
+      "gen3_name": "water-pulse"
+    },
+    "ruination": {
+      "source_move": 877,
+      "gen3_move": 162,
+      "gen3_name": "super-fang"
+    },
+    "collision-course": {
+      "source_move": 878,
+      "gen3_move": 238,
+      "gen3_name": "cross-chop"
+    },
+    "electro-drift": {
+      "source_move": 879,
+      "gen3_move": 85,
+      "gen3_name": "thunderbolt"
+    },
+    "shed-tail": {
+      "source_move": 880,
+      "gen3_move": 164,
+      "gen3_name": "substitute"
+    },
+    "tidy-up": {
+      "source_move": 882,
+      "gen3_move": 349,
+      "gen3_name": "dragon-dance"
+    },
+    "snowscape": {
+      "source_move": 883,
+      "gen3_move": 258,
+      "gen3_name": "hail"
+    },
+    "hyper-drill": {
+      "source_move": 887,
+      "gen3_move": 158,
+      "gen3_name": "hyper-fang"
+    },
+    "twin-beam": {
+      "source_move": 888,
+      "gen3_move": 93,
+      "gen3_name": "confusion"
+    },
+    "rage-fist": {
+      "source_move": 889,
+      "gen3_move": 325,
+      "gen3_name": "shadow-punch"
+    },
+    "armor-cannon": {
+      "source_move": 890,
+      "gen3_move": 126,
+      "gen3_name": "fire-blast"
+    },
+    "bitter-blade": {
+      "source_move": 891,
+      "gen3_move": 299,
+      "gen3_name": "blaze-kick"
+    },
+    "double-shock": {
+      "source_move": 892,
+      "gen3_move": 87,
+      "gen3_name": "thunder"
+    },
+    "gigaton-hammer": {
+      "source_move": 893,
+      "gen3_move": 309,
+      "gen3_name": "meteor-mash"
+    },
+    "comeuppance": {
+      "source_move": 894,
+      "gen3_move": 68,
+      "gen3_name": "counter"
+    },
+    "aqua-cutter": {
+      "source_move": 895,
+      "gen3_move": 127,
+      "gen3_name": "waterfall"
+    },
+    "matcha-gotcha": {
+      "source_move": 902,
+      "gen3_move": 345,
+      "gen3_name": "magical-leaf"
+    },
+    "syrup-bomb": {
+      "source_move": 903,
+      "gen3_move": 345,
+      "gen3_name": "magical-leaf"
+    },
+    "ivy-cudgel": {
+      "source_move": 904,
+      "gen3_move": 348,
+      "gen3_name": "leaf-blade"
+    },
+    "electro-shot": {
+      "source_move": 905,
+      "gen3_move": 87,
+      "gen3_name": "thunder"
+    },
+    "tera-starstorm": {
+      "source_move": 906,
+      "gen3_move": 25,
+      "gen3_name": "mega-kick"
+    },
+    "fickle-beam": {
+      "source_move": 907,
+      "gen3_move": 337,
+      "gen3_name": "dragon-claw"
+    },
+    "burning-bulwark": {
+      "source_move": 908,
+      "gen3_move": 182,
+      "gen3_name": "protect"
+    },
+    "thunderclap": {
+      "source_move": 909,
+      "gen3_move": 351,
+      "gen3_name": "shock-wave"
+    },
+    "mighty-cleave": {
+      "source_move": 910,
+      "gen3_move": 157,
+      "gen3_name": "rock-slide"
+    },
+    "tachyon-cutter": {
+      "source_move": 911,
+      "gen3_move": 232,
+      "gen3_name": "metal-claw"
+    },
+    "malignant-chain": {
+      "source_move": 919,
+      "gen3_move": 188,
+      "gen3_name": "sludge-bomb"
+    }
+  },
+  "starter_padding_species": 283,
+  "starter_padding": {
+    "387": [
+      74,
+      22
+    ],
+    "390": [
+      108
+    ],
+    "393": [
+      145,
+      39
+    ],
+    "396": [
+      39
+    ],
+    "399": [
+      39
+    ],
+    "401": [
+      141
+    ],
+    "403": [
+      45
+    ],
+    "408": [
+      88
+    ],
+    "410": [
+      88
+    ],
+    "412": [
+      141,
+      10
+    ],
+    "417": [
+      268
+    ],
+    "418": [
+      145,
+      39
+    ],
+    "420": [
+      71
+    ],
+    "422": [
+      145
+    ],
+    "425": [
+      122
+    ],
+    "427": [
+      33
+    ],
+    "431": [
+      33,
+      39
+    ],
+    "433": [
+      96,
+      115
+    ],
+    "434": [
+      40
+    ],
+    "436": [
+      232
+    ],
+    "438": [
+      33
+    ],
+    "439": [
+      96
+    ],
+    "440": [
+      33
+    ],
+    "442": [
+      122
+    ],
+    "443": [
+      239
+    ],
+    "446": [
+      45
+    ],
+    "447": [
+      116
+    ],
+    "449": [
+      189
+    ],
+    "451": [
+      51
+    ],
+    "453": [
+      51
+    ],
+    "455": [
+      71
+    ],
+    "456": [
+      145,
+      39
+    ],
+    "458": [
+      145
+    ],
+    "459": [
+      71
+    ],
+    "479": [
+      45
+    ],
+    "480": [
+      96
+    ],
+    "481": [
+      96
+    ],
+    "482": [
+      96
+    ],
+    "483": [
+      106
+    ],
+    "484": [
+      55
+    ],
+    "485": [
+      52
+    ],
+    "486": [
+      33
+    ],
+    "487": [
+      122
+    ],
+    "488": [
+      96
+    ],
+    "489": [
+      145,
+      39
+    ],
+    "491": [
+      282,
+      33
+    ],
+    "492": [
+      71,
+      22
+    ],
+    "493": [
+      33
+    ],
+    "495": [
+      71,
+      45
+    ],
+    "498": [
+      108,
+      83
+    ],
+    "501": [
+      145,
+      45
+    ],
+    "504": [
+      45,
+      39
+    ],
+    "506": [
+      39
+    ],
+    "509": [
+      282
+    ],
+    "511": [
+      71
+    ],
+    "513": [
+      108
+    ],
+    "515": [
+      145
+    ],
+    "517": [
+      96
+    ],
+    "519": [
+      33
+    ],
+    "522": [
+      84,
+      45
+    ],
+    "524": [
+      111
+    ],
+    "527": [
+      96
+    ],
+    "529": [
+      28
+    ],
+    "531": [
+      33
+    ],
+    "532": [
+      249
+    ],
+    "535": [
+      55
+    ],
+    "538": [
+      249
+    ],
+    "539": [
+      33
+    ],
+    "540": [
+      141
+    ],
+    "543": [
+      141
+    ],
+    "546": [
+      22
+    ],
+    "548": [
+      22
+    ],
+    "550": [
+      145
+    ],
+    "551": [
+      189
+    ],
+    "554": [
+      108
+    ],
+    "557": [
+      141
+    ],
+    "559": [
+      282
+    ],
+    "561": [
+      96
+    ],
+    "562": [
+      122
+    ],
+    "564": [
+      145
+    ],
+    "566": [
+      106
+    ],
+    "568": [
+      40
+    ],
+    "570": [
+      33
+    ],
+    "572": [
+      33
+    ],
+    "574": [
+      96
+    ],
+    "577": [
+      96
+    ],
+    "580": [
+      145,
+      39
+    ],
+    "582": [
+      181
+    ],
+    "585": [
+      39,
+      1
+    ],
+    "587": [
+      16
+    ],
+    "588": [
+      141
+    ],
+    "590": [
+      22
+    ],
+    "592": [
+      145
+    ],
+    "594": [
+      145
+    ],
+    "595": [
+      141
+    ],
+    "597": [
+      71
+    ],
+    "599": [
+      232
+    ],
+    "605": [
+      96
+    ],
+    "607": [
+      122
+    ],
+    "610": [
+      33
+    ],
+    "613": [
+      54
+    ],
+    "615": [
+      45
+    ],
+    "616": [
+      141
+    ],
+    "619": [
+      249
+    ],
+    "621": [
+      33
+    ],
+    "622": [
+      28
+    ],
+    "624": [
+      282
+    ],
+    "626": [
+      45
+    ],
+    "627": [
+      33
+    ],
+    "629": [
+      259
+    ],
+    "631": [
+      108
+    ],
+    "632": [
+      141
+    ],
+    "633": [
+      282
+    ],
+    "636": [
+      106
+    ],
+    "641": [
+      45
+    ],
+    "642": [
+      45
+    ],
+    "645": [
+      189
+    ],
+    "649": [
+      141
+    ],
+    "650": [
+      71
+    ],
+    "651": [
+      71
+    ],
+    "653": [
+      108
+    ],
+    "656": [
+      145
+    ],
+    "659": [
+      45
+    ],
+    "661": [
+      33
+    ],
+    "664": [
+      141
+    ],
+    "665": [
+      141
+    ],
+    "667": [
+      108
+    ],
+    "669": [
+      1
+    ],
+    "672": [
+      71
+    ],
+    "674": [
+      249
+    ],
+    "676": [
+      1
+    ],
+    "677": [
+      96
+    ],
+    "679": [
+      232
+    ],
+    "682": [
+      1
+    ],
+    "684": [
+      1
+    ],
+    "686": [
+      282
+    ],
+    "688": [
+      88
+    ],
+    "690": [
+      40
+    ],
+    "692": [
+      145
+    ],
+    "694": [
+      45
+    ],
+    "696": [
+      88
+    ],
+    "698": [
+      88
+    ],
+    "701": [
+      249
+    ],
+    "702": [
+      1
+    ],
+    "703": [
+      111
+    ],
+    "704": [
+      239
+    ],
+    "707": [
+      232,
+      106
+    ],
+    "708": [
+      122
+    ],
+    "710": [
+      122
+    ],
+    "712": [
+      54
+    ],
+    "714": [
+      45
+    ],
+    "716": [
+      1
+    ],
+    "717": [
+      282
+    ],
+    "722": [
+      71
+    ],
+    "725": [
+      108
+    ],
+    "728": [
+      145
+    ],
+    "731": [
+      33,
+      39
+    ],
+    "734": [
+      45,
+      39
+    ],
+    "736": [
+      141
+    ],
+    "739": [
+      33,
+      10,
+      1
+    ],
+    "741": [
+      52,
+      108
+    ],
+    "742": [
+      141
+    ],
+    "744": [
+      106
+    ],
+    "746": [
+      145
+    ],
+    "747": [
+      43
+    ],
+    "749": [
+      28
+    ],
+    "751": [
+      145
+    ],
+    "753": [
+      71
+    ],
+    "755": [
+      74
+    ],
+    "757": [
+      40
+    ],
+    "759": [
+      39
+    ],
+    "761": [
+      71,
+      22
+    ],
+    "764": [
+      1
+    ],
+    "765": [
+      33
+    ],
+    "766": [
+      45
+    ],
+    "769": [
+      122
+    ],
+    "771": [
+      55
+    ],
+    "772": [
+      45
+    ],
+    "774": [
+      88,
+      106
+    ],
+    "775": [
+      33
+    ],
+    "776": [
+      108
+    ],
+    "777": [
+      45
+    ],
+    "779": [
+      145,
+      39
+    ],
+    "780": [
+      33
+    ],
+    "781": [
+      122
+    ],
+    "782": [
+      116
+    ],
+    "785": [
+      45
+    ],
+    "786": [
+      96
+    ],
+    "787": [
+      71
+    ],
+    "788": [
+      145
+    ],
+    "789": [
+      93
+    ],
+    "790": [
+      93
+    ],
+    "793": [
+      88
+    ],
+    "794": [
+      141
+    ],
+    "795": [
+      141
+    ],
+    "796": [
+      45
+    ],
+    "797": [
+      232
+    ],
+    "798": [
+      71
+    ],
+    "799": [
+      43
+    ],
+    "801": [
+      232
+    ],
+    "805": [
+      111
+    ],
+    "806": [
+      108
+    ],
+    "808": [
+      232
+    ],
+    "810": [
+      71
+    ],
+    "813": [
+      108
+    ],
+    "816": [
+      145
+    ],
+    "819": [
+      45
+    ],
+    "821": [
+      16
+    ],
+    "824": [
+      141,
+      81
+    ],
+    "827": [
+      282
+    ],
+    "829": [
+      71
+    ],
+    "831": [
+      39
+    ],
+    "833": [
+      145
+    ],
+    "835": [
+      84
+    ],
+    "837": [
+      106
+    ],
+    "840": [
+      71
+    ],
+    "843": [
+      189
+    ],
+    "846": [
+      145
+    ],
+    "850": [
+      141
+    ],
+    "852": [
+      116
+    ],
+    "854": [
+      122
+    ],
+    "856": [
+      96
+    ],
+    "859": [
+      282
+    ],
+    "868": [
+      1
+    ],
+    "870": [
+      43
+    ],
+    "871": [
+      45
+    ],
+    "872": [
+      54
+    ],
+    "874": [
+      106
+    ],
+    "875": [
+      45
+    ],
+    "876": [
+      96
+    ],
+    "877": [
+      268
+    ],
+    "878": [
+      232
+    ],
+    "880": [
+      45
+    ],
+    "881": [
+      45
+    ],
+    "882": [
+      145
+    ],
+    "883": [
+      145
+    ],
+    "884": [
+      106
+    ],
+    "891": [
+      33
+    ],
+    "893": [
+      282
+    ],
+    "894": [
+      268
+    ],
+    "895": [
+      43,
+      33
+    ],
+    "896": [
+      181
+    ],
+    "897": [
+      310
+    ],
+    "899": [
+      45
+    ],
+    "904": [
+      282
+    ],
+    "905": [
+      1
+    ],
+    "915": [
+      45
+    ],
+    "916": [
+      45
+    ],
+    "917": [
+      141
+    ],
+    "919": [
+      141
+    ],
+    "921": [
+      33
+    ],
+    "924": [
+      33
+    ],
+    "926": [
+      1
+    ],
+    "927": [
+      1
+    ],
+    "928": [
+      22
+    ],
+    "929": [
+      22
+    ],
+    "932": [
+      111
+    ],
+    "938": [
+      45
+    ],
+    "940": [
+      268
+    ],
+    "944": [
+      40
+    ],
+    "948": [
+      28
+    ],
+    "950": [
+      111,
+      33
+    ],
+    "951": [
+      71
+    ],
+    "953": [
+      141
+    ],
+    "955": [
+      96
+    ],
+    "957": [
+      1
+    ],
+    "958": [
+      1
+    ],
+    "960": [
+      145
+    ],
+    "963": [
+      145
+    ],
+    "965": [
+      232
+    ],
+    "967": [
+      43
+    ],
+    "969": [
+      111
+    ],
+    "971": [
+      310
+    ],
+    "973": [
+      16
+    ],
+    "974": [
+      54
+    ],
+    "975": [
+      54
+    ],
+    "976": [
+      145
+    ],
+    "978": [
+      239
+    ],
+    "982": [
+      33
+    ],
+    "991": [
+      145,
+      33
+    ],
+    "999": [
+      122
+    ],
+    "1000": [
+      232
+    ],
+    "1007": [
+      116
+    ]
+  },
+  "rules": "Native Gen1-3 wild schedules and all machine permissions unchanged. Added species: latest Gen4-9 main-series level-up version; unsupported attacks replaced by comparable Gen3 attacks at the original levels. Only added wilds receive weak starter padding to reach three distinct usable moves. Padding never borrows a move scheduled at a later level. Player level-up compatibility and already-owned moves are preserved."
+}

@@ -1,0 +1,25 @@
+1025Dex 1.2.4
+
+Animated shiny sprites now work through the shared Gen3 picture provider
+in FireRed, LeafGreen and Emerald. Front/back providers pass the shiny flag
+to the pack's animated sheet loader and preserve form/personality arguments
+when falling back to native pictures. Shiny and normal pending preview
+images use separate cache keys, preventing palette cross-contamination.
+
+The native mon-animation framePic seam now returns the managed pack sprite
+instead of replacing it with a static ROM animation frame. The pack's clock
+continues advancing; native battle movement/effects remain in the engine.
+Unmanaged species and disabled replacement retain the native frame path.
+
+The stable battle-height correction from 1.2.3 follows the exact shiny sheet
+and its own visible bounds. Every one of the 1,025 base species has multi-
+frame shiny front and back sheets. The pack's Eternamax alternate back
+(ETERNATUS_1) has a single frame in BOTH palettes; its base species is animated.
+Animation still respects the existing ANIMATE option. Artwork is unchanged.
+
+Validation: production Gen3 provider and animation clock fixtures test both
+palettes/sides, frame advancement, preview cache isolation, native-frame
+override, native argument forwarding and stable alignment (34 assertions).
+Battle alignment (144 checks), all base shiny sheet availability, complete
+provider compilation, League encounters and DexNav/WildFollowers compatibility
+pass. Live in-game playtesting was unavailable.

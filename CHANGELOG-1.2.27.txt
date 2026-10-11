@@ -1,0 +1,17 @@
+1025Dex 1.2.27 - Adjustable EE playback
+
+EE PAUSE: 1-7 seconds of rest after playback (default 7).
+EE LOOPS: 1-5 complete animation loops before resting (default 1).
+SPRITE SPEED controls the playback rate. The pause begins after the final
+loop completes. Battle images and cached Gen 3 images use the same settings.
+
+Selecting/reopening a Pokedex entry immediately restarts EE playback,
+including returning to a previously cached species or selecting a form.
+Repeated draws of the same selection do not restart it every frame.
+
+Validation covers all 35 settings combinations, full pause durations,
+repeated cycles, cached selection/reopening, and existing sprite regressions.
+
+Download 1025Dex-v1.2.27.zip, replace the installed 1025Dex folder and restart.
+No save migration required. Previous art and fixes included. GitHub's
+automatic Source code archives are not the packaged mod build.

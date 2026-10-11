@@ -1,0 +1,12 @@
+1025Dex 1.2.29 - Alternating EE playback
+
+EE ALT LOOPS: SAME or 1-5 loops for every second animation burst.
+EE ALT PAUSE: SAME or 1-7 seconds of rest after every second burst.
+Primary and alternate patterns repeat in turn. Either can vary independently.
+Defaults remain 4 loops / 2 seconds; alternate defaults are SAME.
+Pokedex selection/reopening restarts with the primary pattern immediately.
+The first pose is held during each pause. Cached Gen 3 pictures use the same
+settings. All previous artwork, credits and fixes remain included.
+
+Download 1025Dex-v1.2.29.zip, replace the installed folder and restart.
+GitHub's automatic Source code archives are not the packaged mod build.

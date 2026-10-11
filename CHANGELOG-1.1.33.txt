@@ -1,0 +1,4 @@
+1025Dex v1.1.33
+
+- Keep legendary and mythical species out of generated random encounter pools. Preserve FireRed static overworld encounters.
+- Apply WILD GENS substitutions only to rolled step, fishing, and rock encounters, never scripted or legendary battles.

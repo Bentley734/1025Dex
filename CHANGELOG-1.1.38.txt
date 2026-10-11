@@ -1,0 +1,9 @@
+1025Dex v1.1.38
+- Added a live encounter-selection export for WildFollowers. Visible wilds can
+  now use 1025Dex's active map, terrain, generation, species and level policy
+  before their sprite is created, rather than a separate outdated policy.
+- Retains v1.1.37 Sevii encounter profiles and 36-box / 1,080-slot PC storage.
+
+Install together with WildFollowers v2.13.79 to fix visible Sevii spawns.
+Replace the old mod folders, restart the game and re-enter the area.
+Back up your save; keep expanded storage enabled while boxes 15-36 are occupied.

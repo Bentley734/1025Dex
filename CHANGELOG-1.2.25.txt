@@ -1,0 +1,11 @@
+1025Dex 1.2.25 - EE animation interval
+
+EE ANIMATED plays one animation every seven seconds and holds its first pose
+between animations. Animation speed still controls playback speed. Applies
+to battles, Pokedex, summaries and cached Gen 3 preview images.
+EE STATIC, DBK animated, BW ROM and party-icon timing retain their behavior.
+Single-frame sprites stay still. All previous artwork and fixes are included.
+
+Install: download 1025Dex-v1.2.25.zip, replace the installed 1025Dex folder
+and restart. No save migration required. GitHub's automatic Source code
+archives are not the packaged mod build.

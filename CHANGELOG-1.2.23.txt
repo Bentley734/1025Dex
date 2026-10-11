@@ -1,0 +1,23 @@
+1025Dex 1.2.23 - Rare post-League forms
+
+All 364 shipped Mega and alternate forms can spawn after entering the Hall
+of Fame, at levels 55-70, with a 2% combined chance in designated endgame
+areas. WILD GENS filters by the base Pokemon's generation. Aquatic forms
+use water/fishing encounters.
+
+Kanto: Cerulean Cave and Victory Road; Sevault Canyon in FireRed/LeafGreen.
+Johto: Mt. Silver, Route 28, Dragon's Den B1F and Victory Road.
+Hoenn: Victory Road, Sky Pillar, Meteor Falls B1F second room, and Emerald's
+Artisan Cave.
+
+Natural and visible wild encounters preserve the exact form identity.
+Scripted encounters and exact CodeBreaker selections retain their behavior.
+Evolution apples and prior evolution animation fixes remain included.
+
+Install: replace the 1025Dex folder and restart. No save migration needed.
+Download 1025Dex-v1.2.23.zip; GitHub's automatic source archives are not the
+packaged mod build.
+
+Validation: all eleven games, all 364 forms, pre/post-League gates,
+generation filters, habitats, exact species identities, and 2% weights.
+Live Gen 3 hooks checked on engine 0.3.54 and 0.3.58 using headless fixtures.
