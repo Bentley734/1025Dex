@@ -488,3 +488,7 @@ The new **BW ROM** sprite style uses native multipart battle animations extracte
 ## 1.2.37 — Options menu entries
 
 OPTIONS provides 1025DEX for settings and 1025DEX ASSETS for downloads. The native Gen 3 downloader no longer depends on the legacy screen registry.
+
+## Cry styles (1.2.38)
+
+Select CURRENT, ANIME or SHOWDOWN under OPTIONS → 1025DEX → CRY STYLE. Download asset pack 1.1.0 through 1025DEX ASSETS. Anime covers National 1–649 and falls back to CURRENT elsewhere; Showdown covers all 1025 base species. CURRENT retains Yellow Pikachu voice behavior.

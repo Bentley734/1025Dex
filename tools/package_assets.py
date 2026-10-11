@@ -7,8 +7,8 @@ from pathlib import Path
 import argparse, hashlib, json, zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
-ASSET_VERSION='1.0.0'
-ASSET_RELEASE='1.2.36'
+ASSET_VERSION='1.1.0'
+ASSET_RELEASE='1.2.38'
 ASSET_NAME=f'1025Dex-assets-v{ASSET_VERSION}.zip'
 
 def clean_files():
@@ -17,7 +17,7 @@ def clean_files():
 
 def managed(path):
     rel=path.relative_to(ROOT).as_posix()
-    return rel.startswith(('sprites/assets/','cries/assets/')) and path.suffix.lower() in {'.png','.ogg'}
+    return rel.startswith(('sprites/assets/','cries/assets/')) and path.suffix.lower() in {'.png','.ogg','.mp3'}
 
 def checksum(path):
     path.with_suffix('.sha256').write_text(hashlib.sha256(path.read_bytes()).hexdigest()+'  '+path.name+'\n')

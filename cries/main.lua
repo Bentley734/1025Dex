@@ -3,6 +3,19 @@
 -- active internal species slot back to its National number and play the asset
 -- stored under that exact number instead.
 return function(mod)
+  mod.options:define({{key='cryStyle',label='CRY STYLE',type='choice',default='original',
+    choices={{'CURRENT','original'},{'ANIME','anime'},{'SHOWDOWN','showdown'}}}})
+  local function selected(number)
+    local style=mod.options:get('cryStyle')
+    if style=='anime' or style=='showdown' then
+      for _,ext in ipairs({'ogg','mp3'})do
+        local path='assets/'..style..'/'..tostring(number)..'.'..ext
+        local info=mod:info(path)
+        if info and info.type=='file' then return path,style end
+      end
+    end
+    return 'assets/'..tostring(number)..'.ogg','original'
+  end
   if require('src.core.GameVersion').generation() < 3 then
     local source=assert(mod:rootRead('dex/data/species/generated/national.lua'))
     local national=assert(load(source,'@1025dex/cries/national.lua'))()
@@ -23,7 +36,34 @@ return function(mod)
       end
     end
     mod.exports.cryCount=count
-    mod.log:info('Game Boy National cry pack registered; Yellow Pikachu voice retained')
+    local Sound=require('src.core.Sound')
+    if not Sound.__dexCryStyleOriginal then
+      Sound.__dexCryStyleOriginal=Sound.playCry
+      Sound.playCry=function(...)return Sound.__dexCryStyleResolver(...)end
+    end
+    local playedStyles={}
+    Sound.__dexCryStyleResolver=function(data,species,pikaClip)
+      local mon=data and data.pokemon and data.pokemon[species]
+      local number=mon and mon.dex
+      if not number then return Sound.__dexCryStyleOriginal(data,species,pikaClip)end
+      local rel,style=selected(number)
+      if playedStyles[species]~=style and (playedStyles[species] or style~='original') then
+        Sound.invalidate('cry:'..tostring(species))
+      end
+      playedStyles[species]=style
+      if style=='original' then return Sound.__dexCryStyleOriginal(data,species,pikaClip)end
+      -- Keep canonical species keys for native stop/wait and cry ownership.
+      local cries=setmetatable({[species]={file=mod.assets:path(rel)}},{__index=data.audio and data.audio.cries or {}})
+      local audio=setmetatable({cries=cries},{__index=data.audio or {}})
+      local proxy=setmetatable({audio=audio},{__index=data})
+      local result=Sound.__dexCryStyleOriginal(proxy,species,false)
+      if not result then
+        Sound.invalidate('cry:'..tostring(species));playedStyles[species]='original'
+        return Sound.__dexCryStyleOriginal(data,species,pikaClip)
+      end
+      return result
+    end
+    mod.log:info('Game Boy cry styles ready; original Yellow Pikachu voice retained in CURRENT')
     return
   end
   local Audio = require('src.core.game3.audio')
@@ -36,7 +76,7 @@ return function(mod)
       return Audio.__completeDexCryOriginal(species, mode, pan)
     end
 
-    local rel = 'assets/' .. tostring(national) .. '.ogg'
+    local rel = selected(national)
     local info = mod:info(rel)
     if not info or info.type ~= 'file' or not (love and love.audio and love.audio.newSource) then
       return Audio.__completeDexCryOriginal(species, mode, pan)
@@ -50,7 +90,8 @@ return function(mod)
     local params = Sample.cryParams(requestedMode, volume)
     local ok, source = pcall(love.audio.newSource, mod.assets:path(rel), 'static')
     if not ok or not source then
-      return Audio.__completeDexCryOriginal(species, mode, pan)
+      ok,source=pcall(love.audio.newSource,mod.assets:path('assets/'..tostring(national)..'.ogg'),'static')
+      if not ok or not source then return Audio.__completeDexCryOriginal(species,mode,pan)end
     end
 
     Audio.stopCry()

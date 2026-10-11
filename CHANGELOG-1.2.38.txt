@@ -1,0 +1,7 @@
+1025Dex 1.2.38 - Anime and Showdown cry styles
+
+- Add CRY STYLE choices CURRENT, ANIME and SHOWDOWN in 1025DEX settings.
+- Anime uses the supplied Galladito pack for National 1-649, falling back to CURRENT where missing.
+- Showdown includes cries for all 1025 base species.
+- Style switches take effect on the next cry; native volume, playback mode and completion behavior are retained.
+- Asset pack 1.1.0 adds the two cry libraries; the small core remains separate.

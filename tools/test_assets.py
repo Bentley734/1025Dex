@@ -64,7 +64,7 @@ manager=assert(load(source,'production 1025Dex installer','t',env))()(mod,config
 ''')
     return lua,cache,temporary
 
-pack=w/'1025Dex-assets-v1.0.0.zip'
+pack=w/'1025Dex-assets-v1.1.0.zip'
 lua,cache,temp=installer(lua53,pack)
 lua.execute('manager:start()')
 assert lua.globals().manager.state=='downloading'
@@ -77,7 +77,7 @@ with zipfile.ZipFile(pack) as z:
     for path,record in meta['files'].items():
         value=cache['dex_assets/files/'+path].encode('latin-1')
         assert len(value)==record['size'] and hashlib.sha256(value).hexdigest()==record['sha256']
-assert cache['dex_assets/complete.txt']=='zip:1.0.0' and not temp
+assert cache['dex_assets/complete.txt']=='zip:1.1.0' and not temp
 print('PASS complete real pack extraction and SHA-256 verification:',len(meta['files']),'files',flush=True)
 # Replacing the core creates a new manager while retaining the installation cache.
 lua2,_,temp2=installer(luajit21,pack,cached=cache)
@@ -117,7 +117,7 @@ for i in range(50000):
     if lua2.globals().manager.state!='deleting':break
 assert lua2.globals().manager.state=='deleted'
 assert not any(k.startswith('dex_assets/files/') for k in cache)
-assert cache['dex_assets/deferred.txt']=='1.0.0'
+assert cache['dex_assets/deferred.txt']=='1.1.0'
 print('PASS scoped removal and deferred re-download',flush=True)
 
 # Migrate an existing full bundled install without contacting GitHub.
@@ -150,7 +150,7 @@ mod.list=function(_,p)return localList(p)end;config.legacyFiles=config.expectedF
             if v.globals().manager.state!='migrating':break
         if case=='complete':
             assert v.globals().manager.state=='done',v.globals().manager.error
-            assert c['dex_assets/complete.txt']=='zip:1.0.0'
+            assert c['dex_assets/complete.txt']=='zip:1.1.0'
             assert len([k for k in c if k.startswith('dex_assets/files/')])==len(meta['files'])
         else:
             assert v.globals().manager.state=='error' and 'dex_assets/complete.txt' not in c
