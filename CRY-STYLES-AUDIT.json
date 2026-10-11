@@ -1685,5 +1685,11 @@
     "cries/assets/showdown/997.mp3": "fb8752bc4a29e8daf45b9efd3668da33573e50715b57e7a388158ce042e57703",
     "cries/assets/showdown/998.mp3": "f65bf129b802b4f848c8a4724db6a55c805153b849cdbc4631869c5f33798cb3",
     "cries/assets/showdown/999.mp3": "f3f476c4584b7ca53509a2dffe1e5634573e29643396c38f3bf1624a91caa3fc"
+  },
+  "pokeapi": {
+    "source": "https://github.com/PokeAPI/cries",
+    "commit": "ef687b18f0ce17169b4b4c09175819f7ade92f0f",
+    "coverage": "National 1-1025, latest folder",
+    "comparison": "All 1025 files byte-identical to existing assets/cries/assets/N.ogg; no new asset pack required"
   }
 }

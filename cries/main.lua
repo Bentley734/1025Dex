@@ -4,9 +4,14 @@
 -- stored under that exact number instead.
 return function(mod)
   mod.options:define({{key='cryStyle',label='CRY STYLE',type='choice',default='original',
-    choices={{'CURRENT','original'},{'ANIME','anime'},{'SHOWDOWN','showdown'}}}})
+    choices={{'CURRENT','original'},{'ANIME','anime'},{'SHOWDOWN','showdown'},{'POKEAPI','pokeapi'}}}})
   local function selected(number)
     local style=mod.options:get('cryStyle')
+    if style=='pokeapi' then
+      local path='assets/'..tostring(number)..'.ogg'
+      local info=mod:info(path)
+      if info and info.type=='file' then return path,'pokeapi' end
+    end
     if style=='anime' or style=='showdown' then
       for _,ext in ipairs({'ogg','mp3'})do
         local path='assets/'..style..'/'..tostring(number)..'.'..ext

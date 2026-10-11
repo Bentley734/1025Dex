@@ -21,7 +21,7 @@ for generation=1,3 do
  rootRead=function()return 'return {patch={PIKACHU={dex=25}},register={}}'end,
  info=function(_,p)return present[p] and {type='file'}end,log={info=function()end}}
  assert(load(code,'cry styles','t',env))()(mod)
- check(schema[1].key=='cryStyle' and #schema[1].choices==3,'all generations expose three styles')
+ check(schema[1].key=='cryStyle' and #schema[1].choices==4,'all generations expose four styles')
  if generation<3 then
   local data={pokemon={PIKACHU={dex=25},HUGE={dex=1000}},audio={cries={}}}
   Sound.playCry(data,'PIKACHU',2);check(calls[#calls].species=='PIKACHU' and calls[#calls].pika==2,'CURRENT retains Yellow voice request')
@@ -29,6 +29,8 @@ for generation=1,3 do
   local c=calls[#calls];check(c.species=='PIKACHU' and invalidated==1 and c.data.audio.cries[c.species].file=='cries/assets/anime/25.ogg','ANIME selects numeric voice with canonical native key')
   style='showdown';Sound.playCry(data,'PIKACHU');c=calls[#calls]
   check(c.species=='PIKACHU' and invalidated==2 and c.data.audio.cries[c.species].file=='cries/assets/showdown/25.mp3','SHOWDOWN switches immediately by invalidating previous style')
+  style='pokeapi';Sound.playCry(data,'PIKACHU',2);c=calls[#calls]
+  check(c.species=='PIKACHU' and c.pika==false and c.data.audio.cries.PIKACHU.file=='cries/assets/25.ogg','POKEAPI selects repository cry instead of Yellow voice')
   style='anime';Sound.playCry(data,'HUGE');check(calls[#calls].species=='HUGE','missing anime falls back to current')
   check(next(data.audio.cries)==nil,'style playback leaves game cry definitions unchanged')
  else
@@ -37,6 +39,7 @@ for generation=1,3 do
   check(volume==.25 and pitch==.8 and Audio._cryUntil>100,'native volume pitch and completion retained')
   style='showdown';Audio.playCry(9999);check(loaded=='cries/assets/showdown/1000.mp3','expanded native slot resolves National number')
   style='anime';Audio.playCry(9999);check(loaded=='cries/assets/1000.ogg','missing anime uses current packed cry')
+  style='pokeapi';Audio.playCry(9999);check(loaded=='cries/assets/1000.ogg','native POKEAPI reuses audited numeric clip')
   present['assets/1000.ogg']=nil;check(Audio.playCry(9999)=='rom','missing packed cry falls back to native ROM')
  end
 end

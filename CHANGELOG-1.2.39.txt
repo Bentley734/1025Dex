@@ -1,0 +1,5 @@
+1025Dex 1.2.39 - PokeAPI cry style
+
+- Add POKEAPI to CRY STYLE alongside CURRENT, ANIME and SHOWDOWN.
+- Use the latest PokeAPI cries for all 1025 base species, including packed Pikachu audio in Yellow.
+- All 1025 clips match existing assets byte for byte; reuse asset pack 1.1.0 without another download.
