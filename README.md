@@ -494,3 +494,7 @@ OPTIONS provides 1025DEX for settings and 1025DEX ASSETS for downloads. The nati
 Select CURRENT, ANIME or SHOWDOWN under OPTIONS → 1025DEX → CRY STYLE. Download asset pack 1.1.0 through 1025DEX ASSETS. Anime covers National 1–649 and falls back to CURRENT elsewhere; Showdown covers all 1025 base species. CURRENT retains Yellow Pikachu voice behavior.
 
 POKEAPI selects the latest numbered cries from https://github.com/PokeAPI/cries. All 1025 clips match the existing CURRENT packed audio, so asset pack 1.1.0 is reused. Unlike CURRENT, POKEAPI uses the packed Pikachu cry in Yellow. Repository license: POKEAPI-CRIES-LICENSE.txt.
+
+## 1.2.40 — Game Boy cry reliability
+
+ROM base-cry definitions remain intact; selected audio uses clean file definitions at playback. Pikachu is checked in all four cry styles across all supported games, including Crystal. Existing asset pack 1.1.0 is reused.

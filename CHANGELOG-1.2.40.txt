@@ -1,0 +1,7 @@
+1025Dex 1.2.40 - Pikachu and Game Boy cry reliability
+
+- Preserve native ROM cry base chains instead of merging file overrides into them.
+- Use clean file definitions for CURRENT as well as alternate styles at playback, preventing inherited chip fields from silencing cries.
+- Clear stale failed cry-cache entries on first playback and style changes.
+- Retain Yellow voiced Pikachu behavior in CURRENT and native stop/wait semantics for all styles.
+- Regression coverage includes Pikachu playback in all four cry styles across all eleven supported games. Asset pack 1.1.0 is unchanged.

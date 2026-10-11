@@ -33,8 +33,8 @@ return function(mod)
           local rel='assets/'..number..'.ogg'
           if not mod.exports.assetManager or mod:info(rel) then
             local cry={file=mod.assets:path(rel)}
-            if mod.content.cries:get(id) then mod.content.cries:override(id,cry)
-            else mod.content.cries:register(id,cry) end
+            -- Preserve ROM base chains; selected files are supplied at playback.
+            if not mod.content.cries:get(id) then mod.content.cries:register(id,cry) end
           end
           count=count+1
         end
@@ -52,11 +52,17 @@ return function(mod)
       local number=mon and mon.dex
       if not number then return Sound.__dexCryStyleOriginal(data,species,pikaClip)end
       local rel,style=selected(number)
-      if playedStyles[species]~=style and (playedStyles[species] or style~='original') then
+      if playedStyles[species]~=style then
         Sound.invalidate('cry:'..tostring(species))
       end
       playedStyles[species]=style
-      if style=='original' then return Sound.__dexCryStyleOriginal(data,species,pikaClip)end
+      local Version=require('src.core.GameVersion')
+      if style=='original' and species=='PIKACHU' and pikaClip~=false and Version.isYellow and Version.isYellow() then
+        local voice=Sound.__dexCryStyleOriginal(data,species,pikaClip)
+        if voice then return voice end
+      end
+      local info=mod:info(rel)
+      if not info or info.type~='file' then return Sound.__dexCryStyleOriginal(data,species,pikaClip)end
       -- Keep canonical species keys for native stop/wait and cry ownership.
       local cries=setmetatable({[species]={file=mod.assets:path(rel)}},{__index=data.audio and data.audio.cries or {}})
       local audio=setmetatable({cries=cries},{__index=data.audio or {}})
