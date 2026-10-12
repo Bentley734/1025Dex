@@ -6,6 +6,20 @@ return function(mod)
   if mod.cache and mod.ui and (generation == 3 or mod.content.screens) then
     assert(load(assert(mod:read('compat/assets.lua')), '@1025dex/assets.lua'))()(mod)
   end
+  -- Gen3 attaches its loader after mod startup; retry on first sprite access.
+  local spriteOptionsMigrated = false
+  function mod:migrateSpriteOptions()
+    if spriteOptionsMigrated then return end
+    local gameOK, game = pcall(require, 'src.core.Game')
+    if gameOK and game and game.mods and game.mods.modOptions then
+      local values = game.mods.modOptions[mod.id or '1025dex']
+      if values then
+        assert(load(assert(mod:read('compat/sprite_options.lua')), '@1025dex/sprite_options.lua'))()(values)
+      end
+      spriteOptionsMigrated = true
+    end
+  end
+  mod:migrateSpriteOptions()
   local schema, seen = {}, {}
   local function component(folder)
     local child = setmetatable({path=mod.path .. '/' .. folder}, {__index=mod})

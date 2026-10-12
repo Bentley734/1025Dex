@@ -1,4 +1,4 @@
-# 1025Dex 1.2.41 - Sprite layout metadata
+# 1025Dex 1.2.42 - Simplified sprite controls
 
 Updates now use a small core ZIP. Download all sprite styles, icons, and 1025
 cries once from the built-in prompt or **OPTIONS > 1025DEX ASSETS**. The pack is
@@ -12,12 +12,12 @@ cache labels and values. Restart the game after replacing the mod; ability
 changes are not required.
 
 In 1025Dex's options, **ENEMY SPRITES** and **PLAYER SPRITES** independently
-select ANIMATED, GEN9 STATIC, BW ROM, EE ANIMATED or EE STATIC. DEFAULT follows
-SPRITE STYLE. Pokedex and summary artwork keep the main SPRITE STYLE setting.
+select ANIMATED, GEN9 STATIC, BW ROM, EE ANIMATED or EE STATIC.
+Pokedex and summary artwork follow PLAYER SPRITES.
 BW ROM still requires the locally imported companion pack.
 
 **PLAYER VIEW** selects BACK, FRONT or MIRRORED FRONT (a horizontal flip).
-SAVED preserves existing 3DB FRONTAL / 3DB FLIP preferences. These options cover
+Updates preserve existing front/mirror preferences in PLAYER VIEW. These options cover
 native battles in all 11 games and custom scenes using the battle sprite hook.
 Shiny palettes, gender artwork and per-source animation timing remain supported.
 
@@ -124,7 +124,7 @@ and cached Gen 3 previews. Single-frame artwork stays still.
 
 ## Retained from 1.2.24 - Emerald Expansion sprite options
 
-In **SPRITE STYLE**, select **EE ANIMATED** for the supplied Emerald Expansion
+In **PLAYER SPRITES** or **ENEMY SPRITES**, select **EE ANIMATED** for the supplied Emerald Expansion
 frames or **EE STATIC** for their first pose. Both use the project's
 Emerald Expansion Sprites artwork for battles, PokÃ©dex and summary pictures,
 including normal/shiny palettes, gender variants and available forms.
@@ -502,3 +502,13 @@ ROM base-cry definitions remain intact; selected audio uses clean file definitio
 ## 1.2.41 - KIM Auto size compatibility
 
 Expose optional `ctx.spriteLayout` through `battle.mon_pic` for natural frames. It describes the complete animation union and existing ground origin, including intentional hover padding and composited shadows. KIM1025 1.7.27 uses this for its opt-in desktop AUTO player size. Sprite pixels, animation clocks, native slots, cries and downloaded asset packs are unchanged. Update both mods and restart; no new asset download is required.
+
+## 1.2.42 - Simplified sprite controls
+
+ENEMY SPRITES and PLAYER SPRITES directly choose their own artwork. The redundant SPRITE STYLE row and DEFAULT choices have been removed. Pokédex and summary pictures follow PLAYER SPRITES; party icons retain their own setting.
+
+BATTLE SPRITES previously enabled/disabled custom artwork; custom artwork is now always used. ANIMATE previously froze animation on the first frame; animated styles now always animate using their existing speed and EE playback settings. Explicitly static styles remain static.
+
+3DB FRONTAL and 3DB FLIP duplicated PLAYER VIEW and have been removed. PLAYER VIEW retains BACK, FRONT and MIRRORED FRONT. Existing saved global style and legacy front/mirror choices migrate to the corresponding independent settings; unrelated settings and KIM1025 positioning are preserved.
+
+Restart after updating. Existing downloaded assets are reused.

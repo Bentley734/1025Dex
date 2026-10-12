@@ -96,7 +96,7 @@ eq(old.gen3FrameData,nil,'old animated pixels discarded');eq(#proxy.data,0,'old 
 eq(proxy.lastFrame,nil,'cached image will refresh');eq(env.readyCount,0,'ready budget reset')
 -- Option schema must expose the identical choice to the manager and runtime.
 local options=dofile('sprites/options.lua');local row
-for _,r in ipairs(options)do if r.key=='sprite_style'then row=r end end
+for _,r in ipairs(options)do if r.key=='player_sprite_style'then row=r end end
 eq(row.default,3,'EE animated default');eq(row.choices[2][2],1,'static selectable')
 print(('PASS: %d sprite assertions; real inventory lookup, palettes, aliases, fallback, style caches, density and union-frame placement.'):format(checks))
 return {key=api.key,bake=bake,select=selectSheet,env=env,layout=api.setup}

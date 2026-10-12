@@ -11,27 +11,19 @@
 --          choices={ { "LABEL", value }, ... } }.
 return {
   {
-    key = "sprite_style",
-    label = "SPRITE STYLE",
-    type = "choice",
-    default = 3,
+    key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = 3,
     choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
-    description = "EE ANIMATED uses the supplied Emerald Expansion front/back sheets and palettes; EE STATIC uses their first pose. Missing EE artwork keeps matching DBK artwork. BW ROM uses the local Black/White companion created with tools/import_bw_rom.py, preserving original animation timing. Unavailable species/forms retain DBK artwork. ANIMATED keeps the DBK sheets. GEN9 STATIC uses the supplied Gen 9 Resource Pack v3.3.8 front/back artwork, including shiny and female variants. Forms absent from the static pack retain their matching animated artwork. Applies to battles, Pokedex and summary pictures; party icons keep their own setting.",
+    description = "Artwork for enemy battle Pokemon. Animated styles always animate; static styles remain still.",
   },
   {
-    key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = -1,
-    choices = { { "DEFAULT", -1 }, { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
-    description = "Battle artwork for the enemy Pokemon. DEFAULT follows SPRITE STYLE; Pokedex and summary pictures keep SPRITE STYLE.",
+    key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = 3,
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
+    description = "Artwork for player battle Pokemon, Pokedex and summary pictures. Animated styles always animate; static styles remain still.",
   },
   {
-    key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = -1,
-    choices = { { "DEFAULT", -1 }, { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
-    description = "Battle artwork for the player Pokemon. DEFAULT follows SPRITE STYLE; Pokedex and summary pictures keep SPRITE STYLE.",
-  },
-  {
-    key = "player_sprite_view", label = "PLAYER VIEW", type = "choice", default = -1,
-    choices = { { "SAVED", -1 }, { "BACK", 0 }, { "FRONT", 1 }, { "MIRRORED FRONT", 2 } },
-    description = "Player battle pose in every game: back artwork, front artwork, or horizontally mirrored front artwork. SAVED preserves the existing 3DB FRONTAL and 3DB FLIP settings. Enemy artwork is never mirrored.",
+    key = "player_sprite_view", label = "PLAYER VIEW", type = "choice", default = 0,
+    choices = { { "BACK", 0 }, { "FRONT", 1 }, { "MIRRORED FRONT", 2 } },
+    description = "Player battle pose in every game: back artwork, front artwork, or horizontally mirrored front artwork. Existing front and mirror selections are preserved when updating. Enemy artwork is never mirrored.",
   },
   {
     key = "ee_pause", label = "EE PAUSE", type = "choice", default = 2,
@@ -52,20 +44,6 @@ return {
     key = "ee_alt_loops", label = "EE ALT LOOPS", type = "choice", default = 3,
     choices = { { "SAME", 0 }, { "1", 1 }, { "2", 2 }, { "3", 3 }, { "4", 4 }, { "5", 5 } },
     description = "Loops in every second EE playback burst. SAME uses EE LOOPS. Primary and alternate bursts repeat in turn; Pokedex selection starts with the primary burst.",
-  },
-  {
-    key = "enable_battle_sprites",
-    label = "BATTLE SPRITES",
-    type = "toggle",
-    default = true,
-    description = "ON (default): battle Pokemon use the true-colour animated DBK sprite sheets. OFF: every battle pic is left exactly as the game would draw it.",
-  },
-  {
-    key = "animate_sprites",
-    label = "ANIMATE",
-    type = "toggle",
-    default = true,
-    description = "ON (default): the sprite sheet plays left-to-right as a loop. OFF: only the sheet's first frame is shown (a still picture).",
   },
   {
     key = "sprite_fps",
@@ -124,20 +102,6 @@ return {
     type = "toggle",
     default = true,
     description = "ON (default): in FEET mode, a sprite the pack draws airborne (a flying or levitating species, see data/dbk_float.lua) is lifted off the ground line by FLOAT_LIFT x its own height, so it hovers instead of standing -- and a bigger flyer hovers higher than a smaller one. OFF: every sprite stands its feet on the line. This row does nothing in PACK or BOX mode.",
-  },
-  {
-    key = "battle_frontal",
-    label = "3DB FRONTAL",
-    type = "toggle",
-    default = false,
-    description = "OFF (default): the player's Pokemon shows its BACK sheet on the battle field, exactly as the game intends -- it stands with its back to you, facing the foe. ON: the player's Pokemon shows its FRONT sheet instead, so BOTH Pokemon on the field are drawn front-on (the foe already shows its front). This replaces the back sprite with the frontal sprite WITHOUT the flip; turn on 3DB FLIP as well to make that front art aim at the foe. Applies to the game's own gen1 and gen2 battle screens and to every custom battle screen (g9-Battle-Scene and its forks) alike. The Pokedex, the summary and the party list already show front art and are untouched by this row.",
-  },
-  {
-    key = "battle_front_flip",
-    label = "3DB FLIP",
-    type = "toggle",
-    default = false,
-    description = "OFF (default): the player's sprite is drawn exactly as the pack provides it. ON: the player's own front sprite is mirrored horizontally (flipped across its vertical axis), so a creature whose front art faces your LEFT now faces RIGHT -- toward the foe across the field. Only the PLAYER side is flipped: the foe already faces the player, so it is left alone. This row is the flip that makes a front-on player sprite aim at the foe, so it is meant to be used together with 3DB FRONTAL; with 3DB FRONTAL off the player is showing its back sheet, and this row does nothing (a back sprite is never mirrored).",
   },
   {
     key = "dex_sprites",
