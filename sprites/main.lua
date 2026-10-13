@@ -192,12 +192,12 @@ return function(mod)
   local OPTIONS = {
   {
     key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
     description = "Artwork for enemy battle Pokemon. Animated styles always animate; static styles remain still.",
   },
   {
     key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
     description = "Artwork for player battle Pokemon, Pokedex and summary pictures. Animated styles always animate; static styles remain still.",
   },
   {
@@ -450,20 +450,28 @@ return function(mod)
     return default
   end
   local function wantEnabled() return true end
+  function DATA.kimPeer()
+    if type(mod.find)~='function'then return nil end
+    local ok,handle=pcall(mod.find,mod,'kim1025')
+    local peer=ok and handle and handle.exports
+    return peer and type(peer.getDexSpriteSheet)=='function'and peer or nil
+  end
   function DATA.spriteStyle()
     if mod and mod.migrateSpriteOptions then mod:migrateSpriteOptions() end
     local value = tonumber(opt("player_sprite_style", -1))
     if not value or value < 0 then value = tonumber(opt("sprite_style", 3)) end
-    return (value == 1 or value == 2 or value == 3 or value == 4) and value or 0
+    if value==5 and not DATA.kimPeer()then return 3 end
+    return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5) and value or 0
   end
   function DATA.styleFor(back, battle)
     if mod and mod.migrateSpriteOptions then mod:migrateSpriteOptions() end
     if battle then
       local value = tonumber(opt(back and "player_sprite_style" or "enemy_sprite_style", -1))
-      if value and value >= 0 and value <= 4 and value == math.floor(value) then return value end
+      if value==5 and not DATA.kimPeer()then return 3 end
+      if value and value >= 0 and value <= 5 and value == math.floor(value) then return value end
     end
     local value = tonumber(opt("sprite_style", 3))
-    if battle then return (value == 1 or value == 2 or value == 3 or value == 4) and value or 0 end
+    if battle then return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5) and value or 0 end
     return DATA.spriteStyle()
   end
   function DATA.playerView(back)
@@ -476,6 +484,7 @@ return function(mod)
     local front = opt("battle_frontal", false) ~= false
     return front, front and opt("battle_front_flip", false) ~= false
   end
+  if mod and mod.exports then mod.exports.spriteStyleFor=function(side,battle)return DATA.styleFor(side=='back',battle~=false)end end
   local function animateOn(style)
     style = style or DATA.spriteStyle()
     return style ~= 1 and style ~= 4
@@ -1242,6 +1251,7 @@ return function(mod)
   -- Decode one sheet through the routes above, reporting which one won (or why
   -- every available route failed).
   local function decodeSheet(sheet)
+    if sheet.kimData then local data=sheet.kimData;sheet.kimData=nil;return data,'KIM' end
     if sheet.bwPeer then
       local ok, data = pcall(sheet.bwPeer.decodeSprite, sheet.bwFolder, sheet.sourceStem)
       if ok and data then return data, "BW ROM" end
@@ -1850,7 +1860,7 @@ return function(mod)
   local function beginBuild(sheet, imageData)
     local W, H = imageData:getDimensions()
     if H < 1 or W < 1 then return false end
-    local count = math.max(1, math.floor((W + H / 2) / H))
+    local count = sheet.kimRecord and sheet.kimRecord.count or math.max(1, math.floor((W + H / 2) / H))
     if sheet.static and W ~= H then return false end
     if sheet.static then count = 1 end
     local fw = math.floor(W / count)
@@ -3077,6 +3087,29 @@ return function(mod)
     sheet.ee = false
     sheet.sourceStem = sheet.stem
     sheet.bwPeer, sheet.bwFolder, sheet.bwTiming = nil, nil, nil
+    sheet.kimData,sheet.kimRecord=nil,nil
+    if sheet.style==5 then
+      local peer=DATA.kimPeer()
+      if peer then
+        if not DATA.kimSpecies then DATA.kimSpecies={};for species,stem in pairs(DATA.species)do if not DATA.kimSpecies[stem]then DATA.kimSpecies[stem]=species end end end
+        local species=DATA.kimSpecies[sheet.stem]or sheet.stem
+        if not DATA.kimDex and mod.rootRead then
+          DATA.kimDex={};local roster=assert((loadstring or load)(assert(mod:rootRead('encounters/roster.lua'))))()
+          for _,row in ipairs(roster)do DATA.kimDex[row.name]=row.id end
+        end
+        local dex=DATA.kimDex and DATA.kimDex[species]
+        if sheet.stem:match('_female$')then species=(DATA.kimSpecies[sheet.stem:gsub('_female$','')]or species)..'_FEMALE'end
+        dex=dex or DATA.kimDex and DATA.kimDex[species:gsub('_FEMALE$',''):gsub('_female$','')]
+        local ok,data,record=pcall(peer.getDexSpriteSheet,species,sheet.back and not sheet.front and 'back'or 'front',sheet.shiny,dex)
+        if ok and data and record then
+          sheet.kimData,sheet.kimRecord,sheet.bwTiming=data,record,record.timing
+          sheet.rel,sheet.status=nil,'local';return
+        end
+      end
+      -- Missing KIM species/forms retain the matching existing artwork.
+      local files=(DATA.ee and DATA.ee.files[folder])or {}
+      if files[sheet.stem]then rel='assets/ee/'..folder..'/'..sheet.stem..'.png';sheet.ee=true end
+    end
     if sheet.style == 3 or sheet.style == 4 then
       local files = (DATA.ee and DATA.ee.files[folder]) or {}
       if files[sheet.stem] then

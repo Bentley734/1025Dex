@@ -5,7 +5,7 @@ local function eq(a,b,why)checks=checks+1;assert(a==b,why..': '..tostring(a)..' 
 local function read(p)local f=assert(io.open(p));local s=f:read('*a');f:close();return s end
 local source=read('compat/asset_download_manager.lua')
 for _,generation in ipairs({3,1,2})do
- local Stack=assert(loadfile('../gen1recomp-0.3.54/src/ui/game3/stack.lua'))()
+ local Stack=assert(loadfile((arg and arg[3]or '../gen1recomp-0.3.54')..'/src/ui/game3/stack.lua'))()
  local cache,registry,hooks,events,drawn={},{},{},{},{}
  local legacyPushes,confirms=0,0
  local legacyTextCalls=0
@@ -60,15 +60,11 @@ for _,generation in ipairs({3,1,2})do
  eq(hooks['ui.start_menu.items'],nil,'no asset entry in Start')
  eq(hooks['ui.title_menu.items'],nil,'no asset entry in title')
  local entries=generation==3 and Rows.build({game=game}) or hooks['ui.options.rows'](function()return {{id='native',label='NATIVE'}}end,game,{})
- local assetIndex=2
- eq(entries[assetIndex].label,'1025DEX ASSETS','OPTION asset row present')
- eq(entries[assetIndex].id,manager.screenId,'stable row id')
- local function selectAsset()
-  entries[assetIndex].activate(generation==3 and {game=game} or game)
- end
+ eq(#entries,1,'ASSETS removed from root OPTION rows')
+ eq(type(manager.open),'function','asset manager exposes nested settings action')
+ local function selectAsset()manager.open(game)end
  if generation==3 then
-  eq(entries[assetIndex].step,nil,'left/right cannot open assets')
-  eq(#Rows.build({game=game}),2,'row builder does not duplicate entries')
+  eq(#Rows.build({game=game}),1,'row builder does not duplicate entries')
   selectAsset()
   eq(Stack.depth(),1,'selection opens native Gen3 layer')
   eq(legacyPushes,0,'does not call unsupported ui.push')

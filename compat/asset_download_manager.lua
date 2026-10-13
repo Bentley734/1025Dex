@@ -1873,11 +1873,6 @@ return function(mod, config)
               copy[#copy + 1] = row
             end
           end
-          copy[#copy + 1] = {
-            id = SCREEN_ID, label = "1025DEX ASSETS",
-            value = function() return "OPEN" end,
-            activate = function(c) bridge.open(c and c.game) end,
-          }
           return copy
         end
       end
@@ -1895,20 +1890,12 @@ return function(mod, config)
     mod.hooks:wrap("ui.options.rows", function(nextFn, game, rows)
       local out = nextFn(game, rows)
       if type(out) ~= "table" then return out end
-      for _, row in ipairs(out) do
-        if type(row) == "table" and row.id == SCREEN_ID then return out end
-      end
-      local copy = {}
-      for _, row in ipairs(out) do copy[#copy + 1] = row end
-      copy[#copy + 1] = {
-        id = SCREEN_ID, label = "1025DEX ASSETS",
-        text = function() return "OPEN" end,
-        value = function() return "OPEN" end,
-        activate = function(g) openManager(g or game) end,
-      }
+      local copy={}
+      for _,row in ipairs(out)do if row.id~=SCREEN_ID then copy[#copy+1]=row end end
       return copy
     end)
   end
 
+  manager.open = openManager
   return manager
 end

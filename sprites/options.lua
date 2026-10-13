@@ -12,12 +12,12 @@
 return {
   {
     key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
     description = "Artwork for enemy battle Pokemon. Animated styles always animate; static styles remain still.",
   },
   {
     key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
     description = "Artwork for player battle Pokemon, Pokedex and summary pictures. Animated styles always animate; static styles remain still.",
   },
   {

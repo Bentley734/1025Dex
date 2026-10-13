@@ -7,6 +7,7 @@ local function block(start,ending)
   local a=assert(source:find(start,1,true));local z=assert(source:find(ending,a+1,true))
   return source:sub(a,z-1)
 end
+local inventory=dofile('compat/asset_catalog.lua')
 local data=dofile('sprites/data/static_data.lua');data.metrics=dofile('sprites/data/static_metrics.lua')
 local style,mode,anchor=1,1,0
 local actualLove=love
@@ -27,7 +28,7 @@ local env=setmetatable({DATA={static=data,spriteStyle=function()return style end
   floatLift=function()return 0 end,
   gen3BattleLiftByImage={},ourFrames={},love={image=L.image,graphics={newImage=function(out)return {data=out,setFilter=function()end}end}},
   localFolder=function(back,shiny)return (back and 'back' or 'front')..(shiny and '_shiny' or '')end,
-  mod={info=function(_,path)local f=io.open('sprites/'..path,'rb');if f then f:close();return {type='file'}end end},
+  mod={info=function(_,path)if inventory['assets/sprites/'..path]then return {type='file'}end end},
   frameCounter=0,RECHECK_FRAMES=900,debugOn=function()return false end,
   diag={stats={missing=0}},diagPush=function()end,
 },{__index=_G})

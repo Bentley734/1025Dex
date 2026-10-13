@@ -1,7 +1,7 @@
 -- Equal odds for every registered base species and alternate-form identity.
 local M={key='fullEncounterRandomizer'}
 function M.new(mod,national,roster,resolve,identity)
-  if mod.options then mod.options:define({{key=M.key,label='Random encounters (all forms)',type='toggle',default=false}}) end
+  if mod.options then mod.options:define({{key=M.key,label='RANDOMIZER',type='toggle',default=false}}) end
   local candidates={}
   for _,row in ipairs(roster)do candidates[#candidates+1]={id=row.id,name=row.name,catchRate=row.catchRate}end
   for id,row in pairs(national.register or {})do

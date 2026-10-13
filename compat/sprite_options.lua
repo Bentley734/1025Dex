@@ -4,7 +4,7 @@ return function(values)
   if type(values) ~= "table" then return end
   local function style(value)
     value = tonumber(value)
-    if value and value >= 0 and value <= 4 and value == math.floor(value) then return value end
+    if value and value >= 0 and value <= 5 and value == math.floor(value) then return value end
   end
   local legacy = style(values.sprite_style) or 3
   for _, key in ipairs({"enemy_sprite_style", "player_sprite_style"}) do

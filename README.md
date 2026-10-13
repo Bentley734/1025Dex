@@ -1,3 +1,15 @@
+# 1025Dex 1.2.44
+
+- Rename Random encounters (all forms) to RANDOMIZER, keeping its saved option key.
+- Move 1025DEX ASSETS into the 1025DEX settings submenu, before RESET DEFAULTS.
+- Add KIM to both ENEMY SPRITES and PLAYER SPRITES when active KIM1025 1.7.37 or newer is installed. Menu pictures follow the player selection.
+- Preserve existing sprite-choice IDs and saves. Missing KIM artwork retains matching existing artwork; removing/disabling KIM falls back to EE without erasing the saved selection.
+- Decode KIM's rectangular, multirow HD atlases through its companion API, preserving front/back, normal/shiny, supported forms, frame order and original animation timing.
+
+Validation: LuaJIT/Lua 5.3 menu, asset-manager, independent sprite selection, migration, static/EE/BW rendering and frame-clock checks; 121 real PNG/GPU KIM atlas/baker checks; existing eleven-game registry and startup regressions. Combined native GB settings checks passed. No live gameplay session was restarted.
+
+Install KIM1025 1.7.37 alongside this release to enable KIM. Restart the game after installing.
+
 # 1025Dex 1.2.43
 
 Built from GitHub's latest 1.2.42 release. Centre visible Pokemon artwork in cached Gen 3 field/script pictures, including FireRed and LeafGreen starter confirmation boxes. Apply this to both ready and still-baking animation frames; retain cached Image identity and playback metadata. Battle pictures retain their ground-contact alignment.
