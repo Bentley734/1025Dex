@@ -2562,6 +2562,7 @@ return function(mod)
   end
 
 
+  DATA.centerPreview=assert(load(assert(mod:read('preview_center.lua'))))()
   local function buildOneFrame(sheet)
     local b = sheet.build
     local id, fw = b.id, b.fw
@@ -3008,36 +3009,7 @@ return function(mod)
           -- Oak's starter-choice window is a presentation box, not a battle
           -- field: its cached proxy should centre the creature vertically
           -- instead of inheriting the battle frame's feet-on-the-ground rule.
-          if proxy.center then
-            local bw, bh = box.w, box.h
-            local top, bottom = bh, -1
-            for py = 0, bh - 1 do
-              for px = 0, bw - 1 do
-                local a = select(4, out:getPixel(px, py))
-                if a and a > 0 then
-                  if py < top then top = py end
-                  if py > bottom then bottom = py end
-                end
-              end
-            end
-            if bottom >= top then
-              local wantedTop = math.floor((bh - (bottom - top + 1)) / 2)
-              local shift = wantedTop - top
-              if shift ~= 0 then
-                local centered = love.image.newImageData(bw, bh)
-                for py = 0, bh - 1 do
-                  local sy = py - shift
-                  if sy >= 0 and sy < bh then
-                    for px = 0, bw - 1 do
-                      local r, g, b, a = out:getPixel(px, sy)
-                      centered:setPixel(px, py, r or 0, g or 0, b or 0, a or 0)
-                    end
-                  end
-                end
-                proxyFrame = centered
-              end
-            end
-          end
+          if proxy.center then proxyFrame=DATA.centerPreview(out)end
           proxy.data = proxy.data or {}
           -- Pending previews own a separate array until baking completes.
           -- Keep its playback metadata with the pixels, including after resets.
@@ -3581,7 +3553,12 @@ return function(mod)
       local okImage, image = pcall(love.graphics.newImage, data)
       if not (okImage and image) then return nil end
       if image.setFilter then pcall(image.setFilter, image, "nearest", "nearest") end
-      local proxy = { image = image, data = sheet.gen3FrameData or {}, lastFrame = nil, center = false }
+      local frameData=sheet.gen3FrameData or {}
+      if not battle then
+        local centered={};for k,v in pairs(frameData)do centered[k]=type(k)=='number'and DATA.centerPreview(v)or v end
+        frameData=centered
+      end
+      local proxy = { image = image, data = frameData, lastFrame = nil, center = not battle }
       proxy.pic = { image = image, w = 64, h = 64 }
       sheet.proxies.gen3 = proxy
       local i = frameIndex(#proxy.data, proxy.data)
