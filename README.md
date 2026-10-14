@@ -1,3 +1,11 @@
+# 1025Dex 1.2.50
+
+Fix species sprite lookup for accented and non-ASCII display names. Normalize complete UTF-8 characters before ASCII lookup; preserve Nidoran gender suffixes, handle Latin accents, combining marks and curly punctuation, and recognize older corrupted encodings.
+
+1025Dex: repair the corrupted accent-folding table so Flabebe artwork is found for Flabébé/FLABÉBÉ instead of silently dropping e characters. Preserve unambiguous collapsed-key matching for species such as Farfetch'd, Mr. Mime, Mime Jr., Type: Null and Ho-Oh. KIM1025: use the same normalization in native sprite names and its exported Dex sheet provider.
+
+Validation: production resolver checks for 14 accent/gender/punctuation variants plus all 1371 canonical species/form mappings under LuaJIT and Lua 5.3; whole-source compilation of both mods. Restart to load the update.
+
 # 1025Dex 1.2.49
 
 Prevent FireRed's post-capture Pokedex return from crashing on a missing picture record (reported after catching Flabebe).

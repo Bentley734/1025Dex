@@ -1078,22 +1078,8 @@ return function(mod)
   -- filenames deliberately use ASCII identifiers, so fold the few accented
   -- Latin characters used by Pokemon names before trying the data table.
   -- Keep underscores because they separate form suffixes.
-  local SPECIES_FOLD = {
-    ["Ã©"] = "e", ["Ã‰"] = "E",
-    ["â™€"] = "F", ["â™‚"] = "M",
-  }
-
-  local function canonicalSpeciesKey(species)
-    if type(species) ~= "string" then return nil end
-    local key = species
-    -- Lua patterns operate on bytes rather than UTF-8 codepoints, so fold each
-    -- complete encoded character explicitly instead of using a bracket class.
-    for accented, ascii in pairs(SPECIES_FOLD) do
-      key = key:gsub(accented, ascii)
-    end
-    key = key:upper():gsub("[^A-Z0-9_]", "")
-    return key
-  end
+  DATA.canonicalSpeciesKey=assert((loadstring or load)(assert(mod:read('lib/species_key.lua'))))()
+  local function canonicalSpeciesKey(species)return DATA.canonicalSpeciesKey(species)end
 
   -- Display names can use spaces and punctuation where registry ids use
   -- underscores (TYPE: NULL -> TYPE_NULL, HO-OH -> HO_OH, TAPU KOKO ->
