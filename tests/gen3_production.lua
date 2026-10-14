@@ -63,3 +63,17 @@ assert(P.battleMove(585).type==18 and P._types[P.speciesFromName('CLEFAIRY')][1]
 local forgotten=mon('GRENINJA',594);forgotten.dexAbility=nil;forgotten.ability=nil
 Runtime.emit('game.ready',{game={session={party={},storage={boxes={{mons={forgotten}}}}}}})
 assert(forgotten.dexAbility and P.abilityName(forgotten.ability)==forgotten.dexAbility,'Stored ability assignment missing')
+local flyer,target=mon('CHARIZARD',19),mon('BLISSEY')
+local fs=State.new{playerParty={flyer},foeMon=target,wild=true,rng=function(lo)return lo end};local fa=Adapter.new(fs);local originalHp=target.hp
+Engine.resolveMove(fs.player,fs.enemy,19,1,fa,fs,{},{})
+assert(target.hp==originalHp,'Fly failed to preserve its native charging turn')
+Engine.resolveMove(fs.player,fs.enemy,19,1,fa,fs,{},{})
+assert(target.hp<originalHp and flyer.pp[1]==Moves.get(19).pp-1,'Fly second turn or PP broken')
+print('GEN3-CHARGE-PASS',version,'native two-turn Fly')
+local beam,wall=mon('PORYGON',63),mon('BLISSEY');beam.moves={63,33};beam.pp={5,35}
+local hs=State.new{playerParty={beam},foeMon=wall,wild=true,rng=function(lo)return lo end};local ha=Adapter.new(hs)
+Engine.resolveMove(hs.player,hs.enemy,63,1,ha,hs,{},{})
+local after=wall.hp
+Engine.resolveMove(hs.player,hs.enemy,33,2,ha,hs,{},{})
+assert(wall.hp==after and beam.pp[2]==35,'Native Hyper Beam recharge not preserved')
+print('GEN3-RECHARGE-PASS',version,'Hyper Beam recharge consumes no second move PP')

@@ -1,3 +1,7 @@
+# 1025Dex 1.4.1
+
+Preserve native charge/recharge and other turn-control effects while adapting damage and secondary effects. Fly charges on its first turn, attacks on the second and spends PP once; Hyper Beam recharges without spending another move's PP. Both cases are asserted in the production suite for all five Gen 3 games. This release includes the complete 1.4.0 adapter update below.
+
 # 1025Dex 1.4.0
 
 Gen 3 now runs real modern moves and abilities through a native battle adapter on Ruby, Sapphire, Emerald, FireRed and LeafGreen. The old move-substitution call and its matching algorithm have been removed. Canonical IDs, actual Fairy typing, move categories, PP and species abilities are retained; no additional dex or battle-rendering mod is installed.

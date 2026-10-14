@@ -4,6 +4,12 @@ return function(mod,registry,models)
  local Moves=require('src.core.game3.battle.moves')
  local Pokemon=require('src.core.game3.pokemon')
  local Types=require('src.core.game3.battle.types')
+ local Effects=require('src.core.game3.battle.effect_ids')
+ local controls={}
+ for _,name in ipairs({'SEMI_INVULNERABLE','RAZOR_WIND','SOLAR_BEAM','SKULL_BASH','SKY_ATTACK',
+  'RECHARGE','RAMPAGE','UPROAR','BIDE','ROLLOUT','FURY_CUTTER','RAGE','FOCUS_PUNCH'})do
+  if Effects[name]then controls[Effects[name]]=true end
+ end
  local function copy(row)local result={};for k,v in pairs(row or{})do result[k]=v end;return result end
  Types.ID.FAIRY=18
  Types.NAME[18]='FAIRY'
@@ -42,6 +48,10 @@ return function(mod,registry,models)
   row.type=assert(Types.ID[row.type=='PSYCHIC_TYPE'and 'PSYCHIC'or row.type],'Unknown move type')
   -- Primary/secondary effects are dispatched by the private combat bus.
   row.effect=0;row.effectId=nil;row.secondaryChance=0
+  if modern.numId<=354 then
+   local original=get(modern.numId)
+   if controls[original.effect]then row.effect=original.effect end
+  end
   local modernEffect=models.data.move_effects[(models.data.moves[modern.id]or{}).effect]
   local active=models.activeEffect
   if active and active.id==modern.id and active.statusOnly then row.power=0;row.category='status'end
