@@ -1,3 +1,9 @@
+# 1025Dex 1.2.45
+
+Use the selected PLAYER SPRITES style for the scrolling Gen 1 title-screen Pokemon. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.
+
+Restart to load the update.
+
 # 1025Dex 1.2.44
 
 - Rename Random encounters (all forms) to RANDOMIZER, keeping its saved option key.

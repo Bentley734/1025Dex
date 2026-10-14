@@ -3861,6 +3861,18 @@ return function(mod)
     return nil, pending
   end
 
+  -- Title portraits use the same player/menu sprite style as the Pokedex.
+  local okTitle,Title=pcall(require,'src.ui.TitleState')
+  if okTitle and type(Title.currentSprite)=='function'and not Title._1025DexTitleSprites then
+    Title._1025DexTitleSprites=true;local native=Title.currentSprite
+    Title.currentSprite=function(self,...)
+      local species=self.cycleSpecies and self.cycleSpecies[self.cycleIndex]
+      local image=species and dexFrame(species,self)
+      if image then return image,true end
+      return native(self,...)
+    end
+  end
+
   local function installDexGen1()
     local ok, DexEntryMenu = pcall(require, "src.ui.DexEntryMenu")
     if not (ok and type(DexEntryMenu) == "table"
