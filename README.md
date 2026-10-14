@@ -1,3 +1,11 @@
+# 1025Dex 1.2.48
+
+Fix the sprite component startup failure introduced by the title-screen hook. The component exceeded Lua's 200-local-variable limit; store the new hook installer on the existing DATA table instead of allocating a new top-level local.
+
+This restores the complete sprite component and its selected PLAYER SPRITES title portraits, including live-instance hooks and pending frame building. KIM1025's retired title-screen feature remains disabled; no KIM title override was found.
+
+Validation: every 1025Dex Lua source compiled under LuaJIT and Lua 5.3; full entrypoint/registry checks across eleven games; live title-instance and delayed-frame fixture. Restart the game to load the corrected mod.
+
 # 1025Dex 1.2.47
 
 Attach the portrait provider to the live scrolling title-screen instance through screen.render_visible, covering screens whose factory wraps or clones the class. Advance pending sprite decoding/baking from title sprite access rather than waiting for the battle update path. The title path reads the selected sprite frames directly and does not depend on the unrelated DEX SPRITES toggle. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.

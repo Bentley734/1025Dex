@@ -3862,7 +3862,7 @@ return function(mod)
   end
 
   -- Title portraits use the same player/menu sprite style as the Pokedex.
-  local function installTitleSprites()
+  function DATA.installTitleSprites()
     local ok,Title=pcall(require,'src.ui.TitleState')
     if not(ok and type(Title.currentSprite)=='function')then return false end
     if Title.currentSprite==Title._1025DexTitleSprites then return true end
@@ -3882,7 +3882,7 @@ return function(mod)
     Title._1025DexTitleSprites=selected;Title.currentSprite=selected
     return true
   end
-  installTitleSprites()
+  DATA.installTitleSprites()
   -- Patch the live instance too: screen factories may wrap/clone the class.
   mod.hooks:wrap('screen.render_visible',function(next,screen)
     if screen and screen.cycleSpecies and screen.cycleIndex and type(screen.currentSprite)=='function'
@@ -5134,7 +5134,7 @@ return function(mod)
     return
   end
   mod.hooks:wrap("core.update", function(next, game, dt)
-    if gen==1 then installTitleSprites()end
+    if gen==1 then DATA.installTitleSprites()end
     -- A screen module the engine loads LAZILY can be impossible to require at
     -- mod-boot on some builds (the require throws before that tree is wired
     -- up).  Retry the Pokedex hook from the poll until it takes, so the
