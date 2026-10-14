@@ -3079,6 +3079,8 @@ return function(mod)
       if peer then
         if not DATA.kimSpecies then DATA.kimSpecies={};for species,stem in pairs(DATA.species)do if not DATA.kimSpecies[stem]then DATA.kimSpecies[stem]=species end end end
         local species=DATA.kimSpecies[sheet.stem]or sheet.stem
+        local letter=tonumber(sheet.stem:match('^UNOWN_(%d+)$'))
+        if letter then species='UNOWN_'..(letter<=25 and string.char(65+letter)or letter==26 and 'EXCLAMATION'or 'QUESTION')end
         if not DATA.kimDex and mod.rootRead then
           DATA.kimDex={};local roster=assert((loadstring or load)(assert(mod:rootRead('encounters/roster.lua'))))()
           for _,row in ipairs(roster)do DATA.kimDex[row.name]=row.id end
@@ -3349,6 +3351,7 @@ return function(mod)
   -- ---------------------------------------------------------------------------
   -- gen1 (Red/Blue/Yellow): drawPicsLayer substitution
   -- ---------------------------------------------------------------------------
+  assert((loadstring or load)(assert(mod:read('lib/battle_effect_pictures.lua'))))()(ourFrames)
   local managedSpecies = {}   -- species -> whether a frame Image is in use now
 
   local function ensureBattler(battler, back)
@@ -3602,6 +3605,12 @@ return function(mod)
       local name = okC and Compat and Compat.speciesName
         and Compat.speciesName(species) or nil
       local stem = resolveStem(name, DATA.styleFor(back, DATA.inGen3Battle))
+      local picture=tonumber(species)
+      if picture==201 then stem=resolveStem('UNOWN',DATA.styleFor(back,DATA.inGen3Battle))
+      elseif picture and picture>=413 and picture<=439 then
+        local letter='UNOWN_'..tostring(picture-412)
+        stem=DATA.stems[letter]and letter or resolveStem('UNOWN',DATA.styleFor(back,DATA.inGen3Battle))
+      end
       if not stem then return nil, false, false end
       local battle = DATA.inGen3Battle == true
       local front, flip = DATA.playerView(back and battle)
@@ -3663,7 +3672,7 @@ return function(mod)
         if managed and (pending or extendedSpecies(species)) then
           return transparentPic() or nativeBack(species, form, shiny)
         end
-        return nativeBack(species, form, shiny)
+        return nativeBack(species, form, shiny)or transparentPic()
       end
     end
     Pokemon.backPic = ownedBack or vanillaBack

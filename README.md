@@ -1,3 +1,13 @@
+# 1025Dex 1.2.52
+
+Map all 28 native Gen 3 Unown picture slots to their corresponding custom artwork, including KIM letter names. Keep safe missing-picture fallback for both battler sides.
+
+When an alternate form has no Gen 3 menu/nickname icon, use its base species icon instead of falling through to the trainer portrait. Preserve available form art and guard cyclic metadata.
+
+Keep custom GB battlers out of internal grayscale conversion and composite their transparent wave scanlines after the palette pass. Preserve native visibility and motion; do not leave stale battlers when an animation intentionally hides them.
+
+Validation: eleven-game registry/startup regressions, full compilation under LuaJIT and Lua 5.3, focused icon/Unown-slot/effect-state checks, and real GPU transparent wave rendering and hiding checks. The reported Unown encounter crash has not been reproduced; its error log is still needed to confirm whether the picture mapping resolves it. Restart after installing.
+
 # 1025Dex 1.2.51
 
 Scroll overflowing names in native Gen 3 Pokemon summary screens, including long alternate-form identifiers such as Pikachu-Kalos Cap.
