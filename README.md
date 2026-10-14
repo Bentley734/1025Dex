@@ -1,3 +1,9 @@
+# 1025Dex 1.2.47
+
+Attach the portrait provider to the live scrolling title-screen instance through screen.render_visible, covering screens whose factory wraps or clones the class. Advance pending sprite decoding/baking from title sprite access rather than waiting for the battle update path. The title path reads the selected sprite frames directly and does not depend on the unrelated DEX SPRITES toggle. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.
+
+Restart to load the update.
+
 # 1025Dex 1.2.46
 
 Retry the title portrait hook during native updates so late-loaded or replaced title classes use the selected PLAYER SPRITES style. The title path reads the selected sprite frames directly and does not depend on the unrelated DEX SPRITES toggle. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.

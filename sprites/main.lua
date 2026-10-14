@@ -3873,6 +3873,7 @@ return function(mod)
         local stem=resolveStem(species,DATA.spriteStyle())
         if stem then
           local frames=getFrames(false,false,stem)
+          if not frames then pollAll();frames=getFrames(false,false,stem)end
           if frames then return frames[frameIndex(#frames,frames)],true end
         end
       end
@@ -3882,6 +3883,25 @@ return function(mod)
     return true
   end
   installTitleSprites()
+  -- Patch the live instance too: screen factories may wrap/clone the class.
+  mod.hooks:wrap('screen.render_visible',function(next,screen)
+    if screen and screen.cycleSpecies and screen.cycleIndex and type(screen.currentSprite)=='function'
+       and screen.currentSprite~=screen._1025DexLiveTitle then
+      local native=screen.currentSprite
+      screen._1025DexLiveTitle=function(self,...)
+        local species=self.cycleSpecies[self.cycleIndex]
+        local stem=resolveStem(species,DATA.spriteStyle())
+        if stem then
+          local frames=getFrames(false,false,stem)
+          if not frames then pollAll();frames=getFrames(false,false,stem)end
+          if frames then return frames[frameIndex(#frames,frames)],true end
+        end
+        return native(self,...)
+      end
+      screen.currentSprite=screen._1025DexLiveTitle
+    end
+    return next(screen)
+  end)
 
   local function installDexGen1()
     local ok, DexEntryMenu = pcall(require, "src.ui.DexEntryMenu")
