@@ -1,3 +1,18 @@
+# 1025Dex 1.5.0
+
+Buy TMs for every added move at regional department stores, for 3,000 each:
+
+- Red/Blue/Yellow: Celadon Mart 4F (669 added-move machines).
+- Gold/Silver/Crystal: Goldenrod Dept. Store 5F and Celadon Dept. Store 3F (583).
+- FireRed/LeafGreen: Celadon Dept. Store 2F (480).
+- Ruby/Sapphire/Emerald: Lilycove Dept. Store 4F (480).
+
+Existing shelves are retained. Added machines teach actual modern moves through the native teaching menu, consume one TM on success, and restore full starting PP. Eligibility follows the species/form's recorded level, egg, tutor or machine learnset; four removed historical moves retain their PokeAPI learners. Forms keep their own permissions. Existing HMs and field/badge progression stay native. The Gen 2/3 machine pockets have room for the expanded collection. TM172--177 keep their previous identities; other added machines use stable TM(1000 + move ID) numbers. See [MOVE-MACHINES.md](MOVE-MACHINES.md) for the complete catalog.
+
+Validation: all 11 games load the complete catalog with legal recipients for every machine; species rejection, department-store stock, native purchases, bag capacity, Gen 3 native teaching/consumption/PP and sidecar persistence pass. Text rasterization is stubbed in the headless purchase tests; a real LOVE GPU probe separately renders the native TM Case, extended number/move label, details, correctly positioned disc and native item icon. Full LuaJIT/Lua 5.3 compilation and roster/encounter regressions pass. The native battle adapter remains unchanged. No live playthrough was performed. Expanded string-key machines persist in engine saves; cartridge .sav export does not carry them.
+
+Restart after installing. Johnto and other mods are unchanged.
+
 # 1025Dex 1.4.1
 
 Preserve native charge/recharge and other turn-control effects while adapting damage and secondary effects. Fly charges on its first turn, attacks on the second and spends PP once; Hyper Beam recharges without spending another move's PP. Both cases are asserted in the production suite for all five Gen 3 games. This release includes the complete 1.4.0 adapter update below.

@@ -101,5 +101,6 @@ return function(mod)
   if generation == 3 then
     assert(load(assert(mod:read('gen3-mechanics/init.lua')),'@gen3-mechanics/init.lua'))()(mod)
   end
+  assert(load(assert(mod:read('move_machines.lua')),'@1025dex/move_machines.lua'))()(mod)
   mod.log:info('1025Dex ready: 1025 cries, selectable animated/static/BW ROM sprites and WILD GENS.')
 end
