@@ -1,5 +1,6 @@
 -- Keep custom battlers out of the internal grayscale zone recoloring pass.
 return function(frames)
+ if require('src.core.GameVersion').generation()~=1 then return end
  local ok,B=pcall(require,'src.battle.BattleState')
  if not(ok and type(B.drawZonePass)=='function')or B._1025DexEffectPictures then return end
  B._1025DexEffectPictures=true;local G=love.graphics

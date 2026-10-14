@@ -69,13 +69,8 @@ function M.install(mod, national)
   local Dex = require('src.core.game3.dex')
   local PokedexData = require('src.core.game3.pokedex_data')
   if not P._moveNames and P.moveName then P.moveName(1) end
-  local Starts = assert(load(assert(mod:read('src/gen3starts.lua'))))()
-  local repaired, substitutions = Starts.repair(national,
-    function(path) return mod:read(path) end, P._moveNames)
-  mod.log:info(('Game3 learnsets rebuilt: %d species, %d Gen 3 substitutions')
-    :format(repaired or 0, substitutions or 0))
   local Moves=assert(load(assert(mod:read('src/gen3moves.lua'))))()
-  local moveRules=Moves.load(function(path)return mod:read(path)end)
+  local moveRules=Moves.load(function(path)return mod:read(path)end,mod.exports)
 
   -- Gen 3's internal species slots diverge from National Dex numbers after
   -- Celebi. A caught Bidoof is slot 463, while National #463 is Lickilicky.

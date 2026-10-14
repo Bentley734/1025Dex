@@ -80,11 +80,11 @@ return function(mod)
       default = "all", choices = { { "GEN-NATIVE", "gen-native" },
                                           { "ALL", "all" } } },
   }
-  -- These legacy presentation/modern-move switches have no implementation
-  -- in Game3. Hide them there and ignore old saved ALL settings.
+  -- Gen 3 uses the real modern adapter; there is no substitution mode.
   if require('src.core.GameVersion').generation()==3 then
     for i=#optionRows,1,-1 do
-      if optionRows[i].key=='stats' or optionRows[i].key=='moves' then table.remove(optionRows,i)end
+      if optionRows[i].key=='stats' then table.remove(optionRows,i)
+      elseif optionRows[i].key=='moves'then optionRows[i].choices={{'ALL','all'}}end
     end
   end
   mod.options:define(optionRows)
@@ -144,7 +144,10 @@ return function(mod)
 
   local national = nationalDex
     and loadOptionalSibling(mod, "data/species/generated/national.lua") or nil
-  if generation == 3 and national then gen3shape.install(mod, national) end
+  if generation == 3 and national then
+    assert(loadSibling(mod,'src/gen3prepare.lua'))(mod)
+    gen3shape.install(mod, national)
+  end
   if chart then
     local register = loadSibling(mod, "src/nationaldex.lua")
     -- gen2shape may be nil and nationaldex.lua reads that as "assume Gen 1";

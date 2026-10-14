@@ -100,7 +100,10 @@ if gen<3 then
    for _,mon in ipairs(rows)do local nat=mon.baseDex or mon.id;assert(nat>=policy.choices[selection].first and nat<=policy.choices[selection].last,'GB generation filter')end
   end end
  end
- assert(load(file('main.lua')))()(mod)
+ -- This fixture implements content schemas/encounters, not battle classes or
+ -- live registry iteration. Combat has a separate real-engine runtime suite.
+ local rootEntry=file('main.lua'):gsub("if generation <= 2 then component%('battle%-mechanics'%) end",'')
+ assert(load(rootEntry))()(mod)
  assert(#mod.exports.supportedGames==11,'all-game entrypoint')
  mod.game.save.hallOfFame={count=0}
  values.fireredGenEncounterPool='17'

@@ -8,9 +8,12 @@ return function(mod)
   end
   -- Gen3 attaches its loader after mod startup; retry on first sprite access.
   local spriteOptionsMigrated = false
+  local readyGame
+  mod.events:on('game.ready',function(ev)readyGame=ev and ev.game;mod:migrateSpriteOptions()end)
   function mod:migrateSpriteOptions()
     if spriteOptionsMigrated then return end
-    local gameOK, game = pcall(require, 'src.core.Game')
+    local gameOK, game = true, readyGame
+    if generation<=2 then gameOK,game=pcall(require,'src.core.Game')end
     if gameOK and game and game.mods and game.mods.modOptions then
       local values = game.mods.modOptions[mod.id or '1025dex']
       if values then
@@ -95,5 +98,8 @@ return function(mod)
   assert(load(assert(mod:read('compat/summary_scrolling_names.lua'))))()(mod)
   assert(load(assert(mod:read('compat/form_icon_fallback.lua'))))()(mod)
   if generation <= 2 then component('battle-mechanics') end
+  if generation == 3 then
+    assert(load(assert(mod:read('gen3-mechanics/init.lua')),'@gen3-mechanics/init.lua'))()(mod)
+  end
   mod.log:info('1025Dex ready: 1025 cries, selectable animated/static/BW ROM sprites and WILD GENS.')
 end

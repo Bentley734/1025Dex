@@ -335,7 +335,7 @@ return function(mod)
     kind = "primary",
     run = function(a, b, c)
       local n = normalize(a, b, c)
-      local userMon, targetMon = n.user.mon, n.target.mon
+      local userMon, targetMon = n.user.mon or n.user, n.target.mon or n.target
       local avg = math.floor((userMon.hp + targetMon.hp) / 2)
       userMon.hp = math.min(userMon.stats.hp, avg)
       targetMon.hp = math.min(targetMon.stats.hp, avg)

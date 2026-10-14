@@ -1,3 +1,15 @@
+# 1025Dex 1.4.0
+
+Gen 3 now runs real modern moves and abilities through a native battle adapter on Ruby, Sapphire, Emerald, FireRed and LeafGreen. The old move-substitution call and its matching algorithm have been removed. Canonical IDs, actual Fairy typing, move categories, PP and species abilities are retained; no additional dex or battle-rendering mod is installed.
+
+Modern level-up learnsets and wild starting moves use their real moves. The native Move Reminder offers species-valid level, machine, tutor and egg moves, withholding future level-up moves. Gen 3 MOVES is ALL; Gen 1/2 retain their existing choices. Abilities and descriptions appear in native summaries; hidden abilities persist in saves, and normal/hidden abilities are updated on evolution.
+
+The adapter retains native announcements, interruption, hit/HP events, switching and battle presentation. New moves without cartridge animation scripts use the engine's existing generic impact animation. These are not bespoke Gen 9 animations. Existing native Tackle, Growl and Tail Whip scripts remain unchanged. Johnto is untouched.
+
+Validation: production startup and 833 moves on each of all five Gen 3 games; numeric moves/PP and hidden abilities through the actual save serializer and storage restore; Fairy damage, canonical teaching restrictions, status accuracy, burn residuals, native doubles Ally Switch, Emergency Exit switching and Skill Link multi-hit. Native GPU playback checked 138 frames in both directions with the real impact texture. Eleven-game roster/schema/projection regressions, existing focused Gen 1/2 outcomes, and LuaJIT/Lua 5.3 compilation. A complete live playthrough was not performed. Form-, ally-, item- and overworld-dependent interactions retain the corresponding upstream implementation limits; this is not a claim of complete later-generation cartridge parity.
+
+Restart the game after installing. Do not install a separate Gen9Dex battle engine alongside this bundled component.
+
 # 1025Dex 1.3.0
 
 New moves and abilities now execute in Gen 1/2 battles. The existing 833-move and 313-ability data is reused by a bundled combat component adapted from Gen9Dex's latest release, v4.8.1. No second mod installation is needed. National Dex's latest release remains v0.35.5; its existing data/API was already present.
