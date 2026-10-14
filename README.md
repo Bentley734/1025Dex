@@ -1,3 +1,9 @@
+# 1025Dex 1.2.53
+
+Forward all option-builder arguments through the encounter settings bridge. Explicitly retain Emerald native cartridge row metadata for Text Speed and Button Mode across mod wrappers, avoiding missing ROM choice tables and preserving native input and persistence.
+
+Validation: real installed-executable Emerald input handlers and repaired rows, both Lua runtimes, full source compilation. Live gameplay was not exercised. Restart after installing.
+
 # 1025Dex 1.2.52
 
 Map all 28 native Gen 3 Unown picture slots to their corresponding custom artwork, including KIM letter names. Keep safe missing-picture fallback for both battler sides.

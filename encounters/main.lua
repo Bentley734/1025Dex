@@ -124,8 +124,8 @@ return function(mod)
   if okRows and Rows and type(Rows.build)=="function" and not Rows.__completeDexWilds then
     Rows.__completeDexWilds=true
     local original=Rows.build
-    Rows.build=function(ctx)
-      local rows=original(ctx)
+    Rows.build=function(ctx,...)
+      local rows=original(ctx,...)
       for i=#rows,1,-1 do if rows[i].id==OPTION_KEY then table.remove(rows,i) end end
       local opts=optionBlock(ctx.options)
       local _,n=policy:choice(opts[OPTION_KEY]); active=n; opts[OPTION_KEY]=n

@@ -51,7 +51,15 @@ return function(mod)
   if generation==3 then
     local rows=require('src.ui.game3.option_rows')
     local original=rows.build
-    rows.build=function(ctx,...)return append(original(ctx,...),ctx and ctx.game)end
+    rows.build=function(ctx,...)
+      local out=append(original(ctx,...),ctx and ctx.game)
+      if require('src.core.GameVersion').get()=='emerald' then
+        local menu=require('src.ui.game3.rse.option_menu');local cart={}
+        for _,r in ipairs(menu.CART or {})do cart[r.id]=r end
+        for _,r in ipairs(out)do if cart[r.id]then r.cart=cart[r.id]end end
+      end
+      return out
+    end
   else
     mod.hooks:wrap('ui.options.rows',function(next_,game,rows)return append(next_(game,rows),game)end)
   end
