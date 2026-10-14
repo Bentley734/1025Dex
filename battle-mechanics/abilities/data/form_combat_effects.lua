@@ -1,0 +1,58 @@
+-- Inclusion list -- Phase 8 (`other` bucket), explicit user directive:
+-- "the transformation side is the out of scope element, the combat
+-- effect isn't." Six real abilities whose own species are all
+-- confirmed present in this project's actual roster (national_dex's
+-- own data/species tree, checked directly before writing anything
+-- here) grouped together because each is a real, separable combat
+-- effect this mod CAN build without ever touching the actual form/
+-- species change itself (that half stays battle_forms' own domain,
+-- same standing rule as every other form-changing ability this mod has
+-- already triaged). Built in abilities/engine/form_combat_effects.lua:
+--
+--   RKS SYSTEM (Silvally): its own type matches whichever real Memory
+--     item it holds -- a genuine non-transformation type change, built
+--     on this mod's own existing type_override_primitives.lua (the
+--     same real "change_type" primitive Protean/Libero/Color Change
+--     already use), reading the held item's own real id directly
+--     (`<TYPE>MEMORY`, confirmed real ids in this project's own item
+--     roster, e.g. FIREMEMORY/GRASSMEMORY/ELECTRICMEMORY) rather than a
+--     hardcoded per-type table.
+--   HUNGER SWITCH (Morpeko): Aura Wheel's own real type -- Electric in
+--     Full Belly Mode, Dark in Hangry Mode -- alternates every turn.
+--     Tracked as a plain internal boolean (no species/form change at
+--     all), the exact same real per-turn-alternation shape this
+--     session's own Truant already established.
+--   GULP MISSILE (Cramorant): using Surf or Dive loads "prey" (gorging
+--     if above half HP, gulping if at or below); any damaging hit taken
+--     while loaded retaliates for 1/4 the ATTACKER's own max HP, plus
+--     paralysis (gorging) or a Defense drop (gulping) on the attacker,
+--     then clears the loaded state. Tracked as a plain internal string
+--     flag, no form change.
+--   COMMANDER (Tatsugiri): while active alongside a living ally
+--     Dondozo, that Dondozo's own Attack/Sp.Atk/Speed are raised 2
+--     stages each -- reversed the same amount if the Tatsugiri leaves
+--     (switches out or faints). The real "enters Dondozo's mouth,
+--     becomes untargetable" half is the visual/targeting-immunity
+--     side -- out of scope, the stat exchange isn't.
+--   TERASHELL (Terapagos): while at full HP, every damaging hit against
+--     it is capped at not-very-effective, regardless of its own real
+--     type matchup -- a pure combat effect with no form dependency at
+--     all (built via the same registerPostEffectivenessModifier
+--     primitive Wonder Guard/Filter/Tinted Lens already use).
+--   TERAFORM ZERO / EMBODY ASPECT (Terapagos / Ogerpon): both real,
+--     confirmed to fire specifically on TERASTALLIZING (this mod's own
+--     real "battle_forms.tera_activated" event, combat/modern_tera.lua)
+--     -- Teraform Zero clears field weather and terrain outright when
+--     the holder Terastallizes into Stellar type specifically (this
+--     engine's own real, fully-modeled Stellar mechanic); Embody Aspect
+--     raises one stat by 1 stage, keyed off which real Ogerpon mask
+--     SPECIES the holder actually is (OGERPON_CORNERSTONE_MASK/
+--     _HEARTHFLAME_MASK/_WELLSPRING_MASK are real, separate, obtainable
+--     species entries in this project's own dex, confirmed by direct
+--     read -- not a runtime mask-transform at all, the same "already a
+--     distinct species" shape Ogerpon's own real games use outside
+--     battle via a held Mask item).
+return {
+  RKSSYSTEM = true, HUNGERSWITCH = true, GULPMISSILE = true,
+  COMMANDER = true, TERASHELL = true, TERAFORMZERO = true, EMBODYASPECT = true,
+}

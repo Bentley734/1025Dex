@@ -72,3 +72,7 @@ https://github.com/PokeAPI/pokeapi/blob/master/data/v2/csv/pokemon_species.csv
 
 Hoenn map profiles contain encounter metadata derived from the user's Emerald
 ROM. No ROM bytes or extracted native graphics are included in either release.
+
+## Modern moves and abilities
+
+Combat implementation adapted from **tectorifter/Gen9Dex**, latest release **v4.8.1**, by tectorifter and its credited contributors: https://github.com/tectorifter/Gen9Dex/releases/tag/v4.8.1 . Only the battle mechanics are bundled; existing national-dex species/move/ability metadata is reused. Copyright notices and GPL-3.0-or-later terms are retained in [battle-mechanics/LICENSE](battle-mechanics/LICENSE), with [upstream credits](battle-mechanics/CREDITS.md) and [third-party notices](battle-mechanics/THIRD-PARTY-NOTICES.md). These component terms do not replace the existing national-dex license. Exact source asset and exclusions: [UPSTREAM.json](battle-mechanics/UPSTREAM.json).

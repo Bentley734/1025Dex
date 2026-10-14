@@ -249,7 +249,7 @@ return function(mod, chart, national, gen2shape, generation, era, display, gen3s
     end
     if type(national.patch) == "table" then
       for id, partial in pairs(national.patch) do
-        if safe(function() mod.content.pokemon:patch(id, gen3 and gen3shape.romPatch(partial) or partial) end) then
+        if safe(function() mod.content.pokemon:patch(id, gen3 and gen3shape.romPatch(partial) or (gen2 and gen2shape.romPatch(partial) or partial)) end) then
           patched = patched + 1
         end
       end

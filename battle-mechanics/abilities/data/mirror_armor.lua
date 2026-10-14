@@ -1,0 +1,11 @@
+-- Documentation-only marker -- Phase 8 (`other` bucket). MIRRORARMOR is
+-- never loadSibling'd; its real behavior (any effect that would lower
+-- this Pokemon's stats instead lowers the stats of whoever caused the
+-- effect) is wired directly into combat/modern_combat.lua's own
+-- changeStage -- the one real choke point every stage change in this
+-- mod already goes through -- using combat/interaction_memory.lua's
+-- own real "who did what to whom, most recently" primitive (explicit
+-- user design) to answer "who caused THIS specific drop" without
+-- threading a new parameter through changeStage's own signature and
+-- its ~10+ existing call sites.
+return { MIRRORARMOR = true }

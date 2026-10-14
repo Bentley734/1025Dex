@@ -1,0 +1,21 @@
+-- Documentation marker only -- Mold Breaker/Teravolt/Turboblaze have no
+-- own dispatch file: each is wired as a direct check inside the immunity
+-- primitives it needs to bypass, the same "edit the shared primitive
+-- directly" pattern Contrary/Simple already established.
+--
+-- Phase 11 (ability gaps close-out): the per-site id triple Phase 8
+-- shipped in two places (abilities/engine/type_immunity.lua's own
+-- type-immunity family and abilities/engine/damage_immunity.lua's own
+-- Wonder Guard) is now ONE shared predicate,
+-- combat/modern_combat.lua's own attackerIgnoresDefenderAbility, which
+-- every site consults (including, newly, Bulletproof/Soundproof/Wind
+-- Rider -- all `breakable` in Showdown).
+--
+-- Still honestly-scoped: this covers the type-immunity family, Wonder
+-- Guard and that flag family -- NOT Showdown's own full, broader ignore
+-- list (Sturdy's OHKO half, Clear Body/Snow Cloak-style stat/evasion
+-- preservation, crit-immunity, priority-move-fail, and several other
+-- real families), which would need touching every remaining immunity
+-- site in this mod individually -- a real, named remaining gap, not a
+-- silently-incomplete claim.
+return { MOLDBREAKER = true, TERAVOLT = true, TURBOBLAZE = true }

@@ -1,0 +1,96 @@
+-- Inclusion list only -- which stat and by how much are read LIVE from
+-- national_dex's own abilityBehaviorOf at read time, matching every
+-- other abilities/data/*.lua file in this mod. Real, confirmed
+-- stat_multiplier abilities with `expressible=true` (2026-08-27 audit,
+-- 21 total across the whole roster) -- this phase covers the 13 whose
+-- condition routes cleanly through this mod's existing weather/terrain/
+-- HP/status queries and Battle:battleStat, the real single choke point
+-- EVERY attack/defense/special-attack/special-defense/speed read in this
+-- engine already goes through (confirmed by direct source read --
+-- gen2/Battle.lua's own damage calc, confusion self-hit, and
+-- effectiveSpeed all call it) -- monkeypatching it here means every one
+-- of these abilities is automatically correct everywhere a stat gets
+-- read, with zero changes needed at any of those call sites:
+--   CHLOROPHYLL(speed x2, sun), SWIFTSWIM(speed x2, rain), SANDRUSH
+--   (speed x2, sandstorm), SLUSHRUSH(speed x2, hail), SOLARPOWER(spa
+--   x1.5, sun), SURGESURFER(speed x2, Electric Terrain), DEFEATIST
+--   (atk x0.5 + spa x0.5, HP<=50%), FLAREBOOST(spa x1.5, burned),
+--   TOXICBOOST(atk x1.5, poisoned), ORICHALCUMPULSE(atk x1.5, sun --
+--   the weather-SETTING half is already wired, Phase 1's switchin_
+--   weather.lua), HUGEPOWER(atk x2, unconditional), PUREPOWER(atk x2,
+--   unconditional), GORILLATACTICS(atk x1.5, unconditional).
+--
+-- Phase 14 (ability audit close-out) additions -- the last four
+-- previously-deferred stat multipliers, each with its real condition:
+--   GUTS(atk x1.5, any major status -- the burn-cut negation half of
+--     the real Guts is wired separately in prevent_misc), MARVELSCALE
+--     (def x1.5, any major status), GRASSPELT(def x1.5, Grassy
+--     Terrain), PLUS/MINUS(spa x1.5, an adjacent ally has Plus or
+--     Minus -- a new ALLY_COND bucket in this file's own engine;
+--     national_dex's own notes confirm both read the OTHER as well as
+--     themselves, so either boosts when its ally has either).
+--
+-- Deferred, not exempt, each for a real structural reason:
+--   SANDVEIL/SNOWCLOAK/TANGLEDFEET (evasion x1.25/x1.25/x2) -- evasion
+--     has no base stat, it's stage-only (gen2/Battle.lua's own
+--     vanillaAccuracyRoll reads self.stages[side].evasion directly, never
+--     battleStat), so this doesn't route through the same primitive at
+--     all. UN-DEFERRED (Phase 11): they are built on the separate
+--     "battle.accuracy" hook in abilities/engine/accuracy_multiplier.lua
+--     as the attacker-side accuracy reduction Showdown's own
+--     onModifyAccuracy applies (x0.8 / x0.8 / x0.5).
+--   SLOWSTART (atk x0.5 + speed x0.5, first 5 turns after switch-in) --
+--     needs a turns-since-switch-in counter this mod doesn't track for
+--     any ability yet.
+--   UNBURDEN (speed x2, after the held item is consumed/lost) -- needs
+--     confirming a real "item was just removed" trigger point exists;
+--     not yet audited.
+--   PLUS (spa x1.5) / FLOWERGIFT (atk+spd x1.5) -- both genuinely
+--     ally-scope ("only while an ally on the field has this ability" --
+--     Plus's own record notes confirm this directly, contradicting a
+--     naive read of the bare effects array), and Flower Gift's own real
+--     split (holder gets both stats, allies get only Sp. Def) isn't
+--     something the structured data distinguishes -- deferred rather
+--     than guessed. (PLUS/MINUS were UN-DEFERRED 2026-09-07: the new
+--     ALLY_COND bucket in this file's own engine expresses the
+--     ally-scope condition exactly; FLOWERGIFT's asymmetric holder-vs-
+--     ally split remains deferred.)
+--   GORILLATACTICS's own `prevent` half (locks into the first move
+--     selected) and SANDRUSH/SANDVEIL/SNOWCLOAK's own sand/hail chip-
+--     damage immunity (`other`) -- real, separate effect kinds, belong
+--     to a later phase's own bucket, not this one. (Gorilla Tactics' own
+--     lock is now built, Phase 7's abilities/engine/prevent_misc.lua.)
+--
+-- QUICKFEET (speed x1.5, has any major status) -- UN-DEFERRED 2026-08-27:
+-- the double-count risk this note used to name is fixed, Phase 7's own
+-- abilities/engine/prevent_misc.lua now suppresses the native paralysis
+-- Speed cut for a Quick Feet holder directly on `Battle.statusPenaltyFor`
+-- (Gen 2 only -- see that file's own header for the confirmed, separate
+-- Gen 1 turn-order gap this doesn't close). Condition read via a new
+-- `ANY_STATUS_COND` bucket in this file's own engine (any major status,
+-- not one specific one -- the one real difference from Flare Boost/Toxic
+-- Boost's single-status shape).
+-- PROTOSYNTHESIS / QUARK DRIVE (Phase 8, other bucket, added
+-- 2026-08-28): a genuinely different shape from every ability above --
+-- national_dex's own record for both carries NO structured
+-- stat_multiplier effect at all (the boosted stat is chosen
+-- DYNAMICALLY, "whichever of the five is currently highest," not a
+-- fixed stat+factor pair this file's own statMultiplierFor could read
+-- generically) -- so both are handled by dedicated code in the engine
+-- file instead, reusing the exact same Battle:battleStat choke point.
+-- Booster Energy (the real item-triggered alternative to weather/
+-- terrain) isn't built -- this ROM's own item roster has no such item.
+return {
+  CHLOROPHYLL = true, SWIFTSWIM = true, SANDRUSH = true, SLUSHRUSH = true,
+  SOLARPOWER = true, SURGESURFER = true, DEFEATIST = true, FLAREBOOST = true,
+  TOXICBOOST = true, ORICHALCUMPULSE = true, HUGEPOWER = true,
+  PUREPOWER = true, GORILLATACTICS = true, QUICKFEET = true,
+  PROTOSYNTHESIS = true, QUARKDRIVE = true,
+  GUTS = true, MARVELSCALE = true, GRASSPELT = true, MINUS = true, PLUS = true,
+  -- Hadron Engine: Orichalcum Pulse's exact twin -- its set_terrain half is
+  -- already wired (terrain_switchin.lua), but the Sp. Atk half was missing
+  -- from this inclusion list entirely (found while wiring Orichalcum's own
+  -- stat_multiplier into damage, 2026-09-10), so the twin ability's sub-
+  -- effect did nothing at all. Same real shape: Electric Terrain, SpA x4/3.
+  HADRONENGINE = true,
+}

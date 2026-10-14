@@ -1,0 +1,20 @@
+-- Inclusion list only -- Phase 8 (`other` bucket). Real, confirmed
+-- effect: when a hit brings this Pokemon's HP from ABOVE half its max
+-- down to AT OR BELOW half, it switches out immediately (if there is a
+-- living, non-egg bench mon to send in) -- before the opponent gets to
+-- act again. Emergency Exit and Wimp Out are the same real mechanic
+-- under two separate national_dex records (flavor-only difference).
+--
+-- Built on combat/switch_primitives.lua's own real, general
+-- requestSwitch(battle, mon, opts) primitive -- the SAME entry point
+-- U-turn/Volt Switch/Baton Pass already use, explicitly designed
+-- (that file's own header) to be reachable by "a future ability or item
+-- effect too," not a moves-only mechanism -- this is that promise kept.
+--
+-- Real, honestly-inherited gap (not new to this ability): requestSwitch
+-- itself already documents that a self-switch ends the ROUND at the
+-- switch (skipping only end-of-turn residual, not the opponent's own
+-- already-taken action) rather than a genuine mid-turn pause/resume --
+-- a real engine-level limitation this mod can't route around from mod
+-- code, see that file's own header for the full grounding.
+return { EMERGENCYEXIT = true, WIMPOUT = true }

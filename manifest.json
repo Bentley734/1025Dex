@@ -1,7 +1,7 @@
 {
   "id": "1025dex",
   "name": "1025Dex",
-  "version": "1.2.54",
+  "version": "1.3.0",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",
@@ -29,8 +29,9 @@
   "conflicts": [
     "national_dex",
     "g9-battle-sprites",
-    "firered_gen_encounters"
+    "firered_gen_encounters",
+    "g9-battle-engine"
   ],
-  "description": "All 1025 Pokemon across all 11 Gen 1-3 games, with selectable animated, Gen9 static or local Black/White ROM sprites, cries, habitat-aware encounters and expanded PC storage. Compatible with Hoennto cartridge travel. See CREDITS.md.",
+  "description": "All 1025 Pokemon across all 11 Gen 1-3 games, with selectable animated, Gen9 static or local Black/White ROM sprites, cries, habitat-aware encounters and expanded PC storage. Compatible with Hoennto cartridge travel. See CREDITS.md. Bundled modern move execution and assigned combat abilities for Gen 1/2.",
   "github": "Bentley734/1025Dex"
 }

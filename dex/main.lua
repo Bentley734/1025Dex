@@ -74,10 +74,10 @@ return function(mod)
     -- src/moves.lua for why that is the safe arrangement rather than the
     -- generous one), so this option decides one thing: whether a species is
     -- taught the modern moves it learns by level in the current games, or
-    -- keeps exactly the list it has today.  GEN-NATIVE is the default and
+    -- keeps exactly the list it has today.  GEN-NATIVE is optional and
     -- leaves every learnset byte-identical to a build without this option.
     { key = "moves", label = "MOVES", type = "choice",
-      default = "gen-native", choices = { { "GEN-NATIVE", "gen-native" },
+      default = "all", choices = { { "GEN-NATIVE", "gen-native" },
                                           { "ALL", "all" } } },
   }
   -- These legacy presentation/modern-move switches have no implementation

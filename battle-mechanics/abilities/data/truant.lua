@@ -1,0 +1,21 @@
+-- Inclusion list only -- Phase 8 (`other` bucket). Real, confirmed
+-- effect: loafs around (skips its move) every SECOND turn it would
+-- otherwise act, alternating with a turn it acts freely. Switching out
+-- and back in resets the count, so a freshly-sent-out holder always
+-- acts on its first turn back.
+--
+-- Built on the exact same generic "skip this mon's next turn" primitive
+-- Hyper Beam/Eternabeam's own real recharge already uses in this engine
+-- (Gen 1: user.mustRecharge; Gen 2: battle:volatile(user).recharge --
+-- both confirmed read generically by the native action gate/checkTurn,
+-- "does not care which move set the flag") -- not a second, parallel
+-- turn-skip mechanism.
+--
+-- Real, honestly-flagged simplification: this file toggles the loaf
+-- state once per turn unconditionally (via battle.turn_started) rather
+-- than specifically after a SUCCESSFUL move use the way Showdown's own
+-- onAfterMove-keyed volatile does -- a turn where the holder fails to
+-- act for an unrelated reason (flinch, full paralysis, frozen solid)
+-- still advances the alternation here, where real Showdown would not
+-- advance it. A narrow edge case, not the common path.
+return { TRUANT = true }

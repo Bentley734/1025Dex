@@ -1,0 +1,17 @@
+-- Documentation-only marker -- Phase 8 (`other` bucket). Real Mind's Eye
+-- has THREE separate halves:
+--   (1) Normal/Fighting moves hit Ghost-types normally -- the same real
+--       shape as Scrappy's own effect, built alongside it directly in
+--       combat/modern_status_volatiles.lua's existing
+--       type_immunity_negation registerPostEffectivenessModifier;
+--   (2) this Pokemon's accuracy can't be lowered by an opponent --
+--       combat/modern_combat.lua's SINGLE_STAT_IMMUNE
+--       (statDropBlockedByAbility);
+--   (3) this Pokemon's moves ignore the target's evasion stat boosts --
+--       Phase 11 (ability gaps close-out): NOW BUILT, in
+--       abilities/engine/accuracy_multiplier.lua, which zeroes the
+--       target's native evasion stage for the accuracy roll when the
+--       holder attacks (Showdown's `move.ignoreEvasion`,
+--       abilities.ts:2636-2638). The same hook also gives Keen Eye and
+--       Illuminate their identical ignore-evasion half.
+return { MINDSEYE = true }

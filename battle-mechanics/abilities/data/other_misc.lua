@@ -1,0 +1,44 @@
+-- Inclusion list only -- Phase 8 (`other` bucket), consolidated batch:
+-- seven abilities grouped here because each is a small, single-hook
+-- primitive rather than because they share one mechanic. Real, verified
+-- (against Pokemon Showdown's own source) mechanics per ability, all
+-- built in abilities/engine/other_misc.lua:
+--
+--   BADDREAMS: at end of turn, every ADJACENT sleeping opponent (this
+--     mod's own requestAdjacency scope -- correctly "every ally" in a
+--     boss fight, per this mod's own real N-way adjacency rule) takes
+--     1/8 its own max HP in damage.
+--   CURSEDBODY: 30% chance, any landed damaging hit disables the
+--     attacker's just-used move for 5 turns -- reuses the exact same
+--     disabledMoveId/disableTurns fields (and move_availability_gate
+--     .lua's own real enforcement) the Disable move itself already
+--     writes, rather than a second parallel disable mechanism.
+--   ANTICIPATION: on switch-in, "shudders" (message only, no mechanical
+--     effect) if any adjacent opponent has a move that is either
+--     super-effective against this Pokemon's current type(s) or a
+--     one-hit-KO move.
+--   FOREWARN: on switch-in, reveals (message only) the highest-power
+--     move among every adjacent opponent's moveset -- OHKO moves count
+--     as 150, Counter/Mirror Coat count as 120, any other damaging move
+--     with 0 listed base power (Seismic Toss/Night Shade/Sonic Boom/
+--     Dragon Rage/Psywave/Super Fang, all real Gen 1/2 moves) counts as
+--     80 -- the same three real exceptions Showdown's own Forewarn logic
+--     special-cases, not a partial approximation.
+--   WONDERSKIN: any status (non-damaging) move with a numeric base
+--     accuracy of 50 or higher, used AGAINST this Pokemon, has its
+--     accuracy set to exactly 50 -- an always-hit move (no numeric
+--     accuracy at all) or an already-sub-50 move is untouched.
+--   SCREENCLEANER: on switch-in, clears Light Screen and Reflect from
+--     BOTH sides of the field at once (Gen 2's real side-keyed screens
+--     table; Gen 1's real per-mon lightScreen/reflect fields, cleared
+--     across every active battler on both sides for that generation).
+--     Real Aurora Veil half not applicable -- this engine has no Aurora
+--     Veil built anywhere.
+--   TOXICDEBRIS: any landed PHYSICAL hit taken sets one layer of Toxic
+--     Spikes (real 2-layer cap, the exact same shared hazards table
+--     Stealth Rock/Toxic Spikes moves already use) on the ATTACKER's
+--     own side.
+return {
+  BADDREAMS = true, CURSEDBODY = true, ANTICIPATION = true, FOREWARN = true,
+  WONDERSKIN = true, SCREENCLEANER = true, TOXICDEBRIS = true,
+}

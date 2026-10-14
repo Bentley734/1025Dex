@@ -1,0 +1,18 @@
+-- Inclusion list only -- Phase 7 (`prevent` bucket). Real, confirmed
+-- effect: prevents using OR benefiting from a held item at all, Fling
+-- included.
+--
+-- Phase 11 (ability gaps close-out): the previously-missing half -- a
+-- passive held-item suppression primitive -- is now BUILD. The real,
+-- confirmed single choke point is Gen 2's own `Battle:heldEffect`
+-- (gen2/Battle.lua:891-902), which every one of the eight held-item
+-- trigger kinds reads through (Quick Claw priority, Scope Lens crit,
+-- King's Rock flinch, Bright Powder accuracy, Focus Band endure, the
+-- end-of-turn Leftovers/Berry/cure residual, ...). combat/modern_items
+-- .lua's own `held_item.trigger` wrap now short-circuits to a non-string
+-- effect for a Klutz holder, which every native caller reads as "no
+-- effect". Fling (its own battle.damage gate) and Recycle (its own run
+-- handler) read the item id directly rather than through that hook, so
+-- they keep their own separate Klutz checks -- all three live in
+-- combat/modern_items.lua.
+return { KLUTZ = true }

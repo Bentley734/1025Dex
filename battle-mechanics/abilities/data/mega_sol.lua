@@ -1,0 +1,28 @@
+-- Documentation-only marker -- Phase 8 (`other` bucket), explicit user
+-- directive ("crucial" to build for real, not left as an out-of-scope
+-- single-species gimmick despite its real speciesCount=1). MEGASOL is
+-- never loadSibling'd; its real behavior (a personal, permanent
+-- simulation of harsh sunlight for this Pokemon's OWN moves only --
+-- confirmed by national_dex's own real notes: "a personal, simulated
+-- weather state distinct from set_weather, which would change the
+-- field weather for everyone" -- lasting until the ability itself is
+-- suppressed or changed, immune to any real weather-suppression
+-- ability like Air Lock/Cloud Nine) is wired directly into every place
+-- this engine already models a real sun-conditional interaction, each
+-- extended with a plain `abilityIdOf(user) == "MEGASOL"` check
+-- alongside the real weather read rather than a new parallel system:
+--   combat/modern_combat.lua -- the Sun/Rain Fire/Water damage
+--     multiplier (checked FIRST, before the real weatherNullified gate,
+--     so Air Lock/Cloud Nine never touches it) and Growth's own real
+--     sun-doubled boost (a genuine pre-existing gap, fixed the same
+--     pass since both hinge on the identical question).
+--   combat/modern_weather.lua -- Solar Beam's real sun-skips-charge
+--     rule (Gen 1 only, matching that rule's own existing scope).
+--   combat/modern_movepool_damage.lua -- Synthesis/Moonlight/Morning
+--     Sun's own real 2/3-in-sun heal fraction.
+-- No separate persistence flag was needed for "permanent until
+-- suppressed/changed": a live abilityIdOf check already IS exactly
+-- that, for free -- Neutralizing Gas's own suppression and setAbility
+-- both already make abilityIdOf stop returning "MEGASOL" the instant
+-- either happens, with zero extra state to leak across turns/battles.
+return { MEGASOL = true }

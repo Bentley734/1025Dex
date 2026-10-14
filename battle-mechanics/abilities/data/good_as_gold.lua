@@ -1,0 +1,13 @@
+-- Inclusion list only -- Phase 7 (`prevent` bucket). Real, confirmed
+-- effect: this Pokémon is unaffected by other Pokémon's status moves,
+-- full stop -- not one named list of moves, the whole damageClass.
+-- Correctly scoped to target=="selected-pokemon" only (the same real
+-- archetype Prankster's own Dark-type immunity already established this
+-- session, verified against Showdown's own source then): a side/field-
+-- targeting status move (Stealth Rock, Reflect, Tailwind) never reaches
+-- a single-Pokémon immunity check in the real game at all, so scoping
+-- this to single-target status moves only reproduces that exactly rather
+-- than the naive "any move with a defender" version. Self-cast status
+-- moves (Rest, Swords Dance on itself) are unaffected -- only an
+-- opponent-directed one fails.
+return { GOODASGOLD = true }

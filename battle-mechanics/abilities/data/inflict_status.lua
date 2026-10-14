@@ -1,0 +1,56 @@
+-- Inclusion list only -- chances read live where national_dex's own
+-- data is accurate; a few real corrections verified directly against
+-- Pokemon Showdown's own source (data/abilities.ts, fetched and read
+-- locally) where national_dex's own `notes` field explicitly flagged
+-- itself as wrong or incomplete:
+--   EFFECT SPORE: real per-status split is 11%/10%/9% (sleep/paralysis/
+--     poison out of a shared 30%), not an even 3-way split of 30% each
+--     -- confirmed via Showdown's own `onDamagingHit` (r<11/r<21/r<30).
+--     Also requires real powder-immunity (Grass-type; Overcoat not
+--     built in this engine, so not checked).
+--   TOXIC CHAIN: national_dex's own chance field defaults to 100
+--     (its own notes flag this as wrong -- the real text only says
+--     "may") -- real, confirmed rate is 30% (Showdown's own
+--     `randomChance(3, 10)`).
+--   STENCH: real effect only ADDS its 10% flinch when the move used
+--     doesn't already carry a flinch chance (Showdown's own
+--     onModifyMove explicitly checks for an existing flinch secondary
+--     first) -- checked live against the move's own real flinchChance.
+--   SYNCHRONIZE: real trigger excludes self-inflicted status (Rest),
+--     Toxic Spikes, and sleep/freeze specifically -- confirmed via
+--     Showdown's own onAfterSetStatus (only fires for a HOSTILE burn/
+--     paralysis/poison/toxic from another Pokemon's own move/ability).
+-- Real, confirmed abilities this phase covers (2026-08-27 audit, 16
+-- total in the whole roster):
+--   CUTECHARM (30%, on contact, infatuates the attacker -- reuses
+--     combat/modern_status_effects.lua's own real tryAttract primitive,
+--     roles reversed from a normal Attract move),
+--   EFFECTSPORE (30% total, weighted sleep/paralysis/poison, on
+--     contact, Grass-type immune),
+--   FLAMEBODY / POISONPOINT / STATIC (30%, on contact, burn/poison/
+--     paralysis -- Static's own real note, "still paralyzes attackers
+--     normally immune to Electric-type effects," is naturally already
+--     true here: this is an ability trigger, never a real Electric-type
+--     MOVE, so the move-type Ground exemption this mod's own generic
+--     ailment handler applies never gets consulted for it in the first
+--     place),
+--   POISONTOUCH (30%, the HOLDER's own contact move poisons whatever it
+--     hits),
+--   TOXICCHAIN (real 30%, the HOLDER's own damaging hit badly poisons
+--     the target),
+--   STENCH (real 10%, the HOLDER's own damaging move flinches the
+--     target, only when that move has no flinch chance of its own),
+--   SYNCHRONIZE (passes back a hostile burn/paralysis/poison/toxic the
+--     HOLDER receives, onto whoever inflicted it),
+--   SPICYSPRAY (100%, burns whatever hits the holder, no contact
+--     requirement -- a real, current "Future"/nonstandard ability per
+--     Showdown's own data, built anyway since it's trivially simple).
+-- Deferred: POISONPUPPETEER -- real trigger requires the ability
+-- holder's own base species to literally be Pecharunt (a single-
+-- species gimmick ability, Showdown-confirmed `baseSpecies.name !==
+-- "Pecharunt"` check) -- genuinely niche, not built this pass.
+return {
+  CUTECHARM = true, EFFECTSPORE = true, FLAMEBODY = true, POISONPOINT = true,
+  STATIC = true, POISONTOUCH = true, TOXICCHAIN = true, STENCH = true,
+  SYNCHRONIZE = true, SPICYSPRAY = true,
+}

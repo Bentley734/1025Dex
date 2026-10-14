@@ -1,0 +1,12 @@
+-- Documentation-only marker -- Phase 8 (`other` bucket). NEUTRALIZINGGAS
+-- is never loadSibling'd; its real behavior (while active, no OTHER
+-- Pokémon's ability functions at all) is built directly inside
+-- abilities/ability_dispatch.lua's own abilityIdOf -- the one real choke
+-- point every single ability check in this whole mod already goes
+-- through -- rather than as a separate dispatch engine, since a wrap
+-- installed by a later-loading file would never reach the many engine
+-- files that already captured a local reference to the pre-wrap
+-- function at their own install time. See that file's own header for
+-- the full grounding and the real, confirmed exemptions (Comatose,
+-- Disguise, and its own holder).
+return { NEUTRALIZINGGAS = true }

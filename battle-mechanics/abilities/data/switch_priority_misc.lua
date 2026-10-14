@@ -1,0 +1,75 @@
+-- Inclusion list -- Phase 8 (`other` bucket), switch/priority family: 9
+-- abilities grouped here because each hooks either a switch-in trigger,
+-- an end-of-turn residual, a damage-dealt reaction, or the real turn-
+-- order/priority chain -- built in abilities/engine/switch_priority_misc
+-- .lua. Real mechanics:
+--
+--   BATTLE BOND (added 2026-08-28, explicit user directive, current
+--     Showdown mechanic -- the pre-Gen-9 transform half is gone from
+--     real Showdown outright, and this mod owns combat effects only,
+--     never transformations): fires exactly once per battle, the first
+--     time this Pokemon's own damaging move directly faints ANY other
+--     Pokemon (opponent or ally, real text says "including allies"),
+--     raising Attack, Special Attack, and Speed each by 1 stage. Water
+--     Shuriken's own real Battle-Bond-specific boost was removed
+--     alongside the transform in current Showdown -- genuinely absent
+--     here too, nothing to remove.
+--   DOWNLOAD: on switch-in, sums adjacent opponents' raw Defense vs raw
+--     Special Defense; raises own Attack 1 stage if Defense is higher
+--     or tied, own Special Attack 1 stage otherwise.
+--   MOODY: end of turn, raises one random not-already-maxed stat by 2
+--     stages and lowers a different random not-already-minned stat by
+--     1 stage. Scoped to this mod's own real stat-stage bucket
+--     (Attack/Defense/Sp.Atk/Sp.Def) -- the same speed/accuracy/
+--     evasion boundary Power Trip's own real implementation already
+--     documents, not a new cut invented for this ability.
+--   CURIOUS MEDICINE: on switch-in, resets every adjacent ally's stat
+--     stages (same 4-stat bucket) to 0.
+--   COSTAR: on switch-in, copies an adjacent ally's current stat stages
+--     (same 4-stat bucket) onto itself outright. Real Costar also
+--     copies certain non-stage volatile conditions (e.g. Focus Energy)
+--     -- not built, a real, narrower, deferred piece of the same
+--     ability.
+--   BEAST BOOST / EELEVATE: after this Pokemon's own damaging move
+--     knocks out its target, raises its own highest RAW stat among
+--     Attack/Defense/Sp.Atk/Sp.Def by 1 stage -- the exact same real
+--     mechanic under two separate national_dex records, one shared
+--     handler. Real Beast Boost's own comparison also includes Speed --
+--     excluded here, same real stat-stage-bucket boundary as
+--     Download/Moody above.
+--   SUPREME OVERLORD: while this Pokemon is active, its Attack and
+--     Special Attack are both boosted 10% per fainted ally in its own
+--     party (capped at 5, i.e. up to 1.5x) -- a real registerDamageModifier
+--     entry, not a stage change.
+--   STALL: always acts LAST within its own priority bracket, regardless
+--     of Speed.
+--   QUICK DRAW: 30% chance each turn to act FIRST within its own
+--     priority bracket, regardless of Speed. Both Stall and Quick Draw
+--     are built as a small fractional priority offset (turn_order.lua's
+--     own registerPriorityModifier chain) rather than a real second
+--     Speed-tiebreak pass -- the same real trick Pokemon Showdown's own
+--     engine uses internally for both abilities.
+--   MYCELIUM MIGHT (priority half only, added 2026-08-28): this
+--     Pokemon's own status moves always move last within their
+--     priority bracket -- same fractional-offset trick as Stall,
+--     gated to status-category moves. Its own SECOND real half
+--     ("status moves ignore the target's ability when applying their
+--     effects") is NOT built -- the real, relevant ignore-point for a
+--     status move is status_immunity.lua's own hasStatusImmunity, with
+--     4 separate real infliction call sites (that file's own header),
+--     each of which would need its own bypass check -- a real,
+--     honestly-scoped remainder, not silently dropped.
+--   SPEED BOOST (Phase 14 close-out): end of turn, +1 Speed -- the
+--     only real, expressible piece of this family's four (Speed Boost
+--     raises Speed; the other three -- Download etc. -- are already
+--     above). Wired as a battle.turn_ended listener writing the real
+--     gen-native speed store (same convention BATTLE BOND's own speed
+--     half uses). Real Showdown gates Speed Boost on the holder having
+--     spent a turn on the field (Protect-turn subtlety) -- not modeled,
+--     documented in the engine.
+return {
+  DOWNLOAD = true, MOODY = true, CURIOUSMEDICINE = true, COSTAR = true,
+  BEASTBOOST = true, EELEVATE = true, SUPREMEOVERLORD = true, STALL = true, QUICKDRAW = true,
+  MYCELIUMMIGHT = true, BATTLEBOND = true,
+  SPEEDBOOST = true,
+}

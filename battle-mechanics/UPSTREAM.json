@@ -1,0 +1,31 @@
+{
+  "project": "https://github.com/tectorifter/Gen9Dex",
+  "release": "v4.8.1",
+  "asset_sha256": "c99154a76db03e7755e56fe982fac47047d39586b8ba92387d38d995a9c8a787",
+  "excluded_boots": [
+    "base_exp_data",
+    "boss_fight",
+    "boss_fight_status",
+    "custom_trainer_registry",
+    "debug_options",
+    "debug_overlay",
+    "dev_stats_screen",
+    "dynamax_battle",
+    "dynamax_state",
+    "egg_normalize",
+    "ev_yield_on_faint",
+    "gen2_modern_stats",
+    "gmax_data",
+    "gmax_moves",
+    "max_move_subeffects",
+    "move_name_display",
+    "pokecenter_heal",
+    "reapply_national_dex_stats",
+    "tera_state",
+    "train_screen",
+    "trainer_modern_stats",
+    "wild_modern_ivs",
+    "save_scrub"
+  ],
+  "integration": "Bundled under the existing 1025dex identity and option schema"
+}

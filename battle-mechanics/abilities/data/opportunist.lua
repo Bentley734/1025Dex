@@ -1,0 +1,11 @@
+-- Documentation-only marker -- Phase 8 (`other` bucket). OPPORTUNIST is
+-- never loadSibling'd; its real behavior (copies the stat and stage
+-- amount of any stat RISE an opponent gains, onto itself) is wired
+-- directly into combat/modern_combat.lua's own changeStage -- the one
+-- real choke point every stage change in this whole mod already goes
+-- through -- rather than as a separate dispatch engine wrapping
+-- mod.exports.changeStage, since every earlier-loading caller already
+-- captured a local reference to the pre-wrap function at its own
+-- install time (the same confirmed dead end Neutralizing Gas's own
+-- header documents for abilityIdOf).
+return { OPPORTUNIST = true }

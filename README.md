@@ -1,3 +1,17 @@
+# 1025Dex 1.3.0
+
+New moves and abilities now execute in Gen 1/2 battles. The existing 833-move and 313-ability data is reused by a bundled combat component adapted from Gen9Dex's latest release, v4.8.1. No second mod installation is needed. National Dex's latest release remains v0.35.5; its existing data/API was already present.
+
+Set **1025DEX → MOVES → ALL** to enable modern learnsets and **Party → 1025DEX → LEARN MOVE**. It offers only moves in that Pokemon's canonical level-up, machine, tutor or egg movepool; future level-up moves are withheld. Select the old move to replace when all four slots are occupied. Existing moves and saves are retained. GEN-NATIVE remains available for original learnsets.
+
+**Party → 1025DEX → ABILITY** shows the assigned ability and description. New Pokemon and existing party/box/daycare Pokemon receive a normal species ability when missing; existing hidden abilities are retained. Alternate forms without separate metadata inherit their real base species' data. Gen 2 punctuation aliases resolve correctly.
+
+Combat support includes damaging/status moves, stages, healing/drain/recoil, ability immunities and reactions, weather/terrain, modern damage categories, priority and move restrictions. Fixed upstream Gen 1 battler/party mapping, Gen 2 special stat reads, event namespaces, and healing adapters. Completed six previously inert status effects: Clangorous Soul, Flower Shield, No Retreat, Rototiller, Stuff Cheeks and Venom Drench. Stuff Cheeks requires a held Berry; Gen 1 needs a berry/held-item provider because its native game has no berries.
+
+No imported sprite assets, move animations, battle-scene renderer, trainer rosters, encounters, debug screens, nurse replacement, IV/EV randomizers, boss configuration or transformation activation. Johnto is not modified. Gen 3 retains the native move/ability engine. Form-, ally- and overworld-dependent abilities require those corresponding mechanics; upstream has documented interaction limits, so this is not a claim that every later-generation cartridge interaction is implemented.
+
+Validation: all 833 move handlers exercised in each of six Gen 1/2 games without runtime errors; focused damage/status tests on both sides, Shell Smash, Soak, Water Absorb, Levitate, Intimidate, six completed status moves, canonical tutor restrictions/PP, hidden-ability preservation and save/box/daycare assignment. Every registered species/form with dex metadata receives a resolvable ability (1389 Red records; 1389 Gold Pokemon records). Eleven-game schema/roster/Hoennto projection regressions and both LuaJIT/Lua 5.3 compilation. Headless battle tests; a live playthrough was not performed. Restart after installing.
+
 # 1025Dex 1.2.54
 
 Use base-species PC/party icons when alternate-form icon assets are missing, including Kyurem Black. Apply fallback in the custom icon provider and reinstall the guarded outer fallback when a later provider replaces it. Retain available form artwork.

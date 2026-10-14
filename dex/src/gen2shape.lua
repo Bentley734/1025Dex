@@ -166,6 +166,14 @@ function M.record(source)
   for key, value in pairs(source) do
     if not GEN1_ONLY[key] then out[key] = value end
   end
+  -- Current Gen 2 schema validates nested dexEntry keys strictly. Translate
+  -- imperial Gen 1 measurements instead of rejecting the whole species.
+  if source.dexEntry then
+    local d=source.dexEntry
+    out.dexEntry={kind=d.kind,text=d.text,text2=d.text2,
+      heightM=d.heightM or (((d.heightFt or 0)*12+(d.heightIn or 0))*0.0254),
+      weightKg=d.weightKg or ((d.weight or 0)*0.045359237)}
+  end
   out.baseStats = M.baseStats(source)
   out.levelMoves = M.levelMoves(source)
   out.evolutions = M.evolutions(source)

@@ -1,0 +1,45 @@
+-- Inclusion list -- Phase 8 (`other` bucket), item-interaction family.
+-- Real mechanics per ability, all built in abilities/engine/
+-- item_interaction.lua (Ripen and Cheek Pouch, the two OTHER real
+-- item-interaction abilities from this same national_dex kind bucket,
+-- are built directly in combat/modern_items.lua instead -- see that
+-- file's own header -- since both need to reach INSIDE that file's
+-- existing berry-consumption functions, not just observe them):
+--
+--   FRISK: on switch-in, reveals (message only) any adjacent opponent's
+--     held item, if it has one.
+--   MAGICIAN: steals the target's item on landing ANY damaging hit,
+--     if this Pokemon currently holds none itself.
+--   PICKPOCKET: steals the attacker's item after being hit by a CONTACT
+--     move, if this Pokemon currently holds none itself.
+--   HARVEST: after this Pokemon's own held Berry has been auto-eaten
+--     (this engine's one real modeled consumption path), a 50% chance
+--     (100% in harsh sunlight) each end of turn to grow a fresh copy of
+--     that same Berry, as long as it's still holding nothing.
+--
+-- Real, honestly-scoped gaps in this same kind bucket, NOT built here:
+--   GLUTTONY: real effect is "eats a Berry at 50% HP instead of the
+--     default 25%" -- this engine's own native Gen 2 auto-eat threshold
+--     (Battle:tickHeldItem) is ALREADY 50% for every mon regardless of
+--     ability (confirmed by direct source read, gen2/Battle.lua's own
+--     `mon.hp*2 <= maxHp` gate) -- real Gen 2 never modeled the modern
+--     25%-default/50%-with-Gluttony split at all, so there is no lower
+--     baseline for this ability to raise here. A structural no-op in
+--     this engine, the same class of finding Stall/Storm Drain's own
+--     redirect half already were in earlier phases -- not silently
+--     skipped, genuinely nothing to build.
+--   PICKUP: real trigger is POST-BATTLE ("after a wild battle ends, a
+--     chance to pick up an item used during it") -- this mod has no
+--     post-battle item-award system of any kind to hook into.
+--   SYMBIOSIS: real trigger is "when an ally's held item is consumed,
+--     this Pokemon immediately passes it its own item" -- a genuine
+--     cross-battler item-transfer primitive nothing in this engine has
+--     built yet (closest precedent, Covet/Thief, is a hostile one-way
+--     steal, not a same-side gift-and-clear) -- deferred, not silently
+--     dropped.
+--   CUD CHEW: real trigger is "the Berry this Pokemon just ate is eaten
+--     a second time at the end of the NEXT turn" -- would need a real
+--     turn-delayed scheduling primitive (something like Future
+--     Sight/Wish's own delayed-effect queue) nothing in this engine
+--     currently exposes for a generic ability to hook into -- deferred.
+return { FRISK = true, MAGICIAN = true, PICKPOCKET = true, HARVEST = true }

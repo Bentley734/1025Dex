@@ -1,0 +1,32 @@
+-- Inclusion list only -- Phase 8 (`other` bucket).
+--
+-- REAL SCOPE CORRECTION (2026-08-28, explicit user directive: "use
+-- Pokemon Showdown's logic"): this file's first draft approximated
+-- Magic Bounce's own real bounce condition as "damageClass=='status'
+-- and target=='selected-pokemon'" -- WRONG. Real Showdown gates on
+-- exactly ONE flag, `move.flags['reflectable']` (national_dex's own
+-- moveFlags(id).reflectable -- confirmed real and live, sourced
+-- directly from Showdown's own moves.json). That single flag already
+-- covers BOTH single-target status moves (Thunder Wave, Toxic, Will-
+-- O-Wisp, all confirmed reflectable=true) AND field-wide entry-hazard
+-- moves (Stealth Rock, Spikes, Toxic Spikes, Sticky Web, ALL also
+-- confirmed reflectable=true) -- so the earlier scope note here
+-- claiming hazards were a real, separate, unreachable gap was wrong
+-- too: they bounce correctly through the exact same whole-move
+-- redirect this file already uses, no special-casing needed at all --
+-- see abilities/engine/magic_bounce.lua's own header for exactly why
+-- (combat/modern_hazards.lua's own setters resolve which side gets the
+-- hazard off whoever the CURRENT move's target argument is, which the
+-- redirect already correctly swaps to the original attacker).
+--
+-- Built as a whole-move REDIRECT (swap defender<->attacker and re-
+-- dispatch through the exact same native entry point, the same real
+-- choke point Phase 7's Aroma Veil/Good As Gold move-fail gates already
+-- proved safe) rather than a per-effect intercept -- the only way to
+-- correctly make the move's own real effect (status, stat drop, a
+-- hazard layer, Leech Seed, whatever it is) actually land on the
+-- ORIGINAL USER, not just fail against the original target. Also
+-- respects the real Showdown ally exemption (a move from an ALLY never
+-- bounces, only one from an actual opponent), via this mod's own real
+-- N-way side accessor.
+return { MAGICBOUNCE = true }

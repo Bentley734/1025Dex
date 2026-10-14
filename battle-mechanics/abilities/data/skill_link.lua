@@ -1,0 +1,11 @@
+-- Inclusion list only -- Phase 8 (`other` bucket). Real, confirmed
+-- effect: 2-5-hit moves always hit 5 times.
+-- Gen 1 only, real reason: the real hit-count roll (`MoveEffects.full
+-- .TWO_TO_FIVE_ATTACKS_EFFECT.hitCount`) is a real, public, patchable
+-- field with the attacking user in its own ctx, confirmed by direct
+-- read of EffectRegistry.lua's own `hitCount(ctx, record)`. Gen 2's
+-- own equivalent (`Effects.hitCount`/`Effects.multiHitCount`,
+-- gen2/Effects.lua) takes no user/attacker parameter at its own call
+-- site at all -- the real caller wasn't confirmed reachable with ability
+-- context in the time this pass had, an honest gap rather than a guess.
+return { SKILLLINK = true }

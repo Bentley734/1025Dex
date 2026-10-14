@@ -108,6 +108,7 @@ local function makeShardLookup(mod, indexPath, pathFor)
   -- makes this "try once, then cache the answer either way" instead of
   -- re-reading a genuinely missing file on every single call.
   local index
+  local aliases
   local shards = {}
 
   local function getIndex()
@@ -132,6 +133,16 @@ local function makeShardLookup(mod, indexPath, pathFor)
   -- same way. Never raises.
   local function lookup(id)
     local idx = getIndex()
+    if idx and not idx[id] and indexPath==EXTRAS_INDEX_PATH and type(id)=='string' then
+      if not aliases then
+        aliases={}
+        for key in pairs(idx)do
+          local normal=key:upper():gsub('[^A-Z0-9]','')
+          if aliases[normal]==nil then aliases[normal]=key else aliases[normal]=false end
+        end
+      end
+      id=aliases[id:upper():gsub('[^A-Z0-9]','')]or id
+    end
     local shardNumber = idx and idx[id]
     if not shardNumber then return nil end
     local shard = getShard(shardNumber)
@@ -507,6 +518,16 @@ function M.install(mod)
   local function withExtras(shaped)
     if not shaped then return nil end
     local extras = extrasFor(shaped.id)
+    -- A form without its own metadata inherits the real base's movepool
+    -- and abilities; never invent an association or chase a metadata cycle.
+    local parent=shaped.baseSpecies
+    local seen={[shaped.id]=true}
+    while type(extras)~='table' and parent and not seen[parent]do
+      seen[parent]=true
+      extras=extrasFor(parent)
+      local base=pokemon:get(parent)
+      parent=base and base.baseSpecies
+    end
     if type(extras) == "table" then
       for key, value in pairs(deepCopy(extras)) do
         shaped[key] = value

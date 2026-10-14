@@ -46,7 +46,7 @@ return function(mod)
       get=function(_,key) return mod.options:get(key) end,
     }
     local source=assert(child:read('main.lua'),'Missing component: '..folder)
-    local entry=assert(load(source,'@'..child.path..'/main.lua'))()
+    local entry=assert(load(source,'@'..child.path..'/main.lua'))(child)
     assert(type(entry)=='function','Invalid component: '..folder)
     entry(child)
   end
@@ -94,5 +94,6 @@ return function(mod)
   assert(load(assert(mod:read('compat/capture_picture_guard.lua'))))()(mod)
   assert(load(assert(mod:read('compat/summary_scrolling_names.lua'))))()(mod)
   assert(load(assert(mod:read('compat/form_icon_fallback.lua'))))()(mod)
+  if generation <= 2 then component('battle-mechanics') end
   mod.log:info('1025Dex ready: 1025 cries, selectable animated/static/BW ROM sprites and WILD GENS.')
 end

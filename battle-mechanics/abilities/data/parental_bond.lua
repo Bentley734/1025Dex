@@ -1,0 +1,29 @@
+-- Inclusion list only -- Phase 8 (`other` bucket). Real, confirmed
+-- effect: this Pokemon's damaging moves hit TWICE -- the second hit at
+-- 25% power (current Showdown; Gen 7 used 50%, this mod targets
+-- current-gen parity throughout) -- UNLESS the first hit knocks out the
+-- target, in which case the second hit never happens at all.
+--
+-- OWNERSHIP CORRECTION (2026-08-28): an earlier draft this same session
+-- wrongly deferred this whole ability, reasoning "there's no reliable
+-- way to know if the first hit already fainted the target before the
+-- second, since HP is only subtracted by the native caller after this
+-- hook returns a number" -- a real user correction caught this:
+-- WE own damage resolution in this mod, the same standing rule every
+-- other file here already lives by. Nothing requires waiting on the
+-- native caller's own post-hook subtraction to know the answer -- this
+-- file reads the target's own CURRENT hp directly (the exact same
+-- primitive contact_retaliation.lua's own damageFraction/damageFlat
+-- and a dozen other files this session already use to apply damage
+-- themselves), computes the first hit's real damage via next(ctx), and
+-- decides the second hit's eligibility from that same read -- no
+-- dependency on anything happening outside this hook at all.
+--
+-- Real, honestly-scoped exemptions (Showdown's own real exclusion
+-- list, the relevant subset for this mod's real movepool): multi-hit
+-- moves (their own maxHits > 0 already covers hitting more than once),
+-- OHKO moves, and fixed-damage moves (Seismic Toss/Night Shade/Sonic
+-- Boom/Dragon Rage/Psywave/Super Fang -- national_dex's own real
+-- power=0-but-damaging shape, the same generic rule Forewarn's own
+-- power table already established for the identical real move set).
+return { PARENTALBOND = true }

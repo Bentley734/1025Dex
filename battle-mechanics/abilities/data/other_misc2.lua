@@ -1,0 +1,18 @@
+-- Inclusion list -- Phase 8 (`other` bucket), a small second consolidated
+-- batch (built in abilities/engine/other_misc2.lua) after other_misc.lua
+-- was already named -- kept as its own file rather than folded back into
+-- that one, since other_misc.lua's own install call already shipped and
+-- re-editing it risks a stale diff against what's actually running.
+--
+--   PERISH BODY: on being hit by a CONTACT move, starts a 3-turn faint
+--     countdown on BOTH the attacker and the holder -- reuses Perish
+--     Song's own real perishSongTurns field/decrement loop directly
+--     (modern_status_volatiles.lua) rather than a second parallel
+--     countdown. Real gate, confirmed: does not trigger at all if EITHER
+--     side already has an active countdown running.
+--   PUNK ROCK: this Pokemon's own sound-flagged moves deal 1.3x damage;
+--     any sound-flagged move used AGAINST this Pokemon deals 0.5x
+--     damage. Both real national_dex moveFlags(id).sound checks, same
+--     flag Throat Chop/Bulletproof-adjacent(Soundproof) logic already
+--     reads elsewhere in this mod.
+return { PERISHBODY = true, PUNKROCK = true }

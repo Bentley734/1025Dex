@@ -1,0 +1,22 @@
+-- Inclusion list only -- Phase 8 (`other` bucket). Real, confirmed
+-- effect: whenever another Pokémon uses a real dance-flagged move
+-- (national_dex's own moveFlags(id).dance -- confirmed real and live,
+-- e.g. Dragon Dance's own record: {dance=true, metronome=true,
+-- snatch=true} -- NOT every move with "Dance" in its name carries this;
+-- Swords Dance's own real flags are {snatch=true, metronome=true}, no
+-- dance flag at all, confirmed by direct read), this Pokemon
+-- immediately uses that exact same move too, at no PP cost, against the
+-- same original target.
+--
+-- Built as a post-hook on the same whole-move native entry points
+-- (Battle:useMove / BattleState:performMove) Phase 7's Aroma Veil/Good
+-- As Gold and this same phase's Magic Bounce already proved safe for
+-- this kind of cross-cutting move interception.
+--
+-- Real, honestly-scoped simplification: a copied use is NOT itself
+-- re-copyable here (a single guard flag covers the whole cascade for
+-- one original move use) -- real Showdown allows a genuine multi-mon
+-- chain reaction (a second Dancer copying a first Dancer's copy). A
+-- deliberately narrower, infinite-loop-proof version rather than
+-- chasing exact chain depth.
+return { DANCER = true }
