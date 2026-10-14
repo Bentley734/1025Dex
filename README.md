@@ -1,3 +1,9 @@
+# 1025Dex 1.2.46
+
+Retry the title portrait hook during native updates so late-loaded or replaced title classes use the selected PLAYER SPRITES style. The title path reads the selected sprite frames directly and does not depend on the unrelated DEX SPRITES toggle. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.
+
+Restart to load the update.
+
 # 1025Dex 1.2.45
 
 Use the selected PLAYER SPRITES style for the scrolling Gen 1 title-screen Pokemon. Use the existing live portrait frame pipeline for animated/static, BW, EE and KIM styles, preserving animation and marking portraits as true color. Missing/loading artwork falls back to the original title sprite. Existing enabled/DEX SPRITES controls apply.

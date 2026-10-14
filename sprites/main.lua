@@ -3862,16 +3862,26 @@ return function(mod)
   end
 
   -- Title portraits use the same player/menu sprite style as the Pokedex.
-  local okTitle,Title=pcall(require,'src.ui.TitleState')
-  if okTitle and type(Title.currentSprite)=='function'and not Title._1025DexTitleSprites then
-    Title._1025DexTitleSprites=true;local native=Title.currentSprite
-    Title.currentSprite=function(self,...)
+  local function installTitleSprites()
+    local ok,Title=pcall(require,'src.ui.TitleState')
+    if not(ok and type(Title.currentSprite)=='function')then return false end
+    if Title.currentSprite==Title._1025DexTitleSprites then return true end
+    local native=Title.currentSprite
+    local function selected(self,...)
       local species=self.cycleSpecies and self.cycleSpecies[self.cycleIndex]
-      local image=species and dexFrame(species,self)
-      if image then return image,true end
+      if species then
+        local stem=resolveStem(species,DATA.spriteStyle())
+        if stem then
+          local frames=getFrames(false,false,stem)
+          if frames then return frames[frameIndex(#frames,frames)],true end
+        end
+      end
       return native(self,...)
     end
+    Title._1025DexTitleSprites=selected;Title.currentSprite=selected
+    return true
   end
+  installTitleSprites()
 
   local function installDexGen1()
     local ok, DexEntryMenu = pcall(require, "src.ui.DexEntryMenu")
@@ -5104,6 +5114,7 @@ return function(mod)
     return
   end
   mod.hooks:wrap("core.update", function(next, game, dt)
+    if gen==1 then installTitleSprites()end
     -- A screen module the engine loads LAZILY can be impossible to require at
     -- mod-boot on some builds (the require throws before that tree is wired
     -- up).  Retry the Pokedex hook from the poll until it takes, so the
