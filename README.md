@@ -1,3 +1,13 @@
+# 1025Dex 1.2.49
+
+Prevent FireRed's post-capture Pokedex return from crashing on a missing picture record (reported after catching Flabebe).
+
+Wrap the native Pokedex registration completion callback with a temporary front-picture guard. Valid provider images are preserved; nil or incomplete records receive a safe 64x64 transparent picture so the native catch transition can access pic.image and continue to nickname/storage. Restore the provider after callback completion or error, preserve other callback options, and retry installing the registration hook when the Pokedex module loads late.
+
+The Gen 3 sprite provider also falls back to its safe picture when an unmanaged native front-picture lookup returns nil. The guards apply generically to every species, form and palette rather than special-casing Flabebe. Artwork can remain blank if no provider image exists; capture state and identity are not changed.
+
+Validation: whole-mod source compilation under LuaJIT and Lua 5.3; 6150 guard checks per runtime spanning all 1025 species, normal/shiny and missing/incomplete/valid images, including restoration on error; existing eleven-game load/registry checks. No live capture was performed. Restart to load the update.
+
 # 1025Dex 1.2.48
 
 Fix the sprite component startup failure introduced by the title-screen hook. The component exceeded Lua's 200-local-variable limit; store the new hook installer on the existing DATA table instead of allocating a new top-level local.

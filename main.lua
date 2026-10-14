@@ -91,5 +91,6 @@ return function(mod)
   end
   assert(load(assert(mod:read('compat/settings_menu.lua')), '@1025dex/settings_menu.lua'))()(mod)
   mod.exports.supportedGames={'red','blue','yellow','gold','silver','crystal','ruby','sapphire','firered','leafgreen','emerald'}
+  assert(load(assert(mod:read('compat/capture_picture_guard.lua'))))()(mod)
   mod.log:info('1025Dex ready: 1025 cries, selectable animated/static/BW ROM sprites and WILD GENS.')
 end

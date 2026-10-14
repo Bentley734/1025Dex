@@ -3666,7 +3666,7 @@ return function(mod)
       if managed and (pending or extendedSpecies(species)) then
         return transparentPic() or nativeFront(species, form, shiny, personality)
       end
-      return nativeFront(species, form, shiny, personality)
+      return nativeFront(species, form, shiny, personality)or transparentPic()
     end
     Pokemon.frontPic = ownedFront
     Pokemon.frontSprite = ownedFront
