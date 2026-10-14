@@ -1,7 +1,7 @@
 {
   "id": "1025dex",
   "name": "1025Dex",
-  "version": "1.2.50",
+  "version": "1.2.51",
   "api": 2,
   "entry": "main.lua",
   "profile": "content",

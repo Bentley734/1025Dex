@@ -1,3 +1,13 @@
+# 1025Dex 1.2.51
+
+Scroll overflowing names in native Gen 3 Pokemon summary screens, including long alternate-form identifiers such as Pikachu-Kalos Cap.
+
+Measure nickname and species/form labels using the active text renderer. When a label exceeds its name window, clip it to that window and scroll back and forth with pauses at both ends, using whole-pixel offsets. Keep shorter labels stationary. Track nickname/species lines independently, reset scrolling when changing Pokemon, and preserve original names and save data.
+
+Cover native FireRed/LeafGreen and RSE summary drawing paths, including palette-text rendering; leave unrelated labels untouched.
+
+Validation: focused long nickname/species scrolling, endpoint pause, clipping, stationary short text and data preservation checks under LuaJIT and Lua 5.3; full mod source compilation. Restart to load the update.
+
 # 1025Dex 1.2.50
 
 Fix species sprite lookup for accented and non-ASCII display names. Normalize complete UTF-8 characters before ASCII lookup; preserve Nidoran gender suffixes, handle Latin accents, combining marks and curly punctuation, and recognize older corrupted encodings.
