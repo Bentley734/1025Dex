@@ -3502,25 +3502,34 @@ return function(mod)
     local function partyIcon(species)
       if not partyIconsOn() then return vanillaIcon(species) end
       local n = tonumber(species)
-      if not n or n < 1 then return vanillaIcon(species) end
+      local function fallback()
+        local form=n and Pokemon.__completeDexForms and Pokemon.__completeDexForms[n]
+        local base=form and Pokemon.speciesFromName(form.baseSpecies)
+        if base and base~=n then
+          local entry=partyIcon(base)
+          if entry and entry.image then return entry end
+        end
+        return vanillaIcon(species)
+      end
+      if not n or n < 1 then return fallback() end
       local cached = hdPartyIcons[n]
       if cached then return cached end
-      if missingPartyIcons[n] then return vanillaIcon(species) end
+      if missingPartyIcons[n] then return fallback() end
       local name = type(Pokemon.keyName) == "function" and Pokemon.keyName(n)
       if type(name) ~= "string" or name == "" then
         missingPartyIcons[n] = true
-        return vanillaIcon(species)
+        return fallback()
       end
       local rel = "assets/icons/firered_menu/" .. name .. ".png"
       if not mod:info(rel) then
         missingPartyIcons[n] = true
-        return vanillaIcon(species)
+        return fallback()
       end
       local okImage, image = pcall(mod.assets.image, mod.assets, rel)
       if not okImage or not image then
         missingPartyIcons[n] = true
         mod.log:warn("g9-battle-sprites: FireRed party icon failed for %s", name)
-        return vanillaIcon(species)
+        return fallback()
       end
       local okQuads, q0, q1 = pcall(function()
         return love.graphics.newQuad(0, 0, 32, 32, 32, 64),
@@ -3528,7 +3537,7 @@ return function(mod)
       end)
       if not okQuads then
         missingPartyIcons[n] = true
-        return vanillaIcon(species)
+        return fallback()
       end
       local entry = {
         image = image, w = 32, h = 32, sheetH = 64, frames = 2,

@@ -1,3 +1,9 @@
+# 1025Dex 1.2.54
+
+Use base-species PC/party icons when alternate-form icon assets are missing, including Kyurem Black. Apply fallback in the custom icon provider and reinstall the guarded outer fallback when a later provider replaces it. Retain available form artwork.
+
+Validation: base/form icons, Unown slots, cyclic metadata guard and full LuaJIT/Lua 5.3 compilation. Existing ability inheritance remains unchanged. Restart after installing.
+
 # 1025Dex 1.2.53
 
 Forward all option-builder arguments through the encounter settings bridge. Explicitly retain Emerald native cartridge row metadata for Text Speed and Button Mode across mod wrappers, avoiding missing ROM choice tables and preserving native input and persistence.
