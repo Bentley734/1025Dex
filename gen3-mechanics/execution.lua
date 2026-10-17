@@ -166,6 +166,16 @@ return function(mod,models,transport,adapterMap)
   return result
  end
  Engine.resolveMove=function(user,target,id,slot,adapter,st,out,opts)
+  -- Native doubles/Pursuit/facility actions may pass slot IDs, not battlers.
+  -- Resolve current occupants before touching .mon (including replaced slots).
+  local userRef,targetRef=user,target
+  user,target=State.occupant(st,user),State.occupant(st,target)
+  -- Keep native cancellation and automatic target selection ahead of modern
+  -- callbacks; an absent actor must not spend PP or trigger an ability.
+  if type(user)~='table'or not user.mon or type(target)~='table'or not target.mon
+   or(not(opts and opts.called)and st and(st.over or(st.double and State.isAbsent(st,State.idOf(user)))))then
+   return resolve(userRef,targetRef,id,slot,adapter,st,out,opts)
+  end
   adapterMap[st]=adapter
   configure(st,adapter)
   if models.abilities then
