@@ -27,7 +27,10 @@ return function(mod)
   end
   if gen~=3 then return end
   local Items=require('src.core.game3.items_data')
+  -- Do not populate native slots before the loader assigns their ownership.
+  local committed=false
   local function restore()
+    if not committed then return end
     if not Items._byId then return end
     Items._byName=Items._byName or {}
     for _,entry in ipairs(registered) do
@@ -51,7 +54,7 @@ return function(mod)
     local result=install(...);restore();return result
   end
   Items.ensureLoaded();restore()
-  mod.events:on('mods.loaded',restore)
+  mod.events:on('mods.loaded',function()committed=true;restore()end)
   -- Consume the original bag slot, but resolve evolution using our existing
   -- apple branch. Nothing in the save is rewritten to a new numeric ID.
   local Evolution=require('src.core.game3.evolution')

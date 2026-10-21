@@ -1,3 +1,11 @@
+# 1025Dex 1.5.2 — Gen3 content registration fix
+
+Fix native item/move index collisions on Gen1Recomp v0.3.95. Compatibility tables now wait until content registration finishes; existing native move IDs are reused, including aliases in species learnsets and machine permissions. Fairy is explicitly registered for Gen3 validation.
+
+Saved apple item IDs (1001/1002), National item aliases, modern move numbers and existing asset downloads are preserved. Restart after updating. Download the artwork through 1025Dex's in-game asset manager if it is not already READY.
+
+Validation: the real Loader/Sandbox, installed asset manager, all 1,389 species/form position choices, native scenery/UI traces, actual added-species artwork, and automatic trainer battles pass in all five Gen3 games on v0.3.95. Ruby/Sapphire/Emerald were checked in doubles at 16:9; FireRed/LeafGreen in singles at 16:9, 32:9 (5120x1440), and portrait. Regression checks cover registration timing, reload restoration, native move aliases, immutable source records and saved item IDs. No full playthrough or every-move/species claim. Gen1/2 code paths are unchanged.
+
 # 1025Dex 1.5.1 — Gen3 battler-slot crash fix
 
 Fix `execution.lua:182: attempt to index local 'user' (a number value)`. Gen3 double battles, switching Pursuit and some facility actions pass battler slot numbers instead of objects. Resolve current occupants using the native state API before running modern mechanics. Preserve native absent-actor/end-of-battle cancellation and automatic targeting, without spending PP on cancelled actions.

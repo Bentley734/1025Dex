@@ -1,0 +1,511 @@
+{
+  "runtime": "0.3.95",
+  "scope": "Nine isolated automatic trainer flows; native scenes/UI/position menu and actual downloaded artwork; not full playthrough or exhaustive moves/species.",
+  "asset_catalog_files_verified": 23109,
+  "asset_manager_ready": true,
+  "species_and_forms": 1389,
+  "cases": [
+    {
+      "game": "ruby",
+      "size": "1280x720",
+      "double": true,
+      "flow": {
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 164,
+        "checks": [
+          {
+            "phase": "intro",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "actions",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "animating",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "awarding",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "residuals",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "ending",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          }
+        ],
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "result": "win",
+        "turns": 2,
+        "frames": 1154,
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "damage_verified": true
+      },
+      "scene_cases": 3
+    },
+    {
+      "game": "sapphire",
+      "size": "1280x720",
+      "double": true,
+      "flow": {
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "result": "win",
+        "damage_verified": true,
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 164,
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "checks": [
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "intro"
+          },
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "actions"
+          },
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "animating"
+          },
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "awarding"
+          },
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "residuals"
+          },
+          {
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "ending"
+          }
+        ],
+        "turns": 2,
+        "frames": 1154
+      },
+      "scene_cases": 3
+    },
+    {
+      "game": "emerald",
+      "size": "1280x720",
+      "double": true,
+      "flow": {
+        "turns": 2,
+        "checks": [
+          {
+            "phase": "intro",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "actions",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "animating",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "awarding",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "residuals",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "phase": "ending",
+            "composition": "grassland-01-16x9",
+            "native_ui_calls_unchanged": true
+          }
+        ],
+        "result": "win",
+        "damage_verified": true,
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 189,
+        "frames": 1191,
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration."
+      },
+      "scene_cases": 3
+    },
+    {
+      "game": "firered",
+      "size": "1280x720",
+      "double": false,
+      "flow": {
+        "animation_vm_frames": 174,
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "result": "win",
+        "frames": 947,
+        "checks": [
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "intro",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "actions",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "animating",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "awarding",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "residuals",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "phase": "ending",
+            "native_ui_calls_unchanged": true
+          }
+        ],
+        "turns": 3,
+        "damage_verified": true,
+        "opponent_replacement_verified": true
+      },
+      "scene_cases": 12
+    },
+    {
+      "game": "firered",
+      "size": "5120x1440",
+      "double": false,
+      "flow": {
+        "turns": 3,
+        "checks": [
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "intro",
+            "composition": "grassland-02-32x9"
+          },
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "actions",
+            "composition": "grassland-02-32x9"
+          },
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "animating",
+            "composition": "grassland-02-32x9"
+          },
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "awarding",
+            "composition": "grassland-02-32x9"
+          },
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "residuals",
+            "composition": "grassland-02-32x9"
+          },
+          {
+            "native_ui_calls_unchanged": true,
+            "phase": "ending",
+            "composition": "grassland-02-32x9"
+          }
+        ],
+        "animation_vm_frames": 174,
+        "frames": 947,
+        "result": "win",
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "opponent_replacement_verified": true,
+        "damage_verified": true
+      },
+      "scene_cases": 12
+    },
+    {
+      "game": "firered",
+      "size": "900x1600",
+      "double": false,
+      "flow": {
+        "result": "win",
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "damage_verified": true,
+        "turns": 3,
+        "animation_vm_frames": 174,
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "checks": [
+          {
+            "phase": "intro",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "actions",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "animating",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "awarding",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "residuals",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "ending",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          }
+        ],
+        "opponent_replacement_verified": true,
+        "frames": 947
+      },
+      "scene_cases": 12
+    },
+    {
+      "game": "leafgreen",
+      "size": "1280x720",
+      "double": false,
+      "flow": {
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "result": "win",
+        "checks": [
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "intro"
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "actions"
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "animating"
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "awarding"
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "residuals"
+          },
+          {
+            "composition": "grassland-02-16x9",
+            "native_ui_calls_unchanged": true,
+            "phase": "ending"
+          }
+        ],
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "damage_verified": true,
+        "frames": 947,
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 174,
+        "turns": 3
+      },
+      "scene_cases": 12
+    },
+    {
+      "game": "leafgreen",
+      "size": "5120x1440",
+      "double": false,
+      "flow": {
+        "turns": 3,
+        "checks": [
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "intro",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "actions",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "animating",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "awarding",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "residuals",
+            "native_ui_calls_unchanged": true
+          },
+          {
+            "composition": "grassland-02-32x9",
+            "phase": "ending",
+            "native_ui_calls_unchanged": true
+          }
+        ],
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "frames": 947,
+        "result": "win",
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration.",
+        "damage_verified": true,
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 174
+      },
+      "scene_cases": 12
+    },
+    {
+      "game": "leafgreen",
+      "size": "900x1600",
+      "double": false,
+      "flow": {
+        "checks": [
+          {
+            "phase": "intro",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "actions",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "animating",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "awarding",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "residuals",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          },
+          {
+            "phase": "ending",
+            "native_ui_calls_unchanged": true,
+            "composition": "grassland-02-9x16"
+          }
+        ],
+        "damage_verified": true,
+        "opponent_replacement_verified": true,
+        "animation_vm_frames": 174,
+        "result": "win",
+        "phases": [
+          "intro",
+          "actions",
+          "animating",
+          "awarding",
+          "residuals",
+          "ending"
+        ],
+        "frames": 947,
+        "turns": 3,
+        "scope": "Native autoFight trainer battle against three low-level foes; real intro, damage, animations, faint/replacement and win. Not player input/menu selection, voluntary player switch, all species/moves or save integration."
+      },
+      "scene_cases": 12
+    }
+  ],
+  "source_hashes": {
+    "apples.lua": "fa515898b445e174bfb8dc46ec0d93c591c6d2e68daf349366c379066763e1cf",
+    "compat/national_gen3.lua": "a6cf95b60ac7967570abb67e6281e3671494757d22e7249c68752c3875a527fa",
+    "dex/src/gen3prepare.lua": "1d4de000c889dd5e87e28836596a399bee73c5cb15ecf7c18e7dccda2a1e5be7",
+    "tests/gen3_registration_order.lua": "52e41901ad201b28a246fcfc5447189057ef8e08a64f328d3dd98539c8af4f76"
+  },
+  "source_hash_normalization": "UTF-8 file bytes with CRLF normalized to LF (Git/package representation)"
+}

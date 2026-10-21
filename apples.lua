@@ -86,7 +86,10 @@ return function(mod)
     end
   else
     local Items=require('src.core.game3.items_data')
+    -- Do not populate native slots before the loader assigns their ownership.
+    local committed=false
     local function restore()
+      if not committed then return end
       if not Items._byId then return end
       Items._byName=Items._byName or {}
       for _,apple in ipairs(apples) do
@@ -101,7 +104,7 @@ return function(mod)
       local result=install(...); restore(); return result
     end
     Items.ensureLoaded();restore()
-    mod.events:on('mods.loaded',restore)
+    mod.events:on('mods.loaded',function()committed=true;restore()end)
     -- FRLG's National Dex gate predates these species. Purchased apples
     -- should work on Applin before the postgame unlock, like other games.
     local Evolution=require('src.core.game3.evolution')
