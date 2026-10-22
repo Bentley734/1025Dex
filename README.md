@@ -1193,3 +1193,6 @@ pixel comparisons; existing static/EE/BW/style/view regressions and LuaJIT
 syntax checks. Six representative species were reviewed using the production
 HD scene compositor and its shipped grassland/mound artwork. These focused
 checks do not represent complete playthroughs or every species in live battles.
+
+1.5.4 also registers live geometry for native pictures first requested after their
+animation bake has finished, so cached previews and battles retain HD contacts.
