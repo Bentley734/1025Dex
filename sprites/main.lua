@@ -3640,6 +3640,7 @@ return function(mod)
         image:replacePixels(proxy.data[i]); proxy.lastFrame = i
       end
       proxy.pic.__completeDexBattleLift = sheet.gen3BattleLift
+      spriteBakes[image]=sheet.contactBake
       return proxy.pic
     end
 

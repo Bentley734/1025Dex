@@ -30,3 +30,14 @@ local migrate=dofile('compat/sprite_options.lua');local options={enemy_sprite_st
 check(options.enemy_sprite_style==6 and options.player_sprite_style==6,'persist new style')
 local rows=dofile('sprites/options.lua');check(rows[1].choices[7][2]==6 and rows[2].choices[7][2]==6,'independent side options')
 print('PASS '..n..' G9 GEN3 source / four palettes / authored feet / live HD geometry assertions')
+
+-- A late cached native picture must receive geometry even if baking finished first.
+local f=assert(io.open('sprites/main.lua'));local source=f:read('*a');f:close()
+local a=assert(source:find('    local function pendingPic(',1,true));local z=assert(source:find('    local function extendedSpecies(',a,true))
+local image={setFilter=function()end,replacePixels=function()end};local contact={box={w=64,h=64},ox=0,oy=0,dw=64,dh=64}
+local sheet={gen3FrameData={{}},gen3BattleLift=0,contactBake=contact}
+local env=setmetatable({sheetKey=function()return 'key'end,sheets={key=sheet},DATA={},spriteBakes={},
+ love={image={newImageData=function()return {}end},graphics={newImage=function()return image end}},frameIndex=function()return 1 end},{__index=_G})
+local pending=assert(load(source:sub(a,z-1)..'return pendingPic','late native picture','t',env))()
+local pic=assert(pending(false,false,'TEST',true,false,false));assert(env.spriteBakes[pic.image]==contact,'late native picture lost its HD geometry')
+print('PASS late-created native Gen3 picture contact registration')
