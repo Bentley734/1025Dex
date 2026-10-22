@@ -50,14 +50,16 @@ local ma=assert(rootSource:find("  local spriteOptionsMigrated",1,true));local m
 for _,gen in ipairs({1,2,3})do
  local bucket={sprite_style=1,player_sprite_style=-1,battle_frontal=true,battle_front_flip=true}
  local game={mods={modOptions={["1025dex"]=bucket}}}
- local menv=setmetatable({mod={id="1025dex",read=function(_,path)local f=assert(io.open(path));local body=f:read("*a");f:close();return body end},require=function(name)eq(name,"src.core.Game","migration engine module");return game end},{__index=_G})
- assert(load(rootSource:sub(ma,mz-1),"root-entry migration", "t", menv))()
+ local menv=setmetatable({generation=gen,readyGame=game,mod={events={on=function()end},id="1025dex",read=function(_,path)local f=assert(io.open(path));local body=f:read("*a");f:close();return body end},require=function(name)eq(name,"src.core.Game","migration engine module");return game end},{__index=_G})
+ local body=rootSource:sub(ma,mz-1):gsub("  local readyGame","  local readyGame=game")
+ menv.game=game
+ assert(load(body,"root-entry migration", "t", menv))()
  eq(game.mods.modOptions["1025dex"],bucket,"shared options bucket preserved")
  eq(bucket.player_sprite_style,1,"root migrates artwork")
  eq(bucket.player_sprite_view,2,"root migrates mirror")
  local deferredBucket={sprite_style=2,player_sprite_style=-1,battle_frontal=true}
  local attached=game.mods;game.mods=nil
- assert(load(rootSource:sub(ma,mz-1),"deferred root-entry migration", "t", menv))()
+ assert(load(body,"deferred root-entry migration", "t", menv))()
  attached.modOptions["1025dex"]=deferredBucket;game.mods=attached
  menv.mod:migrateSpriteOptions()
  eq(deferredBucket.player_sprite_style,2,"Gen3 deferred loader style migration")

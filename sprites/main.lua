@@ -192,12 +192,12 @@ return function(mod)
   local OPTIONS = {
   {
     key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 }, { "G9 GEN3", 6 } },
     description = "Artwork for enemy battle Pokemon. Animated styles always animate; static styles remain still.",
   },
   {
     key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 }, { "G9 GEN3", 6 } },
     description = "Artwork for player battle Pokemon, Pokedex and summary pictures. Animated styles always animate; static styles remain still.",
   },
   {
@@ -262,7 +262,7 @@ return function(mod)
       { "NORMAL", 2 },
       { "SMALL", 3 },
     },
-    description = "BIG (default), NORMAL and SMALL divide ANIMATED, GEN9 STATIC and EE artwork by 1, 2 and 3, shrinking further only when needed to fit the picture box. BW ROM artwork fits its visible animation into the box at BIG, half that size at NORMAL and a third at SMALL. All frames share one scale and ground anchor. Existing MAX DETAIL selections now use BIG. Custom battle scenes that supply their own scale keep that scale.",
+    description = "BIG (default), NORMAL and SMALL divide ANIMATED, GEN9 STATIC, G9 GEN3 and EE artwork by 1, 2 and 3, shrinking further only when needed to fit the picture box. BW ROM artwork fits its visible animation into the box at BIG, half that size at NORMAL and a third at SMALL. All frames share one scale and ground anchor. Existing MAX DETAIL selections now use BIG. Custom battle scenes that supply their own scale keep that scale.",
   },
   {
     key = "sprite_anchor",
@@ -428,6 +428,7 @@ return function(mod)
   DATA.static = readData("data/static_data.lua") or { files = {}, aliases = {} }
   DATA.static.metrics = readData("data/static_metrics.lua") or {}
   DATA.ee = readData("data/ee_data.lua") or { files = {} }
+  DATA.g9 = assert(loadstring(assert(mod:read("g9_provider.lua"))))()(mod,readData,DATA)
   if not METRICS then
     mod.log:warn("g9-battle-sprites: data/dbk_metrics.lua is missing or invalid --"
       .. " PACK anchoring will fall back to bottom-centring")
@@ -461,17 +462,17 @@ return function(mod)
     local value = tonumber(opt("player_sprite_style", -1))
     if not value or value < 0 then value = tonumber(opt("sprite_style", 3)) end
     if value==5 and not DATA.kimPeer()then return 3 end
-    return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5) and value or 0
+    return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5 or value == 6) and value or 0
   end
   function DATA.styleFor(back, battle)
     if mod and mod.migrateSpriteOptions then mod:migrateSpriteOptions() end
     if battle then
       local value = tonumber(opt(back and "player_sprite_style" or "enemy_sprite_style", -1))
       if value==5 and not DATA.kimPeer()then return 3 end
-      if value and value >= 0 and value <= 5 and value == math.floor(value) then return value end
+      if value and value >= 0 and value <= 6 and value == math.floor(value) then return value end
     end
     local value = tonumber(opt("sprite_style", 3))
-    if battle then return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5) and value or 0 end
+    if battle then return (value == 1 or value == 2 or value == 3 or value == 4 or value == 5 or value == 6) and value or 0 end
     return DATA.spriteStyle()
   end
   function DATA.playerView(back)
@@ -1090,6 +1091,10 @@ return function(mod)
   -- component intentionally stays below Lua 5.1's 200-local function limit.
   local function resolveStem(species, style)
     if type(species) ~= "string" then return nil end
+    if (style or DATA.spriteStyle())==6 and DATA.g9 then
+      local exact=DATA.g9.stem(species)or DATA.g9.stem(canonicalSpeciesKey(species))
+      if exact then return exact end
+    end
     if (style or DATA.spriteStyle()) == 3 or (style or DATA.spriteStyle()) == 4 then
       local overrides = DATA.ee and DATA.ee.species or {}
       local eeStem = overrides[species] or overrides[canonicalSpeciesKey(species)]
@@ -1126,6 +1131,7 @@ return function(mod)
   end
 
   local function femaleStem(stem, style)
+    if (style or DATA.spriteStyle())==6 and DATA.g9.select(stem.."_female","front")then return stem.."_female"end
     if (style or DATA.spriteStyle()) == 3 or (style or DATA.spriteStyle()) == 4 then
       local files = DATA.ee and DATA.ee.files.front or {}
       if files[stem .. "_female"] then return stem .. "_female" end
@@ -1237,6 +1243,10 @@ return function(mod)
   -- Decode one sheet through the routes above, reporting which one won (or why
   -- every available route failed).
   local function decodeSheet(sheet)
+    if sheet.g9Record then
+      local ok,data=pcall(DATA.g9.decode,sheet.g9Record)
+      return ok and data or nil, ok and "G9 GEN3"or tostring(data)
+    end
     if sheet.kimData then local data=sheet.kimData;sheet.kimData=nil;return data,'KIM' end
     if sheet.bwPeer then
       local ok, data = pcall(sheet.bwPeer.decodeSprite, sheet.bwFolder, sheet.sourceStem)
@@ -1573,8 +1583,8 @@ return function(mod)
     -- screen px over the pack's render scale, then scaled with the sheet).
     local div = b.back and BACK_SCALE or FRONT_SCALE
     local shX = ((b.shadowSx or 0) * 2) / div * (b.scale or 1)
-    local left = round(b.ox + (b.dw or 0) / 2 + shX - sW / 2)
-    local bottom = box.h - 1
+    local left = round((b.footX or(b.ox + (b.dw or 0) / 2)) + shX - sW / 2)
+    local bottom = round(b.footY or box.h) - 1
     local top = bottom - sH + 1
     local maxX = box.w - 1
     for ty = 0, sH - 1 do
@@ -1726,6 +1736,7 @@ return function(mod)
   local ourFrames = setmetatable({}, { __mode = "k" })
   -- Stable across every frame: the union bounds are known before baking.
   -- Battle placement reads this metadata; menus still receive the same art.
+  local spriteBakes=setmetatable({}, {__mode='k'})
   local gen3BattleLiftByImage = setmetatable({}, { __mode = "k" })
 
   local function sheetKey(back, shiny, stem, box, divisor, zoom, maxH, fill, scale, natural, tera, cloud, shadow, front, flip)
@@ -1844,9 +1855,10 @@ return function(mod)
   -- one-pixel outline or antenna is never punched out by the sampling stride.
 
   local function beginBuild(sheet, imageData)
+    sheet.contactBake=nil
     local W, H = imageData:getDimensions()
     if H < 1 or W < 1 then return false end
-    local count = sheet.kimRecord and sheet.kimRecord.count or math.max(1, math.floor((W + H / 2) / H))
+    local count = sheet.g9Record and sheet.g9Record.cell.frames or sheet.kimRecord and sheet.kimRecord.count or math.max(1, math.floor((W + H / 2) / H))
     if sheet.static and W ~= H then return false end
     if sheet.static then count = 1 end
     local fw = math.floor(W / count)
@@ -1899,6 +1911,7 @@ return function(mod)
       -- Use dimensions rather than side, since four placeholder PNGs are 96px.
       density = sheet.static and H / 96 or 1,
       metrics = sheet.static and DATA.static.metrics[sheet.sourceStem] or nil,
+      g9Record=sheet.g9Record,
       -- 3DB FLIP (option): mirror every baked frame across its vertical axis
       -- (see buildOneFrame).  Read once per sheet here, like every other bake
       -- knob.
@@ -2063,6 +2076,11 @@ return function(mod)
       scale = 1 / (b.divisor * (b.density or 1))
       if cw * scale * zoom > fitW then scale = fitW / (cw * zoom) end
       if ch * scale * zoom > fitH then scale = fitH / (ch * zoom) end
+    elseif b.g9Record then
+      local physicalBack=b.g9Record.variant:match('^back')~=nil
+      scale=(tonumber(b.g9Record.tuning[physicalBack and 'back'or'front'])or 1)/math.max(1,mode)
+      if physicalBack then scale=scale*(tonumber(b.g9Record.cell.bn)or 1)end
+      scale=math.min(scale,fitW/cw,fitH/ch)
     elseif b.native then
       -- ROM animation canvases include transparent OAM space and may expand
       -- for a distant pose. Size the visible union once for the whole loop;
@@ -2074,7 +2092,7 @@ return function(mod)
       if cw * scale > fitW then scale = fitW / cw end
       if ch * scale > fitH then scale = fitH / ch end
     end
-    if scale > 1 and not (b.native or b.fill or (b.scale and b.scale > 0)) then scale = 1 end
+    if scale > 1 and not (b.native or b.g9Record or b.fill or (b.scale and b.scale > 0)) then scale = 1 end
     local dw = math.max(1, round(cw * scale))
     local dh = math.max(1, round(ch * scale))
     b.cw, b.ch, b.dw, b.dh = cw, ch, dw, dh
@@ -2119,12 +2137,22 @@ return function(mod)
     elseif anchor == ANCHOR_FEET then
       offY = -floatLift(b.stem, ch)
     end
+    if b.g9Record then
+      local cx,foot,origin,dx,dy=DATA.g9.geometry(b)
+      offX=(b.x0+b.x1+1)/2-cx+dx
+      offY=b.y1+1+origin-64+dy
+    end
     local ox = math.floor(baseX + offX * scale)
     local oy = math.floor(baseY + offY * scale)
     if GEN == 3 then oy = oy - GEN3_SPRITE_LIFT end
     if ox < 0 then ox = 0 elseif ox > box.w - dw then ox = box.w - dw end
     if oy < 0 then oy = 0 elseif oy > box.h - dh then oy = box.h - dh end
     b.ox, b.oy = ox, oy
+    if b.g9Record then
+      local cx,foot=DATA.g9.geometry(b)
+      b.footX=math.max(0,math.min(box.w,ox+(cx-b.x0)*scale))
+      b.footY=math.max(0,math.min(box.h,oy+(foot-b.y0)*scale))
+    end
     -- Custom art is already anchored within its canvas. Battle placement
     -- cancels ROM-specific padding offsets instead of lifting by art height.
     b.gen3BattleLift = GEN == 3 and 0 or nil
@@ -2972,8 +3000,13 @@ return function(mod)
     img:setFilter("nearest", "nearest")
     sheet.frames = sheet.frames or {}
     sheet.frames.__spriteStyle = sheet.style
+    sheet.contactBake=sheet.contactBake or{box={w=box.w,h=box.h},ox=b.ox,oy=b.oy,dw=b.dw,dh=b.dh,
+      anchor=spriteAnchor(),floatLift=b.g9Record and 0 or(spriteAnchor()==ANCHOR_FEET and floatLift(b.stem,b.ch)*b.scale or 0),
+      footX=b.footX,footY=b.footY,flip=b.flip,source=b.g9Record and('g9_gen3/'..b.g9Record.id)or sheet.rel,style=sheet.style}
+
     sheet.frames.__bwTiming = sheet.bwTiming
     sheet.frames.__ee = sheet.ee
+    if spriteBakes then spriteBakes[img]=sheet.contactBake end
     -- Optional layout metadata for final-resolution scene renderers. These
     -- bounds come from the whole strip's union, before individual frames are
     -- baked, so an idle pose never changes its size or ground origin. Natural
@@ -3014,6 +3047,7 @@ return function(mod)
           proxy.data.__bwTiming = sheet.bwTiming
           proxy.data[f + 1] = proxyFrame
           if proxy.pic then proxy.pic.__completeDexBattleLift = b.gen3BattleLift end
+          if spriteBakes then spriteBakes[proxy.image]=sheet.contactBake end
           pcall(proxy.image.replacePixels, proxy.image, proxyFrame)
           proxy.lastFrame = f + 1
         end
@@ -3074,6 +3108,12 @@ return function(mod)
     sheet.sourceStem = sheet.stem
     sheet.bwPeer, sheet.bwFolder, sheet.bwTiming = nil, nil, nil
     sheet.kimData,sheet.kimRecord=nil,nil
+    sheet.g9Record=nil
+    if sheet.style==6 and DATA.g9 and(sheet.stem:match("^G9@")or sheet.stem:match("^UNOWN_%d+$"))then
+      sheet.g9Record=DATA.g9.select(sheet.stem,folder)
+      if sheet.g9Record then sheet.rel=nil;sheet.status='local';return end
+      -- Unavailable forms retain existing matching animated artwork.
+    end
     if sheet.style==5 then
       local peer=DATA.kimPeer()
       if peer then
@@ -3338,6 +3378,9 @@ return function(mod)
   -- ---------------------------------------------------------------------------
   -- Animation clock
   -- ---------------------------------------------------------------------------
+  mod.exports.pictureBakeVersion=1
+  mod.exports.pictureBake=function(image)return spriteBakes[image]end
+
   local function frameIndex(count, frames)
     if count < 1 then return 1 end
     if count == 1 or not animateOn(frames and frames.__spriteStyle) then return 1 end

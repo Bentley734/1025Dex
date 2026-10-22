@@ -1,0 +1,41 @@
+{
+  "source": "g9-battle-sprites-gen3-1.5.4.zip",
+  "sourceVersion": "1.5.4",
+  "speciesCovered": 1025,
+  "mappedStems": 2355,
+  "sourceFramesByteCompared": 32,
+  "productionDecodedBakedContactCases": 32,
+  "hdSceneReviewSpecies": [
+    "BULBASAUR",
+    "PIKACHU",
+    "CHARIZARD",
+    "WAILORD",
+    "RAYQUAZA",
+    "NOIVERN"
+  ],
+  "preservedFields": [
+    "fs",
+    "frames",
+    "cx0",
+    "cx1",
+    "cy0",
+    "cy1",
+    "ux0",
+    "ux1",
+    "uy0",
+    "uy1",
+    "ffr",
+    "fy",
+    "bfr",
+    "bfl",
+    "bn",
+    "front",
+    "back",
+    "front_dx",
+    "front_dy",
+    "back_dx",
+    "back_dy"
+  ],
+  "checks": "PNG palette reconstruction, metadata lookup, production scan/layout/bake, stable image contacts, native/shiny palettes and body/foot pivots",
+  "validatedAtlasCells": 4728
+}

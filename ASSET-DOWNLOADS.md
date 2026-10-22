@@ -47,3 +47,8 @@ a new immutable pack version and release URL. `tools/test_assets.py` tests the
 actual ZIP installer, media routing, UI, cache reuse, migration, and rejection
 paths with Lua 5.3 and LuaJIT. The installer is adapted from KIM1025's persistent
 asset manager.
+
+G9 GEN3 (added in 1.5.3) is bundled separately in the core under
+`sprites/g9_gen3`, using the source pack's compact indexed-color shards. It does
+not change the pinned persistent asset catalog or trigger an existing-artwork
+redownload.

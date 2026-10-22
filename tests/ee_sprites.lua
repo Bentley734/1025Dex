@@ -40,7 +40,7 @@ eq(schema[1].choices[5][1],'EE STATIC','manager static label')
 eq(schema[1].choices[4][2],3,'manager animated value');eq(schema[1].choices[5][2],4,'manager static value')
 local stemData=dofile('sprites/data/dbk_data.lua');stemData.ee=dofile('sprites/data/ee_data.lua')
 stemData.spriteStyle=function()return style end
-local stemEnv=setmetatable({DATA=stemData},{__index=_G})
+local stemEnv=setmetatable({DATA=stemData,mod={read=function(_,path)local f=assert(io.open('sprites/'..path));local v=f:read('*a');f:close();return v end}},{__index=_G})
 local first=assert(source:find('  local function stripLastWord(',1,true))
 local last=assert(source:find('  -- Resolve a live mon to',first,true))
 local resolver=assert(load(source:sub(first,last-1)..'return {resolve=resolveStem,female=femaleStem}','EE form/gender identities','t',stemEnv))()

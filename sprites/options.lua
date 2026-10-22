@@ -12,12 +12,12 @@
 return {
   {
     key = "enemy_sprite_style", label = "ENEMY SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 }, { "G9 GEN3", 6 } },
     description = "Artwork for enemy battle Pokemon. Animated styles always animate; static styles remain still.",
   },
   {
     key = "player_sprite_style", label = "PLAYER SPRITES", type = "choice", default = 3,
-    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 } },
+    choices = { { "ANIMATED", 0 }, { "GEN9 STATIC", 1 }, { "BW ROM", 2 }, { "EE ANIMATED", 3 }, { "EE STATIC", 4 }, { "KIM", 5 }, { "G9 GEN3", 6 } },
     description = "Artwork for player battle Pokemon, Pokedex and summary pictures. Animated styles always animate; static styles remain still.",
   },
   {
@@ -82,7 +82,7 @@ return {
       { "NORMAL", 2 },
       { "SMALL", 3 },
     },
-    description = "BIG (default), NORMAL and SMALL divide ANIMATED, GEN9 STATIC and EE artwork by 1, 2 and 3, shrinking further only when needed to fit the picture box. BW ROM artwork fits its visible animation into the box at BIG, half that size at NORMAL and a third at SMALL. All frames share one scale and ground anchor. Existing MAX DETAIL selections now use BIG. Custom battle scenes that supply their own scale keep that scale.",
+    description = "BIG (default), NORMAL and SMALL divide ANIMATED, GEN9 STATIC, G9 GEN3 and EE artwork by 1, 2 and 3, shrinking further only when needed to fit the picture box. BW ROM artwork fits its visible animation into the box at BIG, half that size at NORMAL and a third at SMALL. All frames share one scale and ground anchor. Existing MAX DETAIL selections now use BIG. Custom battle scenes that supply their own scale keep that scale.",
   },
   {
     key = "sprite_anchor",

@@ -1161,3 +1161,35 @@ BATTLE SPRITES previously enabled/disabled custom artwork; custom artwork is now
 3DB FRONTAL and 3DB FLIP duplicated PLAYER VIEW and have been removed. PLAYER VIEW retains BACK, FRONT and MIRRORED FRONT. Existing saved global style and legacy front/mirror choices migrate to the corresponding independent settings; unrelated settings and KIM1025 positioning are preserved.
 
 Restart after updating. Existing downloaded assets are reused.
+
+## G9 Gen3 artwork (1.5.3)
+
+Choose **G9 GEN3** under **ENEMY SPRITES** and/or **PLAYER SPRITES** in
+1025Dex options. Existing choices and defaults are retained. Player back, front
+and mirrored-front views, shiny art, Pokedex and summary pictures continue
+through the same provider. All 1025 base species are covered; supported forms,
+female looks and Unown letters use their corresponding imported records.
+Missing forms retain the existing matching artwork.
+
+The compressed artwork from the supplied G9 Battle Sprites Gen 3 1.5.4 pack is
+bundled in this core update. Its frame counts, reference foot rows, body centers,
+front placement offsets and per-species size/position overrides are retained.
+Oversized art still fits the native picture slot so complete creatures are not
+clipped. Native sizing and 1025Dex/custom-scene size controls remain in charge;
+the standalone pack's optional third-party HD realism renderer is not installed.
+The persistent 1025Dex asset pack is unchanged and does not need redownloading.
+Disable the standalone G9 Gen3 mod when using this integrated option.
+
+For **HD Dynamic Battlefields**, update to **0.3.0-beta.8** as well. That release
+uses the actual baked picture's stable foot/body contacts through the new
+versioned `pictureBake` API, including each slot of a double battle. It retains
+manual species offsets and existing scenery calibration and does not alter the
+Pokemon's draw position. Older HD versions intentionally refuse to apply their
+private 1.5.2-only calibration to a newer 1025Dex version.
+
+Validation: all 1025 species mapped; 100 source-selection/foot-contact checks;
+32 actual decoded/baked front/back normal/shiny cases with byte-exact source
+pixel comparisons; existing static/EE/BW/style/view regressions and LuaJIT
+syntax checks. Six representative species were reviewed using the production
+HD scene compositor and its shipped grassland/mound artwork. These focused
+checks do not represent complete playthroughs or every species in live battles.

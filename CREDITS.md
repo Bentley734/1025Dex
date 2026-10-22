@@ -80,3 +80,12 @@ Combat implementation adapted from **tectorifter/Gen9Dex**, latest release **v4.
 Gen 3 adapter: original translation/integration code for the native 0.3.85 battle and save interfaces. poooooby/national_dex_gen3 v0.8.3 was inspected as a reference; its move/ability substitutions and assets were not imported. Adapter combat reuse follows the bundled component GPL-3.0-or-later terms.
 
 Expanded move machines reuse the existing species/form learnsets. Historical learners for Needle Arm, Magnet Bomb, Heal Order and Steamroller were checked against PokeAPI/api-data move records on October 14, 2026: https://github.com/PokeAPI/api-data/tree/master/data/api/v2/move . Machine/shop integration is original GPL-3.0-or-later code.
+
+## G9 GEN3 sprite option (1.5.3)
+
+Imported from the user-supplied `g9-battle-sprites-gen3-1.5.4.zip`, from
+poooooby/g9-battle-sprites-gen3, based on tectorifter's G9 sprites and the DBK
+sprite pack. Original artist credits, GPL license and third-party notices are
+preserved in `sprites/g9_gen3/`. Only indexed battle-art data is imported; the
+standalone mod's hooks, National Dex dependency and party-icon replacements
+are not installed. Existing 1025Dex forms, species and icons remain in control.
